@@ -1,0 +1,1415 @@
+TKATG Big
+v7
+r1
+cCheck dependencies
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk
+c000000004BA82B910000000000000110
+t1269312401
+s272
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/ResourceRules.plist
+c000000004B9F103D00000000000001E5
+t1268715581
+s485
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/AudioToolbox.framework/AudioToolbox
+c000000004B9F260C00000000002DE3E0
+t1268721164
+s3007456
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/AudioToolbox.framework/Headers/AudioToolbox.h
+c000000004B9F25DA0000000000000A22
+t1268721114
+s2594
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/CFNetwork.framework/CFNetwork
+c000000004B9F269700000000001EC0F0
+t1268721303
+s2015472
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/CFNetwork.framework/Headers/CFNetwork.h
+c000000004B9F262A00000000000004CF
+t1268721194
+s1231
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/CoreFoundation.framework/Headers/CoreFoundation.h
+c000000004B9F24F80000000000000A99
+t1268720888
+s2713
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c000000004BA03AC100000000003B4B70
+t1268792001
+s3885936
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c000000004B9F26D2000000000036A650
+t1268721362
+s3581520
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
+c000000004B9F26B90000000000001355
+t1268721337
+s4949
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/MediaPlayer.framework/Headers/MediaPlayer.h
+c000000004B9F34AE0000000000000268
+t1268724910
+s616
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+c000000004B9F34D80000000000204310
+t1268724952
+s2114320
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/CoreAnimation.h
+c000000004B9F28EF0000000000000364
+t1268721903
+s868
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.h
+c000000004B9F28EE000000000000007D
+t1268721902
+s125
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/QuartzCore.framework/QuartzCore
+c000000004B9F2A1500000000002215A0
+t1268722197
+s2233760
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/SystemConfiguration.framework/Headers/SystemConfiguration.h
+c000000004B9F25E40000000000001A78
+t1268721124
+s6776
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/SystemConfiguration.framework/SystemConfiguration
+c000000004B9F25FD000000000008B5F0
+t1268721149
+s570864
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
+c000000004B9F318D000000000000098F
+t1268724109
+s2447
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+c000000004B9F32090000000002703230
+t1268724233
+s40907312
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/usr/include/arpa/inet.h
+c000000004B9F13220000000000001533
+t1268716322
+s5427
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/usr/include/ifaddrs.h
+c000000004B9F132D0000000000000782
+t1268716333
+s1922
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/usr/include/libxml2/libxml/parser.h
+c000000004B9F265800000000000098A9
+t1268721240
+s39081
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/usr/include/libxml2/libxml/tree.h
+c000000004B9F26580000000000008F14
+t1268721240
+s36628
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/usr/include/libxml2/libxml/xpath.h
+c000000004B9F26580000000000003F47
+t1268721240
+s16199
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/usr/include/libxml2/libxml/xpathInternals.h
+c000000004B9F26590000000000004BF8
+t1268721241
+s19448
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/usr/include/netdb.h
+c000000004B9F134C000000000000307F
+t1268716364
+s12415
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/usr/include/netinet/in.h
+c000000004B9F1BC8000000000000539D
+t1268718536
+s21405
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/usr/include/netinet6/in6.h
+c000000004B9F1BC70000000000004F5B
+t1268718535
+s20315
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/usr/include/pthread.h
+c000000004B9F135D00000000000038F0
+t1268716381
+s14576
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/usr/include/regex.h
+c000000004B9F135D000000000000154F
+t1268716381
+s5455
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/usr/include/sys/socket.h
+c000000004B9F1BE000000000000059BC
+t1268718560
+s22972
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/usr/lib/libxml2.2.dylib
+c000000004B9F265900000000001E1430
+t1268721241
+s1971248
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/../../katgiphone/KATG.com/Classes/ImageAdditions.h
+c000000004B426EF400000000000000EB
+t1262644980
+s235
+i<UIKit/UIKit.h>
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/../../katgiphone/KATG.com/Classes/ImageAdditions.m
+c000000004B426DAF000000000000015E
+t1262644655
+s350
+i"ImageAdditions.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/../MainWindowiPad.xib
+c000000004BE6377600000000000097B7
+t1273378678
+s38839
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/AudioStreamer.h
+c000000004B94008C00000000000011BC
+t1267990668
+s4540
+i<UIKit/UIKit.h>
+i<Cocoa/Cocoa.h>
+i<pthread.h>
+i<AudioToolbox/AudioToolbox.h>
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/AudioStreamer.m
+c000000004B8E97A0000000000000B05C
+t1267636128
+s45148
+i"AudioStreamer.h"
+i<CFNetwork/CFNetwork.h>
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/CXMLDocument.h
+c000000004BBD45650000000000000A9A
+t1270695269
+s2714
+i"CXMLNode.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/CXMLDocument.m
+c000000004BBD45650000000000001ADD
+t1270695269
+s6877
+i"CXMLDocument.h"
+i<libxml/parser.h>
+i"CXMLNode_PrivateExtensions.h"
+i"CXMLElement.h"
+i"CTidy.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/CXMLDocument_PrivateExtensions.h
+c000000004BBD456500000000000005FE
+t1270695269
+s1534
+i"CXMLDocument.h"
+i<libxml/parser.h>
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/CXMLDocument_PrivateExtensions.m
+c000000004BBD4565000000000000067A
+t1270695269
+s1658
+i"CXMLDocument_PrivateExtensions.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/CXMLElement.h
+c000000004BBD4565000000000000078A
+t1270695269
+s1930
+i"CXMLNode.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/CXMLElement.m
+c000000004BBD456500000000000010AE
+t1270695269
+s4270
+i"CXMLElement.h"
+i"CXMLNode_PrivateExtensions.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/CXMLElement_CreationExtensions.h
+c000000004BBD4565000000000000059D
+t1270695269
+s1437
+i"CXMLElement.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/CXMLElement_CreationExtensions.m
+c000000004BBD45650000000000000850
+t1270695269
+s2128
+i"CXMLElement_CreationExtensions.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/CXMLElement_ElementTreeExtensions.h
+c000000004BBD45650000000000000580
+t1270695269
+s1408
+i"CXMLElement.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/CXMLElement_ElementTreeExtensions.m
+c000000004BBD45650000000000000668
+t1270695269
+s1640
+i"CXMLElement_ElementTreeExtensions.h"
+i"CXMLElement_CreationExtensions.h"
+i"CXMLNode_CreationExtensions.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/CXMLNode.h
+c000000004BBD45650000000000000B4E
+t1270695269
+s2894
+i<Foundation/Foundation.h>
+i<libxml/tree.h>
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/CXMLNode.m
+c000000004BBD456500000000000020DD
+t1270695269
+s8413
+i"CXMLNode.h"
+i"CXMLNode_PrivateExtensions.h"
+i"CXMLDocument.h"
+i"CXMLElement.h"
+i<libxml/xpath.h>
+i<libxml/xpathInternals.h>
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/CXMLNode_PrivateExtensions.h
+c000000004BBD456500000000000005DC
+t1270695269
+s1500
+i"CXMLNode.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/CXMLNode_PrivateExtensions.m
+c000000004BBD45650000000000000A13
+t1270695269
+s2579
+i"CXMLNode_PrivateExtensions.h"
+i"CXMLElement.h"
+i"CXMLDocument_PrivateExtensions.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/CXMLNode_XPathExtensions.h
+c000000004BBD456500000000000005B3
+t1270695269
+s1459
+i"CXMLNode.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/CXMLNode_XPathExtensions.m
+c000000004BBD45650000000000000A7E
+t1270695269
+s2686
+i"CXMLNode_XPathExtensions.h"
+i"CXMLDocument.h"
+i"CXMLNode_PrivateExtensions.h"
+i<libxml/xpath.h>
+i<libxml/xpathInternals.h>
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/Creation/CXMLDocument_CreationExtensions.h
+c000000004BBD45650000000000000814
+t1270695269
+s2068
+i"CXMLDocument.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/Creation/CXMLDocument_CreationExtensions.m
+c000000004BBD45650000000000000720
+t1270695269
+s1824
+i"CXMLDocument_CreationExtensions.h"
+i"CXMLElement.h"
+i"CXMLNode_PrivateExtensions.h"
+i"CXMLDocument_PrivateExtensions.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/Creation/CXMLNode_CreationExtensions.h
+c000000004BBD45650000000000000954
+t1270695269
+s2388
+i"CXMLNode.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/Creation/CXMLNode_CreationExtensions.m
+c000000004BBD45650000000000000F70
+t1270695269
+s3952
+i"CXMLNode_CreationExtensions.h"
+i"CXMLDocument.h"
+i"CXMLElement.h"
+i"CXMLNode_PrivateExtensions.h"
+i"CXMLDocument_PrivateExtensions.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/DataModel+Processing.h
+c000000004BE202D500000000000000CE
+t1273103061
+s206
+i"DataModel.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/DataModel+Processing.m
+c000000004BE5065A0000000000000C24
+t1273300570
+s3108
+i"DataModel+Processing.h"
+i"EventOperation.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/DataModel+SetupCleanup.h
+c000000004BE2007B000000000000032A
+t1273102459
+s810
+i"DataModel.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/DataModel+SetupCleanup.m
+c000000004BE208190000000000001384
+t1273104409
+s4996
+i"DataModel+SetupCleanup.h"
+i"DataOperation.h"
+i"OrderedDictionary.h"
+i"Reachability.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/DataModel.h
+c000000004BE507220000000000000D1D
+t1273300770
+s3357
+i<Foundation/Foundation.h>
+i"DataModelDelegate.h"
+i"DataOperation.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/DataModel.m
+c000000004BE502DC0000000000000D68
+t1273299676
+s3432
+i"DataModel.h"
+i"DataOperationCodes.h"
+i"DataModelURIList.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/DataModelDelegate.h
+c000000004BE504EE0000000000000115
+t1273300206
+s277
+i<UIKit/UIKit.h>
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/DataModelURIList.h
+c000000004BE502B10000000000000147
+t1273299633
+s327
+i<Foundation/Foundation.h>
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/DataOperation.h
+c000000004BE504180000000000000523
+t1273299992
+s1315
+i<Foundation/Foundation.h>
+i"Request.h"
+i"GrabXMLFeed.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/DataOperation.m
+c000000004BE5042D0000000000000F64
+t1273300013
+s3940
+i"DataOperation.h"
+i"DataOperationCodes.h"
+i"DataOperationLogging.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/DataOperationCodes.h
+c000000004BE50394000000000000004F
+t1273299860
+s79
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/DataOperationLogging.h
+c000000004BE504B40000000000000080
+t1273300148
+s128
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/EventOperation.h
+c000000004BE2025F00000000000005DB
+t1273102943
+s1499
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/EventOperation.m
+c000000004BE23A9B0000000000000EEF
+t1273117339
+s3823
+i"EventOperation.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/EventTableCellView.h
+c000000004BE23FB700000000000004CD
+t1273118647
+s1229
+i<UIKit/UIKit.h>
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/EventTableCellView.m
+c000000004BE24253000000000000059C
+t1273119315
+s1436
+i"EventTableCellView.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/EventTableCellView.xib
+c000000004BE501F70000000000007045
+t1273299447
+s28741
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/EventsDetailView.xib
+c000000004BE252730000000000006F7D
+t1273123443
+s28541
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/EventsDetailViewController.h
+c000000004BE244C400000000000002DD
+t1273119940
+s733
+i<UIKit/UIKit.h>
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/EventsDetailViewController.m
+c000000004BE34E6D0000000000000B8F
+t1273187949
+s2959
+i"EventsDetailViewController.h"
+i"ModalWebViewController.h"
+i"NSString+Regex.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/GrabXMLFeed.h
+c000000004BDB293D00000000000006D2
+t1272654141
+s1746
+i<Foundation/Foundation.h>
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/GrabXMLFeed.m
+c000000004BDB293D0000000000000E83
+t1272654141
+s3715
+i"GrabXMLFeed.h"
+i"TouchXML.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/KATG_BigAppDelegate.h
+c000000004BE2391F000000000000038A
+t1273116959
+s906
+i<UIKit/UIKit.h>
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/KATG_BigAppDelegate.m
+c000000004BE1FF0F0000000000000CE0
+t1273102095
+s3296
+i"KATG_BigAppDelegate.h"
+i"Reachability.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/ModalWebViewController.h
+c000000004BE27271000000000000023C
+t1273131633
+s572
+i<UIKit/UIKit.h>
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/ModalWebViewController.m
+c000000004BE5001B00000000000005E8
+t1273298971
+s1512
+i"ModalWebViewController.h"
+i"ModalWebViewLogging.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/ModalWebViewLogging.h
+c000000004BE504BA000000000000001C
+t1273300154
+s28
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/ModalWebViewiPad.xib
+c000000004BE501330000000000006B81
+t1273299251
+s27521
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/NSString+ObjectForKey.h
+c000000004BDB293D0000000000000109
+t1272654141
+s265
+i<UIKit/UIKit.h>
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/NSString+ObjectForKey.m
+c000000004BDB293D0000000000000136
+t1272654141
+s310
+i"NSString+ObjectForKey.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/NSString+Regex.h
+c000000004BDB293D000000000000027D
+t1272654141
+s637
+i<Foundation/Foundation.h>
+i<regex.h>
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/NSString+Regex.m
+c000000004BDD14330000000000000DD9
+t1272779827
+s3545
+i"NSString+Regex.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/OnAirViewController+AudioStreamer.h
+c000000004BE3310500000000000003E5
+t1273180421
+s997
+i"OnAirViewController.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/OnAirViewController+AudioStreamer.m
+c000000004BE330E500000000000016A5
+t1273180389
+s5797
+i"OnAirViewController+AudioStreamer.h"
+i"AudioStreamer.h"
+i<QuartzCore/CoreAnimation.h>
+i<MediaPlayer/MediaPlayer.h>
+i"ImageAdditions.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/OnAirViewController+Feedback.h
+c000000004BE4DFD700000000000000FF
+t1273290711
+s255
+i"OnAirViewController.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/OnAirViewController+Feedback.m
+c000000004BE4FE420000000000000559
+t1273298498
+s1369
+i"OnAirViewController+Feedback.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/OnAirViewController.h
+c000000004BE633CE0000000000000707
+t1273377742
+s1799
+i<UIKit/UIKit.h>
+i"DataModel.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/OnAirViewController.m
+c000000004BE720B70000000000000DF3
+t1273438391
+s3571
+i"OnAirViewController.h"
+i"OnAirViewController+AudioStreamer.h"
+i"OnAirViewController+Feedback.h"
+i"NSString+Regex.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/OnAirViewControlleriPad.h
+c000000004BE633B600000000000003A4
+t1273377718
+s932
+i"OnAirViewController.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/OnAirViewControlleriPad.m
+c000000004BE727380000000000004AD6
+t1273440056
+s19158
+i"OnAirViewControlleriPad.h"
+i"RoundedView.h"
+i<QuartzCore/QuartzCore.h>
+i"EventTableCellView.h"
+i"EventsDetailViewController.h"
+i"UIWebViewOpaque.h"
+i"OnAirViewLogging.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/OnAirViewLogging.h
+c000000004BE4FF81000000000000001C
+t1273298817
+s28
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/OnAirViewiPad.xib
+c000000004BE7268D00000000000112C9
+t1273439885
+s70345
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/OrderedDictionary.h
+c000000004BBD456500000000000012D3
+t1270695269
+s4819
+i<Foundation/Foundation.h>
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/OrderedDictionary.m
+c000000004BBD45650000000000003846
+t1270695269
+s14406
+i"OrderedDictionary.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/Reachability.h
+c000000004BBD45650000000000001D0E
+t1270695269
+s7438
+i<Foundation/Foundation.h>
+i<SystemConfiguration/SystemConfiguration.h>
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/Reachability.m
+c000000004BBD45650000000000005DFD
+t1270695269
+s24061
+i<sys/socket.h>
+i<netinet/in.h>
+i<netinet6/in6.h>
+i<arpa/inet.h>
+i<ifaddrs.h>
+i<netdb.h>
+i<CoreFoundation/CoreFoundation.h>
+i"Reachability.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/Request.h
+c000000004BE34A8C0000000000000408
+t1273186956
+s1032
+i<UIKit/UIKit.h>
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/Request.m
+c000000004BE34A8500000000000032B6
+t1273186949
+s12982
+i"Request.h"
+i"RequestLogging.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/RequestLogging.h
+c000000004BE4E237000000000000002B
+t1273291319
+s43
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/RoundedTextView.h
+c000000004BE1C63600000000000000FE
+t1273087542
+s254
+i<UIKit/UIKit.h>
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/RoundedTextView.m
+c000000004BE1C68F00000000000003B7
+t1273087631
+s951
+i"RoundedTextView.h"
+i<QuartzCore/QuartzCore.h>
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/RoundedView.h
+c000000004BE1C0C600000000000000ED
+t1273086150
+s237
+i<UIKit/UIKit.h>
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/RoundedView.m
+c000000004BE1C1040000000000000260
+t1273086212
+s608
+i"RoundedView.h"
+i<QuartzCore/QuartzCore.h>
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/Tidy/CTidy.h
+c000000004BBD45650000000000000762
+t1270695269
+s1890
+i<Foundation/Foundation.h>
+i"tidy.h"
+i"buffio.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/Tidy/CTidy.m
+c000000004BBD45650000000000001D6D
+t1270695269
+s7533
+i"CTidy.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/TouchXML.h
+c000000004BBD456500000000000005F3
+t1270695269
+s1523
+i"CXMLDocument.h"
+i"CXMLDocument_CreationExtensions.h"
+i"CXMLElement.h"
+i"CXMLElement_CreationExtensions.h"
+i"CXMLElement_ElementTreeExtensions.h"
+i"CXMLNode.h"
+i"CXMLNode_CreationExtensions.h"
+i"CXMLNode_XPathExtensions.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/UIWebViewOpaque.h
+c000000004BE2364F00000000000000DA
+t1273116239
+s218
+i<UIKit/UIKit.h>
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/UIWebViewOpaque.m
+c000000004BE23668000000000000012D
+t1273116264
+s301
+i"UIWebViewOpaque.h"
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Images/EventsView/CellBackgrounds/CellBackground80.png
+c000000004B2969240000000000000CC2
+t1261005092
+s3266
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Images/EventsView/CellBackgrounds/CellBackgroundDark80.png
+c000000004B296A930000000000000CC1
+t1261005459
+s3265
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Images/EventsView/CellBackgrounds/CellBackgroundSelected80.png
+c000000004B2968FC0000000000000CC3
+t1261005052
+s3267
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Images/EventsView/ShowIcons/EventIconTrans.png
+c000000004B2965E100000000000001D6
+t1261004257
+s470
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Images/EventsView/ShowIcons/LiveShowIconTrans.png
+c000000004B2965FB0000000000000272
+t1261004283
+s626
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Images/Icons/Icon-29.png
+c000000004BD603040000000000000C6C
+t1272316676
+s3180
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Images/Icons/Icon-57.png
+c000000004BD6030C0000000000002230
+t1272316684
+s8752
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Images/Icons/Icon-75.png
+c000000004BD6031300000000000032A2
+t1272316691
+s12962
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Images/Icons/Logo.png
+c000000004AC5496A0000000000029185
+t1254443370
+s168325
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Images/Icons/iTunesArtwork
+c000000004AC5496A0000000000029185
+t1254443370
+s168325
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Images/OnAirView/Chat/bold.gif
+c000000004BE4F14100000000000000BD
+t1273295169
+s189
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Images/OnAirView/Chat/bold.png
+c000000004BE4E3F20000000000000158
+t1273291762
+s344
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Images/OnAirView/Chat/italic.gif
+c000000004BE4F13A0000000000000079
+t1273295162
+s121
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Images/OnAirView/Chat/italic.png
+c000000004BE4E45600000000000000DE
+t1273291862
+s222
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Images/OnAirView/Chat/underline.gif
+c000000004BE4F14A0000000000000086
+t1273295178
+s134
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Images/OnAirView/Chat/underline.png
+c000000004BE4E4A4000000000000010C
+t1273291940
+s268
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Images/OnAirView/PlayButtonImages/loadButton.png
+c000000004AC5496A00000000000015FB
+t1254443370
+s5627
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Images/OnAirView/PlayButtonImages/playButton.png
+c000000004AC5496A0000000000001019
+t1254443370
+s4121
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Images/OnAirView/PlayButtonImages/stopButton.png
+c000000004AC5496A00000000000010DB
+t1254443370
+s4315
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Images/OnAirView/SubmitFeedbackButton/feedButtonHighlighted.png
+c000000004BE1CE3300000000000022AB
+t1273089587
+s8875
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Images/OnAirView/SubmitFeedbackButton/feedButtonNormal.png
+c000000004BE1D07900000000000024B5
+t1273090169
+s9397
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Images/OnAirView/VolumeSlider/leftslide.png
+c000000004AC5496A00000000000001C1
+t1254443370
+s449
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Images/OnAirView/VolumeSlider/rightslide.png
+c000000004AC5496A000000000000015D
+t1254443370
+s349
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Images/TabsIcons/EventsTab.png
+c000000004B2965E100000000000001D6
+t1261004257
+s470
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Images/TabsIcons/OnAirTab.png
+c000000004AC5496A0000000000000AA9
+t1254443370
+s2729
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/KATG_Big_Prefix.pch
+c000000004BD6017900000000000000B9
+t1272316281
+s185
+i<Foundation/Foundation.h>
+i<UIKit/UIKit.h>
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app.dSYM
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/CellBackground80.png
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/CellBackgroundDark80.png
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/CellBackgroundSelected80.png
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/DataOperationLogging.h
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/EventIconTrans.png
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/EventTableCellView.nib
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/EventsDetailView.nib
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/EventsTab.png
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/Icon-29.png
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/Icon-57.png
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/Icon-75.png
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/Info.plist
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/KATG Big
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/LiveShowIconTrans.png
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/Logo.png
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/MainWindowiPad.nib
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/ModalWebViewiPad.nib
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/OnAirTab.png
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/OnAirViewiPad.nib
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/PkgInfo
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/ResourceRules.plist
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/bold.gif
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/bold.png
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/feedButtonHighlighted.png
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/feedButtonNormal.png
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/iTunesArtwork
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/italic.gif
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/italic.png
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/leftslide.png
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/loadButton.png
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/playButton.png
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/rightslide.png
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/stopButton.png
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/underline.gif
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/underline.png
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/AudioStreamer.o
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/CTidy.o
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/CXMLDocument.o
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/CXMLDocument_CreationExtensions.o
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/CXMLDocument_PrivateExtensions.o
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/CXMLElement.o
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/CXMLElement_CreationExtensions.o
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/CXMLElement_ElementTreeExtensions.o
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/CXMLNode.o
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/CXMLNode_CreationExtensions.o
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/CXMLNode_PrivateExtensions.o
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/CXMLNode_XPathExtensions.o
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/DataModel+Processing.o
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/DataModel+SetupCleanup.o
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/DataModel.o
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/DataOperation.o
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/EventOperation.o
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/EventTableCellView.o
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/EventsDetailViewController.o
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/GrabXMLFeed.o
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/ImageAdditions.o
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/KATG Big.LinkFileList
+c00000000000000000000000000000000
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/KATG_BigAppDelegate.o
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/ModalWebViewController.o
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/NSString+ObjectForKey.o
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/NSString+Regex.o
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/OnAirViewController+AudioStreamer.o
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/OnAirViewController+Feedback.o
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/OnAirViewController.o
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/OnAirViewControlleriPad.o
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/OrderedDictionary.o
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/Reachability.o
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/Request.o
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/RoundedTextView.o
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/RoundedView.o
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/UIWebViewOpaque.o
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/main.o
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Distro-iphoneos/KATG Big.build/com.apple.build-tools.platform.validate
+t2
+s0
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/main.m
+c000000004BD603A30000000000000161
+t1272316835
+s353
+i<UIKit/UIKit.h>
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/katgiphone/KATG.com/Classes/ImageAdditions.h
+c000000004B426EF400000000000000EB
+t1262644980
+s235
+i<UIKit/UIKit.h>
+
+N/var/folders/lE/lEB7rcALH8ioqUJ8EpKsW++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/KATG_Big_Prefix-cllktmhagtmbqxgdkyisjypvhpkt/KATG_Big_Prefix.pch.gch
+t2
+s0
+
+NKATG_Big-Info.plist
+c000000004BE3380C000000000000049D
+t1273182220
+s1181
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies295132910#295132910#0(169"[BEROR]Code Sign error: Provisioning profile 'KATG Big Adhoc' specifies the Application Identifier 'com.katg.big' which doesn't match the current setting 'com.KATG.big'1(4@161"Code Sign error: Provisioning profile 'KATG Big Adhoc' specifies the Application Identifier 'com.katg.big' which doesn't match the current setting 'com.KATG.big'295132910#18446744073709551615#0#0(1@0"0(0#1#0"8638105792#0"0#
+
+CCompileC "build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/AudioStreamer.o" "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/AudioStreamer.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC "build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/CTidy.o" "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/Tidy/CTidy.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC "build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/CXMLDocument.o" "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/CXMLDocument.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC "build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/CXMLDocument_CreationExtensions.o" "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/Creation/CXMLDocument_CreationExtensions.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC "build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/CXMLDocument_PrivateExtensions.o" "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/CXMLDocument_PrivateExtensions.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC "build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/CXMLElement.o" "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/CXMLElement.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC "build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/CXMLElement_CreationExtensions.o" "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/CXMLElement_CreationExtensions.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC "build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/CXMLElement_ElementTreeExtensions.o" "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/CXMLElement_ElementTreeExtensions.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC "build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/CXMLNode.o" "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/CXMLNode.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC "build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/CXMLNode_CreationExtensions.o" "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/Creation/CXMLNode_CreationExtensions.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC "build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/CXMLNode_PrivateExtensions.o" "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/CXMLNode_PrivateExtensions.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC "build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/CXMLNode_XPathExtensions.o" "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/CXMLNode_XPathExtensions.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC "build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/DataModel+Processing.o" "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/DataModel+Processing.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC "build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/DataModel+SetupCleanup.o" "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/DataModel+SetupCleanup.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC "build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/DataModel.o" "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/DataModel.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC "build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/DataOperation.o" "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/DataOperation.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC "build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/EventOperation.o" "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/EventOperation.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC "build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/EventTableCellView.o" "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/EventTableCellView.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC "build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/EventsDetailViewController.o" "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/EventsDetailViewController.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC "build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/GrabXMLFeed.o" "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/GrabXMLFeed.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC "build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/ImageAdditions.o" "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/../../katgiphone/KATG.com/Classes/ImageAdditions.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC "build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/KATG_BigAppDelegate.o" "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/KATG_BigAppDelegate.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC "build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/ModalWebViewController.o" "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/ModalWebViewController.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC "build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/NSString+ObjectForKey.o" "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/NSString+ObjectForKey.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC "build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/NSString+Regex.o" "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/NSString+Regex.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC "build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/OnAirViewController+AudioStreamer.o" "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/OnAirViewController+AudioStreamer.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC "build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/OnAirViewController+Feedback.o" "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/OnAirViewController+Feedback.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC "build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/OnAirViewController.o" "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/OnAirViewController.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC "build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/OnAirViewControlleriPad.o" "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/OnAirViewControlleriPad.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC "build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/OrderedDictionary.o" "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/OrderedDictionary.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC "build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/Reachability.o" "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/Reachability.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC "build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/Request.o" "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/Request.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC "build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/RoundedTextView.o" "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/RoundedTextView.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC "build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/RoundedView.o" "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/RoundedView.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC "build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/UIWebViewOpaque.o" "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/UIWebViewOpaque.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC "build/KATG Big.build/Distro-iphoneos/KATG Big.build/Objects-normal/armv7/main.o" "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/main.m" normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileXIB "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/../MainWindowiPad.xib"
+r0
+
+CCompileXIB "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/EventTableCellView.xib"
+r0
+
+CCompileXIB "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/EventsDetailView.xib"
+r0
+
+CCompileXIB "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/ModalWebViewiPad.xib"
+r0
+
+CCompileXIB "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/OnAirViewiPad.xib"
+r0
+
+CCopyPNGFile "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/CellBackground80.png" Images/EventsView/CellBackgrounds/CellBackground80.png
+r0
+
+CCopyPNGFile "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/CellBackgroundDark80.png" Images/EventsView/CellBackgrounds/CellBackgroundDark80.png
+r0
+
+CCopyPNGFile "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/CellBackgroundSelected80.png" Images/EventsView/CellBackgrounds/CellBackgroundSelected80.png
+r0
+
+CCopyPNGFile "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/EventIconTrans.png" Images/EventsView/ShowIcons/EventIconTrans.png
+r0
+
+CCopyPNGFile "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/EventsTab.png" Images/TabsIcons/EventsTab.png
+r0
+
+CCopyPNGFile "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/Icon-29.png" Images/Icons/Icon-29.png
+r0
+
+CCopyPNGFile "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/Icon-57.png" Images/Icons/Icon-57.png
+r0
+
+CCopyPNGFile "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/Icon-75.png" Images/Icons/Icon-75.png
+r0
+
+CCopyPNGFile "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/LiveShowIconTrans.png" Images/EventsView/ShowIcons/LiveShowIconTrans.png
+r0
+
+CCopyPNGFile "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/Logo.png" Images/Icons/Logo.png
+r0
+
+CCopyPNGFile "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/OnAirTab.png" Images/TabsIcons/OnAirTab.png
+r0
+
+CCopyPNGFile "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/bold.png" Images/OnAirView/Chat/bold.png
+r0
+
+CCopyPNGFile "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/feedButtonHighlighted.png" Images/OnAirView/SubmitFeedbackButton/feedButtonHighlighted.png
+r0
+
+CCopyPNGFile "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/feedButtonNormal.png" Images/OnAirView/SubmitFeedbackButton/feedButtonNormal.png
+r0
+
+CCopyPNGFile "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/italic.png" Images/OnAirView/Chat/italic.png
+r0
+
+CCopyPNGFile "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/leftslide.png" Images/OnAirView/VolumeSlider/leftslide.png
+r0
+
+CCopyPNGFile "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/loadButton.png" Images/OnAirView/PlayButtonImages/loadButton.png
+r0
+
+CCopyPNGFile "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/playButton.png" Images/OnAirView/PlayButtonImages/playButton.png
+r0
+
+CCopyPNGFile "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/rightslide.png" Images/OnAirView/VolumeSlider/rightslide.png
+r0
+
+CCopyPNGFile "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/stopButton.png" Images/OnAirView/PlayButtonImages/stopButton.png
+r0
+
+CCopyPNGFile "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/underline.png" Images/OnAirView/Chat/underline.png
+r0
+
+CCpResource "build/Distro-iphoneos/KATG Big.app/DataOperationLogging.h" Classes/DataOperationLogging.h
+r0
+
+CCpResource "build/Distro-iphoneos/KATG Big.app/ResourceRules.plist" /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/ResourceRules.plist
+r0
+
+CCpResource "build/Distro-iphoneos/KATG Big.app/bold.gif" Images/OnAirView/Chat/bold.gif
+r0
+
+CCpResource "build/Distro-iphoneos/KATG Big.app/iTunesArtwork" Images/Icons/iTunesArtwork
+r0
+
+CCpResource "build/Distro-iphoneos/KATG Big.app/italic.gif" Images/OnAirView/Chat/italic.gif
+r0
+
+CCpResource "build/Distro-iphoneos/KATG Big.app/underline.gif" Images/OnAirView/Chat/underline.gif
+r0
+
+CGenerateDSYMFile "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app.dSYM" "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/KATG Big"
+r0
+
+CLd "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/KATG Big" normal armv7
+r0
+
+CProcessInfoPlistFile "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app/Info.plist" KATG_Big-Info.plist
+r0
+
+CProcessPCH /var/folders/lE/lEB7rcALH8ioqUJ8EpKsW++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/KATG_Big_Prefix-cllktmhagtmbqxgdkyisjypvhpkt/KATG_Big_Prefix.pch.gch KATG_Big_Prefix.pch normal armv7 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CTouch "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app"
+r0
+
+CValidate "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Distro-iphoneos/KATG Big.app"
+r0
+

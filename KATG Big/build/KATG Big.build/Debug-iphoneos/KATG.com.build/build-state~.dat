@@ -1,0 +1,106 @@
+TKATG.com
+v7
+r0
+t295210635.572718
+cCheck dependencies
+cCpResource build/Debug-iphoneos/KATG.com.app/ResourceRules.plist /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/ResourceRules.plist
+cProcessInfoPlistFile "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Debug-iphoneos/KATG.com.app/Info.plist" KATG.com-Info.plist
+cProcessProductPackaging "/Users/hayroob/Library/MobileDevice/Provisioning Profiles/BA06125A-C370-4AF0-8818-7A79F1FE1540.mobileprovision" "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Debug-iphoneos/KATG.com.app/embedded.mobileprovision"
+cTouch "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Debug-iphoneos/KATG.com.app"
+cProcessProductPackaging /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/Entitlements.plist "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Debug-iphoneos/KATG.com.build/KATG.com.xcent"
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/Entitlements.plist
+c000000004B9F103D00000000000000DD
+t1268715581
+s221
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/ResourceRules.plist
+c000000004B9F103D00000000000001E5
+t1268715581
+s485
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Debug-iphoneos/KATG.com.app
+t1273517835
+s204
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Debug-iphoneos/KATG.com.app/Info.plist
+t1273517835
+s601
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Debug-iphoneos/KATG.com.app/PkgInfo
+t1273517835
+s8
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Debug-iphoneos/KATG.com.app/ResourceRules.plist
+t1273517835
+s485
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Debug-iphoneos/KATG.com.app/embedded.mobileprovision
+t1273517835
+s8138
+
+N/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Debug-iphoneos/KATG.com.build/KATG.com.xcent
+t2
+s0
+
+N/Users/hayroob/Library/MobileDevice/Provisioning Profiles/BA06125A-C370-4AF0-8818-7A79F1FE1540.mobileprovision
+c000000004BE1F2D00000000000001FCA
+t1273098960
+s8138
+
+NKATG.com-Info.plist
+c000000004BE8562500000000000002B1
+t1273517605
+s689
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies295210635#295210635#0(129"[BWARN]warning: building with 'Targeted Device Family' set to iPhone only ('1') not supported with SDK 'Device - iPhone OS 3.2'.1(22@121"warning: building with 'Targeted Device Family' set to iPhone only ('1') not supported with SDK 'Device - iPhone OS 3.2'.295210635#18446744073709551615#0#0(1@0"0(0#1#0"8647441408#0"0#
+
+CCodeSign "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Debug-iphoneos/KATG.com.app"
+r0
+
+CCpResource build/Debug-iphoneos/KATG.com.app/ResourceRules.plist /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/ResourceRules.plist
+s295210635.267499
+e295210635.473891
+r1
+xCpResource
+xbuild/Debug-iphoneos/KATG.com.app/ResourceRules.plist
+x/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/ResourceRules.plist
+lSLF07#2@94"Copy /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/ResourceRules.plist295210635#295210635#0(0"0(0#0#89"/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/ResourceRules.plist8639637376#529"    cd "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/ResourceRules.plist "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Debug-iphoneos/KATG.com.app"0#
+
+CProcessInfoPlistFile "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Debug-iphoneos/KATG.com.app/Info.plist" KATG.com-Info.plist
+s295210635.271113
+e295210635.474197
+r1
+xProcessInfoPlistFile
+x/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Debug-iphoneos/KATG.com.app/Info.plist
+xKATG.com-Info.plist
+lSLF07#2@27"Process KATG.com-Info.plist295210635#295210635#0(0"0(0#0#80"/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/KATG.com-Info.plist8648953056#662"    cd "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility KATG.com-Info.plist -genpkginfo "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Debug-iphoneos/KATG.com.app/PkgInfo" -expandbuildsettings -format binary -platform iphoneos -resourcerulesfile "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Debug-iphoneos/KATG.com.app/ResourceRules.plist" -o "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Debug-iphoneos/KATG.com.app/Info.plist"0#
+
+CProcessProductPackaging "/Users/hayroob/Library/MobileDevice/Provisioning Profiles/BA06125A-C370-4AF0-8818-7A79F1FE1540.mobileprovision" "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Debug-iphoneos/KATG.com.app/embedded.mobileprovision"
+s295210635.474289
+e295210635.533467
+r1
+xProcessProductPackaging
+x/Users/hayroob/Library/MobileDevice/Provisioning Profiles/BA06125A-C370-4AF0-8818-7A79F1FE1540.mobileprovision
+x/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Debug-iphoneos/KATG.com.app/embedded.mobileprovision
+lSLF07#2@195"ProcessProductPackaging "/Users/hayroob/Library/MobileDevice/Provisioning Profiles/BA06125A-C370-4AF0-8818-7A79F1FE1540.mobileprovision" build/Debug-iphoneos/KATG.com.app/embedded.mobileprovision295210635#295210635#0(0"0(0#0#119"/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Debug-iphoneos/KATG.com.app/embedded.mobileprovision8646923424#474"    cd "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    <com.apple.tools.product-pkg-utility> "/Users/hayroob/Library/MobileDevice/Provisioning Profiles/BA06125A-C370-4AF0-8818-7A79F1FE1540.mobileprovision" -o "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Debug-iphoneos/KATG.com.app/embedded.mobileprovision"0#
+
+CProcessProductPackaging /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/Entitlements.plist "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Debug-iphoneos/KATG.com.build/KATG.com.xcent"
+s295210635.541989
+e295210635.572649
+r0
+xProcessProductPackaging
+x/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/Entitlements.plist
+x/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Debug-iphoneos/KATG.com.build/KATG.com.xcent
+lSLF07#2@180"ProcessProductPackaging /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/Entitlements.plist "build/KATG Big.build/Debug-iphoneos/KATG.com.build/KATG.com.xcent"295210635#295210635#0(214"<com.apple.tools.product-pkg-utility>: error: CFBundleIdentifier 'com.yourcompany.KATG_com' contains illegal character '_' <com.apple.tools.product-pkg-utility>: invalid bundle identifier 'com.yourcompany.KATG_com'2(4@123"<com.apple.tools.product-pkg-utility>: error: CFBundleIdentifier 'com.yourcompany.KATG_com' contains illegal character '_' 295210635#18446744073709551615#0#0(6@0"295210635#0#0#0#0#0"0(4@91"<com.apple.tools.product-pkg-utility>: invalid bundle identifier 'com.yourcompany.KATG_com'295210635#18446744073709551615#0#0(6@0"295210635#0#0#0#0#0"0(0#0#126"/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Debug-iphoneos/KATG.com.build/KATG.com.xcent8657432416#483"    cd "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    <com.apple.tools.product-pkg-utility> /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/Entitlements.plist -entitlements -format xml -o "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/KATG Big.build/Debug-iphoneos/KATG.com.build/KATG.com.xcent"1#
+
+CTouch "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Debug-iphoneos/KATG.com.app"
+s295210635.533550
+e295210635.541897
+r1
+xTouch
+x/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Debug-iphoneos/KATG.com.app
+lSLF07#2@100"Touch /Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Debug-iphoneos/KATG.com.app295210635#295210635#0(0"0(0#0#0"8660228992#313"    cd "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/touch -c "/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/build/Debug-iphoneos/KATG.com.app"0#
+

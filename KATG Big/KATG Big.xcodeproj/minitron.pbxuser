@@ -1,0 +1,249 @@
+// !$*UTF8*$!
+{
+	1D3623240D0F684500981E51 /* KATG_BigAppDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {815, 869}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 471}";
+		};
+	};
+	1D3623250D0F684500981E51 /* KATG_BigAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {873, 869}}";
+			sepNavSelRange = "{750, 0}";
+			sepNavVisRange = "{0, 1131}";
+		};
+	};
+	1D6058900D05DD3D006BFB54 /* KATG Big */ = {
+		activeExec = 0;
+		executables = (
+			C5982188118E76BA004E56D5 /* KATG Big */,
+		);
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = C5982188118E76BA004E56D5 /* KATG Big */;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* KATG Big */;
+		addToTargets = (
+			1D6058900D05DD3D006BFB54 /* KATG Big */,
+		);
+		breakpoints = (
+		);
+		codeSenseManager = C5982193118E76EA004E56D5 /* Code sense */;
+		executables = (
+			C5982188118E76BA004E56D5 /* KATG Big */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					637,
+					20,
+					48.16259765625,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 294549185;
+			PBXWorkspaceStateSaveDate = 294549185;
+		};
+		perUserProjectItems = {
+			C59821B0118E7C47004E56D5 /* PlistBookmark */ = C59821B0118E7C47004E56D5 /* PlistBookmark */;
+			C598221E118E864B004E56D5 /* PBXTextBookmark */ = C598221E118E864B004E56D5 /* PBXTextBookmark */;
+			C5982221118E864B004E56D5 /* PBXTextBookmark */ = C5982221118E864B004E56D5 /* PBXTextBookmark */;
+			C59822AF118E953C004E56D5 /* PBXTextBookmark */ = C59822AF118E953C004E56D5 /* PBXTextBookmark */;
+			C59822EB118E9CBA004E56D5 /* PBXTextBookmark */ = C59822EB118E9CBA004E56D5 /* PBXTextBookmark */;
+			C598233B118EA52B004E56D5 /* PBXTextBookmark */ = C598233B118EA52B004E56D5 /* PBXTextBookmark */;
+			C598233C118EA52B004E56D5 /* PBXTextBookmark */ = C598233C118EA52B004E56D5 /* PBXTextBookmark */;
+			C598233D118EA52B004E56D5 /* PBXBookmark */ = C598233D118EA52B004E56D5 /* PBXBookmark */;
+			C598233E118EA52B004E56D5 /* PBXTextBookmark */ = C598233E118EA52B004E56D5 /* PBXTextBookmark */;
+		};
+		sourceControlManager = C5982192118E76EA004E56D5 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	5366EA1511863AE0001A99D8 /* OnAirViewControlleriPad.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {815, 869}}";
+			sepNavSelRange = "{566, 0}";
+			sepNavVisRange = "{0, 572}";
+		};
+	};
+	5366EA1611863AE0001A99D8 /* OnAirViewControlleriPad.m */ = {
+		uiCtxt = {
+			sepNavFolds = "{\n    c =     (\n                {\n            r = \"{3554, 83}\";\n            s = 0;\n        },\n                {\n            r = \"{3677, 3}\";\n            s = 0;\n        },\n                {\n            r = \"{3716, 38}\";\n            s = 0;\n        },\n                {\n            r = \"{3780, 28}\";\n            s = 0;\n        },\n                {\n            r = \"{3828, 152}\";\n            s = 0;\n        },\n                {\n            r = \"{4050, 128}\";\n            s = 0;\n        },\n                {\n            r = \"{4217, 104}\";\n            s = 0;\n        },\n                {\n            r = \"{4470, 38}\";\n            s = 0;\n        },\n                {\n            r = \"{4617, 383}\";\n            s = 0;\n        },\n                {\n            r = \"{5065, 2}\";\n            s = 0;\n        },\n                {\n            r = \"{5132, 2}\";\n            s = 0;\n        },\n                {\n            r = \"{5259, 72}\";\n            s = 0;\n        }\n    );\n    r = \"{0, 5338}\";\n    s = 0;\n}";
+			sepNavIntBoundsRect = "{{0, 0}, {22314, 871}}";
+			sepNavSelRange = "{150, 0}";
+			sepNavVisRange = "{0, 4317}";
+			sepNavWindowFrame = "{{63, 0}, {1217, 1002}}";
+		};
+	};
+	C5982188118E76BA004E56D5 /* KATG Big */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 1;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = "KATG Big";
+		savedGlobals = {
+		};
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+		variableFormatDictionary = {
+		};
+	};
+	C5982192118E76EA004E56D5 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	C5982193118E76EA004E56D5 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	C5982197118E799F004E56D5 /* ChatHtml.plist */ = {
+		uiCtxt = {
+			sepNavWindowFrame = "{{80, 0}, {1080, 1002}}";
+		};
+	};
+	C59821B0118E7C47004E56D5 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = C5982197118E799F004E56D5 /* ChatHtml.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Users/minitron/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/ChatHtml.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	C59821DE118E8393004E56D5 /* RoundedView.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {847, 846}}";
+			sepNavSelRange = "{186, 0}";
+			sepNavVisRange = "{0, 203}";
+		};
+	};
+	C59821DF118E8393004E56D5 /* RoundedView.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {815, 846}}";
+			sepNavSelRange = "{500, 0}";
+			sepNavVisRange = "{0, 576}";
+		};
+	};
+	C598221E118E864B004E56D5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C598221F118E864B004E56D5 /* CALayer.h */;
+		name = "CALayer.h: 416";
+		rLen = 0;
+		rLoc = 15747;
+		rType = 0;
+		vrLen = 2702;
+		vrLoc = 26655;
+	};
+	C598221F118E864B004E56D5 /* CALayer.h */ = {
+		isa = PBXFileReference;
+		name = CALayer.h;
+		path = /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/CALayer.h;
+		sourceTree = "<absolute>";
+	};
+	C5982221118E864B004E56D5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C59821DE118E8393004E56D5 /* RoundedView.h */;
+		name = "RoundedView.h: 11";
+		rLen = 0;
+		rLoc = 186;
+		rType = 0;
+		vrLen = 203;
+		vrLoc = 0;
+	};
+	C59822AF118E953C004E56D5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C59821DF118E8393004E56D5 /* RoundedView.m */;
+		name = "RoundedView.m: 26";
+		rLen = 0;
+		rLoc = 500;
+		rType = 0;
+		vrLen = 576;
+		vrLoc = 0;
+	};
+	C59822EB118E9CBA004E56D5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5366EA1511863AE0001A99D8 /* OnAirViewControlleriPad.h */;
+		name = "OnAirViewControlleriPad.h: 25";
+		rLen = 0;
+		rLoc = 566;
+		rType = 0;
+		vrLen = 572;
+		vrLoc = 0;
+	};
+	C598233B118EA52B004E56D5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5366EA1611863AE0001A99D8 /* OnAirViewControlleriPad.m */;
+		name = "OnAirViewControlleriPad.m: 8";
+		rLen = 0;
+		rLoc = 150;
+		rType = 0;
+		vrLen = 5338;
+		vrLoc = 0;
+	};
+	C598233C118EA52B004E56D5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* KATG_BigAppDelegate.h */;
+		name = "KATG_BigAppDelegate.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 471;
+		vrLoc = 0;
+	};
+	C598233D118EA52B004E56D5 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 1D3623250D0F684500981E51 /* KATG_BigAppDelegate.m */;
+	};
+	C598233E118EA52B004E56D5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* KATG_BigAppDelegate.m */;
+		name = "KATG_BigAppDelegate.m: 26";
+		rLen = 0;
+		rLoc = 750;
+		rType = 0;
+		vrLen = 1131;
+		vrLoc = 0;
+	};
+}

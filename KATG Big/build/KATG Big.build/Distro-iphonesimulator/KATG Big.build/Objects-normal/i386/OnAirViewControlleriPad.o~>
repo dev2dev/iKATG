@@ -1,0 +1,7 @@
+/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/OnAirViewControlleriPad.m: In function '-[OnAirViewControlleriPad willAnimateRotationToInterfaceOrientation:duration:]':
+/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/OnAirViewControlleriPad.m:64: warning: 'OnAirViewControlleriPad' may not respond to '-reloadTableView'
+/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/OnAirViewControlleriPad.m:64: warning: (Messages without a matching method signature
+/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/OnAirViewControlleriPad.m:64: warning: will be assumed to return 'id' and accept
+/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/OnAirViewControlleriPad.m:64: warning: '...' as arguments.)
+/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/OnAirViewControlleriPad.m: In function '-[OnAirViewControlleriPad tableView:cellForRowAtIndexPath:]':
+/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/Classes/OnAirViewControlleriPad.m:226: warning: local declaration of 'tableView' hides instance variable

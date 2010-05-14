@@ -1,0 +1,8 @@
+//
+// Prefix header for all source files of the 'KATG Big' target in the 'KATG Big' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+    #import <UIKit/UIKit.h>
+#endif
