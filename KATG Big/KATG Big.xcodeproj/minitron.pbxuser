@@ -9,9 +9,9 @@
 	};
 	1D3623250D0F684500981E51 /* KATG_BigAppDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {873, 869}}";
+			sepNavIntBoundsRect = "{{0, 0}, {852, 2808}}";
 			sepNavSelRange = "{750, 0}";
-			sepNavVisRange = "{0, 1131}";
+			sepNavVisRange = "{0, 2115}";
 		};
 	};
 	1D6058900D05DD3D006BFB54 /* KATG Big */ = {
@@ -21,8 +21,9 @@
 		);
 	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
-		activeBuildConfigurationName = Debug;
+		activeBuildConfigurationName = Distro;
 		activeExecutable = C5982188118E76BA004E56D5 /* KATG Big */;
+		activeSDKPreference = iphonesimulator3.2;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* KATG Big */;
 		addToTargets = (
 			1D6058900D05DD3D006BFB54 /* KATG Big */,
@@ -32,6 +33,7 @@
 		codeSenseManager = C5982193118E76EA004E56D5 /* Code sense */;
 		executables = (
 			C5982188118E76BA004E56D5 /* KATG Big */,
+			C581F47211A328AC007B0D53 /* KATG.com */,
 		);
 		perUserDictionary = {
 			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
@@ -39,9 +41,9 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					637,
+					449,
 					20,
-					48.16259765625,
+					48,
 					43,
 					43,
 					20,
@@ -56,10 +58,21 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 294549185;
-			PBXWorkspaceStateSaveDate = 294549185;
+			PBXPerProjectTemplateStateSaveDate = 296079941;
+			PBXWorkspaceStateSaveDate = 296079941;
 		};
 		perUserProjectItems = {
+			C581F47C11A32911007B0D53 /* PBXTextBookmark */ = C581F47C11A32911007B0D53 /* PBXTextBookmark */;
+			C581F47D11A32911007B0D53 /* PBXTextBookmark */ = C581F47D11A32911007B0D53 /* PBXTextBookmark */;
+			C581F47E11A32911007B0D53 /* PBXTextBookmark */ = C581F47E11A32911007B0D53 /* PBXTextBookmark */;
+			C581F47F11A32911007B0D53 /* PBXTextBookmark */ = C581F47F11A32911007B0D53 /* PBXTextBookmark */;
+			C581F48011A32911007B0D53 /* PBXTextBookmark */ = C581F48011A32911007B0D53 /* PBXTextBookmark */;
+			C581F48111A32911007B0D53 /* PBXTextBookmark */ = C581F48111A32911007B0D53 /* PBXTextBookmark */;
+			C581F48211A32911007B0D53 /* PBXTextBookmark */ = C581F48211A32911007B0D53 /* PBXTextBookmark */;
+			C592B4A311A43CE300798A63 /* PBXTextBookmark */ = C592B4A311A43CE300798A63 /* PBXTextBookmark */;
+			C592B4A411A43CE300798A63 /* PBXTextBookmark */ = C592B4A411A43CE300798A63 /* PBXTextBookmark */;
+			C592B4CD11A5CD8200798A63 /* PBXTextBookmark */ = C592B4CD11A5CD8200798A63 /* PBXTextBookmark */;
+			C592B51211A5D76D00798A63 /* PBXTextBookmark */ = C592B51211A5D76D00798A63 /* PBXTextBookmark */;
 			C59821B0118E7C47004E56D5 /* PlistBookmark */ = C59821B0118E7C47004E56D5 /* PlistBookmark */;
 			C598221E118E864B004E56D5 /* PBXTextBookmark */ = C598221E118E864B004E56D5 /* PBXTextBookmark */;
 			C5982221118E864B004E56D5 /* PBXTextBookmark */ = C5982221118E864B004E56D5 /* PBXTextBookmark */;
@@ -67,11 +80,45 @@
 			C59822EB118E9CBA004E56D5 /* PBXTextBookmark */ = C59822EB118E9CBA004E56D5 /* PBXTextBookmark */;
 			C598233B118EA52B004E56D5 /* PBXTextBookmark */ = C598233B118EA52B004E56D5 /* PBXTextBookmark */;
 			C598233C118EA52B004E56D5 /* PBXTextBookmark */ = C598233C118EA52B004E56D5 /* PBXTextBookmark */;
-			C598233D118EA52B004E56D5 /* PBXBookmark */ = C598233D118EA52B004E56D5 /* PBXBookmark */;
-			C598233E118EA52B004E56D5 /* PBXTextBookmark */ = C598233E118EA52B004E56D5 /* PBXTextBookmark */;
 		};
 		sourceControlManager = C5982192118E76EA004E56D5 /* Source Control */;
 		userBuildSettings = {
+		};
+	};
+	53056DE71195172A0057C912 /* OnAirViewController+Feedback.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {810, 869}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1693}";
+		};
+	};
+	53056E75119536DF0057C912 /* OnAirViewLogging.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {815, 869}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 28}";
+		};
+	};
+	53056E76119537460057C912 /* ModalWebViewLogging.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {815, 869}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 28}";
+		};
+	};
+	535496B411924876006A7859 /* OnAirViewController+AudioStreamer.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {810, 2925}}";
+			sepNavSelRange = "{688, 0}";
+			sepNavVisRange = "{0, 1840}";
+		};
+	};
+	535497E911926BC7006A7859 /* OnAirViewController.m */ = {
+		uiCtxt = {
+			sepNavFolds = "{\n    c =     (\n                {\n            r = \"{1187, 390}\";\n            s = 0;\n        },\n                {\n            r = \"{1674, 13}\";\n            s = 0;\n        },\n                {\n            r = \"{1723, 38}\";\n            s = 0;\n        },\n                {\n            r = \"{1787, 28}\";\n            s = 0;\n        },\n                {\n            r = \"{1835, 379}\";\n            s = 0;\n        },\n                {\n            r = \"{2319, 23}\";\n            s = 0;\n        },\n                {\n            r = \"{2616, 26}\";\n            s = 0;\n        },\n                {\n            r = \"{2678, 997}\";\n            s = 0;\n        },\n                {\n            r = \"{3719, 353}\";\n            s = 0;\n        },\n                {\n            r = \"{4116, 726}\";\n            s = 0;\n        },\n                {\n            r = \"{4879, 147}\";\n            s = 0;\n        },\n                {\n            r = \"{5075, 128}\";\n            s = 0;\n        }\n    );\n    r = \"{0, 5211}\";\n    s = 0;\n}";
+			sepNavIntBoundsRect = "{{0, 0}, {663, 988}}";
+			sepNavSelRange = "{1617, 136}";
+			sepNavVisRange = "{0, 1836}";
 		};
 	};
 	5366EA1511863AE0001A99D8 /* OnAirViewControlleriPad.h */ = {
@@ -89,6 +136,180 @@
 			sepNavVisRange = "{0, 4317}";
 			sepNavWindowFrame = "{{63, 0}, {1217, 1002}}";
 		};
+	};
+	538DD82A11988DA500E40CBB /* KATG.com */ = {
+		activeExec = 0;
+		executables = (
+			C581F47211A328AC007B0D53 /* KATG.com */,
+		);
+	};
+	53CBFD7F119218F600D08D09 /* DataOperationCodes.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {815, 869}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 79}";
+		};
+	};
+	53CBFDC711921AA300D08D09 /* DataModelURIList.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {815, 869}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 327}";
+		};
+	};
+	53CBFE0F11921B9B00D08D09 /* DataOperationLogging.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {815, 869}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 128}";
+		};
+	};
+	53CBFF811192250000D08D09 /* RequestLogging.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {815, 869}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 43}";
+		};
+	};
+	C581F47211A328AC007B0D53 /* KATG.com */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 1;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = KATG.com;
+		savedGlobals = {
+		};
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	C581F47C11A32911007B0D53 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* KATG_BigAppDelegate.m */;
+		name = "KATG_BigAppDelegate.m: 22";
+		rLen = 0;
+		rLoc = 750;
+		rType = 0;
+		vrLen = 2115;
+		vrLoc = 0;
+	};
+	C581F47D11A32911007B0D53 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53CBFD7F119218F600D08D09 /* DataOperationCodes.h */;
+		name = "DataOperationCodes.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 79;
+		vrLoc = 0;
+	};
+	C581F47E11A32911007B0D53 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53CBFDC711921AA300D08D09 /* DataModelURIList.h */;
+		name = "DataModelURIList.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 327;
+		vrLoc = 0;
+	};
+	C581F47F11A32911007B0D53 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53CBFE0F11921B9B00D08D09 /* DataOperationLogging.h */;
+		name = "DataOperationLogging.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 128;
+		vrLoc = 0;
+	};
+	C581F48011A32911007B0D53 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53CBFF811192250000D08D09 /* RequestLogging.h */;
+		name = "RequestLogging.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 43;
+		vrLoc = 0;
+	};
+	C581F48111A32911007B0D53 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53056E75119536DF0057C912 /* OnAirViewLogging.h */;
+		name = "OnAirViewLogging.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 28;
+		vrLoc = 0;
+	};
+	C581F48211A32911007B0D53 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53056E76119537460057C912 /* ModalWebViewLogging.h */;
+		name = "ModalWebViewLogging.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 28;
+		vrLoc = 0;
+	};
+	C592B4A311A43CE300798A63 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535496B411924876006A7859 /* OnAirViewController+AudioStreamer.m */;
+		name = "OnAirViewController+AudioStreamer.m: 20";
+		rLen = 0;
+		rLoc = 688;
+		rType = 0;
+		vrLen = 1840;
+		vrLoc = 0;
+	};
+	C592B4A411A43CE300798A63 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53056DE71195172A0057C912 /* OnAirViewController+Feedback.m */;
+		name = "OnAirViewController+Feedback.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1693;
+		vrLoc = 0;
+	};
+	C592B4CD11A5CD8200798A63 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535497E911926BC7006A7859 /* OnAirViewController.m */;
+		name = "OnAirViewController.m: 104";
+		rLen = 0;
+		rLoc = 2483;
+		rType = 0;
+		vrLen = 4996;
+		vrLoc = 215;
+	};
+	C592B51211A5D76D00798A63 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535497E911926BC7006A7859 /* OnAirViewController.m */;
+		name = "OnAirViewController.m: 103";
+		rLen = 161;
+		rLoc = 2482;
+		rType = 0;
+		vrLen = 4074;
+		vrLoc = 0;
 	};
 	C5982188118E76BA004E56D5 /* KATG Big */ = {
 		isa = PBXExecutable;
@@ -136,21 +357,15 @@
 		isa = PBXCodeSenseManager;
 		indexTemplatePath = "";
 	};
-	C5982197118E799F004E56D5 /* ChatHtml.plist */ = {
-		uiCtxt = {
-			sepNavWindowFrame = "{{80, 0}, {1080, 1002}}";
-		};
-	};
 	C59821B0118E7C47004E56D5 /* PlistBookmark */ = {
 		isa = PlistBookmark;
-		fRef = C5982197118E799F004E56D5 /* ChatHtml.plist */;
 		fallbackIsa = PBXBookmark;
 		isK = 0;
 		kPath = (
 		);
 		name = "/Users/minitron/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/ChatHtml.plist";
 		rLen = 0;
-		rLoc = 9223372036854775807;
+		rLoc = 9223372036854775808;
 	};
 	C59821DE118E8393004E56D5 /* RoundedView.h */ = {
 		uiCtxt = {
@@ -178,6 +393,7 @@
 	};
 	C598221F118E864B004E56D5 /* CALayer.h */ = {
 		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
 		name = CALayer.h;
 		path = /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/CALayer.h;
 		sourceTree = "<absolute>";
@@ -230,20 +446,6 @@
 		rLoc = 0;
 		rType = 0;
 		vrLen = 471;
-		vrLoc = 0;
-	};
-	C598233D118EA52B004E56D5 /* PBXBookmark */ = {
-		isa = PBXBookmark;
-		fRef = 1D3623250D0F684500981E51 /* KATG_BigAppDelegate.m */;
-	};
-	C598233E118EA52B004E56D5 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 1D3623250D0F684500981E51 /* KATG_BigAppDelegate.m */;
-		name = "KATG_BigAppDelegate.m: 26";
-		rLen = 0;
-		rLoc = 750;
-		rType = 0;
-		vrLen = 1131;
 		vrLoc = 0;
 	};
 }

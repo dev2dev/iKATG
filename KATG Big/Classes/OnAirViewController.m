@@ -45,6 +45,12 @@
 	[model addDelegate:self];
 	
 	[model liveShowStatus];
+	// this timer should really be in the model
+	[NSTimer scheduledTimerWithTimeInterval:180.0 
+									 target:self 
+								   selector:@selector(updateLiveShowStatusTimer:) 
+								   userInfo:nil 
+									repeats:YES];
 	
 	[model events];
 }
@@ -92,6 +98,16 @@
 #pragma mark -
 #pragma mark Data Delegates
 #pragma mark -
+//**********************//
+// guests, timesince,   //
+// and feed status      //
+// update logic should  //
+// be in the model      //
+//**********************//
+- (void)updateLiveShowStatusTimer:(NSTimer *)timer
+{
+	[model liveShowStatus];
+}
 - (void)events:(NSArray *)events
 {
 	if ([NSThread isMainThread])
@@ -109,6 +125,11 @@
 					NSInteger h = timeSince / 3600 - d * 24;
 					NSInteger m = timeSince / 60 - d * 1440 - h * 60;
 					[[self nextLiveShowLabel] setText:[NSString stringWithFormat:@"%02d : %02d : %02d", d, h, m]];
+					[NSTimer scheduledTimerWithTimeInterval:60.0 
+													 target:self 
+												   selector:@selector(updateTimeSince:) 
+												   userInfo:date 
+													repeats:YES];
 					NSString *title = [event objectForKey:@"Title"];
 					if (title)
 						[self findGuest:title];
@@ -122,6 +143,19 @@
 		[self performSelectorOnMainThread:@selector(events:) 
 							   withObject:events 
 							waitUntilDone:NO];
+	}
+}
+- (void)updateTimeSince:(NSTimer *)timer
+{
+	NSDate *date = [timer userInfo];
+	NSInteger since = [date timeIntervalSinceNow];
+	if (since > 0)
+	{
+		timeSince = since;
+		NSInteger d = timeSince / 86400;
+		NSInteger h = timeSince / 3600 - d * 24;
+		NSInteger m = timeSince / 60 - d * 1440 - h * 60;
+		[[self nextLiveShowLabel] setText:[NSString stringWithFormat:@"%02d : %02d : %02d", d, h, m]];
 	}
 }
 - (void)findGuest:(NSString *)eventTitle

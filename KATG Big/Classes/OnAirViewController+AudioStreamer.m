@@ -17,7 +17,7 @@
 //  limitations under the License.
 //  
 
-#define audioTesting 1
+#define audioTesting 0
 #if audioTesting
 static NSString *urlString = @"http://scfire-mtc-aa05.stream.aol.com:80/stream/1010";
 #else
