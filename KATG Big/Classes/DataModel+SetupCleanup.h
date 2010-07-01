@@ -25,13 +25,12 @@
 
 - (void)dateFormatters;
 //  Return path to applications documents directory
-- (NSString *)newDataPath;
+- (NSString *)initDataPath;
 //  Register notifications for reachabilty and app termination
 - (void)registerNotifications;
 //  Cleanup Memory
 - (void)cleanup;
 - (void)cleanupOperations;
-- (void)cleanupImages;
 //  Handle app termination by calling
 //  super release
 - (void)releaseSingleton;

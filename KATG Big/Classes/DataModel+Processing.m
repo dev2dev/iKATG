@@ -19,10 +19,18 @@
 //  
 
 #import "DataModel+Processing.h"
-#import "EventOperation.h"
+#import "DataModel+Notification.h"
+#import "Event.h"
+#import "Show.h"
+#import "Guest.h"
 
 @implementation DataModel (Processing)
 
+/******************************************************************************/
+#pragma mark -
+#pragma mark Events
+#pragma mark -
+/******************************************************************************/
 - (void)processEventsList:(NSArray *)entries
 {
 	if (entries && entries.count > 0)
@@ -39,42 +47,88 @@
 			[op setDayFormatter:dayFormatter];
 			[op setDateFormatter:dateFormatter];
 			[op setTimeFormatter:timeFormatter];
-			[operationQueue addOperation:op];
+			[coreDataOperationQueue addOperation:op];
 			[op release];
 		}
-//		[self performSelectorOnMainThread:@selector(startTimer) 
-//							   withObject:nil 
-//							waitUntilDone:NO];
 	}
 }
 - (void)eventOperationDidFinishSuccesfully:(EventOperation *)op;
 {
-	[self performSelectorOnMainThread:@selector(addToEvents:) 
-						   withObject:[[op event] copy] 
-						waitUntilDone:NO];
-}
-- (void)addToEvents:(NSDictionary *)event
-{
-	[events addObject:event];
 	eventCount -= 1;
 	if (eventCount == 0)
 	{
-		[events sortUsingSelector:@selector(compareByDateAscending:)];
-		if (notifier)
+		[self fetchEvents];
+	}
+}
+- (void)fetchEvents
+{
+	NSFetchRequest *request = [[NSFetchRequest alloc] init];
+	NSEntityDescription *entity = 
+	[NSEntityDescription entityForName:@"Event" 
+				inManagedObjectContext:managedObjectContext];
+	[request setEntity:entity];
+	
+	NSSortDescriptor *sortDescriptor = 
+	[[NSSortDescriptor alloc] initWithKey:@"DateTime" ascending:YES];
+	NSArray *sortDescriptors = 
+	[[NSArray alloc] initWithObjects:sortDescriptor, nil];
+	[request setSortDescriptors:sortDescriptors];
+	[sortDescriptors release];
+	[sortDescriptor release];
+	
+	NSError *error;
+	NSMutableArray *fetchResults = 
+	[[managedObjectContext executeFetchRequest:request 
+										 error:&error] mutableCopy];
+	if (fetchResults == nil)
+	{	// Handle Error
+		NSLog(@"%@", error);
+	}
+	
+	NSArray *uniquedResults = [self removeDuplicates:fetchResults];
+	[self performSelectorOnMainThread:@selector(notifyEvents:) 
+						   withObject:uniquedResults 
+						waitUntilDone:NO];
+	
+	[fetchResults release];
+	[request release];
+}
+- (NSArray *)removeDuplicates:(NSMutableArray *)array
+{
+	NSMutableSet *eventSet;
+	eventSet = [[NSMutableSet alloc] initWithCapacity:[array count]];
+	NSMutableArray *newArray;
+	newArray = [[NSMutableArray alloc] init];
+	for (Event *event in array)
+	{
+		BOOL inSet = [eventSet containsObject:[event EventID]];
+		BOOL inFuture =  [[event DateTime] timeIntervalSinceNow] < 0;
+		if (!inSet && !inFuture)
 		{
-			//[[NSNotificationCenter defaultCenter] 
-			// postNotificationName: 
-			// object:];
+			[eventSet addObject:[event EventID]];
+			[newArray addObject:event];
 		}
-		for (id delegate in delegates)
+		else
 		{
-			if ([(NSObject *)delegate respondsToSelector:@selector(events:)])
-			{
-				[delegate events:[events copy]];
+			//NSLog(@"Delete: %@", [event EventID]);
+			[managedObjectContext deleteObject:event];
+			NSError *error;
+			if (![managedObjectContext save:&error])
+			{	// Handle Error
+				
 			}
 		}
 	}
+	NSArray *eventArray = [NSArray arrayWithArray:newArray];
+	[newArray release];
+	[eventSet release];
+	return eventArray;
 }
+/******************************************************************************/
+#pragma mark -
+#pragma mark Live Show Status
+#pragma mark -
+/******************************************************************************/
 - (void)processLiveShowStatus:(NSArray *)entries
 {
 	if (entries && entries.count > 0)
@@ -99,37 +153,48 @@
 		}
 	}
 }
-
-@end
-
-@interface NSMutableArray (eventsorting)
-- (NSComparisonResult)compareByDateAscending:(id)event;
-- (NSComparisonResult)compareByDateDescending:(id)event;
-@end
-
-@implementation NSDictionary (EventSorting)
-- (NSComparisonResult)compareByDateAscending:(id)event 
+/******************************************************************************/
+#pragma mark -
+#pragma mark Shows
+#pragma mark -
+/******************************************************************************/
+- (void)procesShowsList:(NSArray *)entries
 {
-	int selfTime = [[self objectForKey:@"DateTime"] timeIntervalSinceNow];
-	int otherTime = [[event objectForKey:@"DateTime"] timeIntervalSinceNow];
-	NSComparisonResult result = NSOrderedSame;
-	if (selfTime < otherTime) {
-		result = NSOrderedAscending;
-	} else if (selfTime > otherTime) {
-		result = NSOrderedDescending;
+	if (entries && entries.count > 0)
+	{
+		
 	}
-	return result;
+	[self fetchShows];
 }
-- (NSComparisonResult)compareByDateDescending:(id)event 
+- (void)fetchShows
 {
-	int selfTime = [[self objectForKey:@"DateTime"] timeIntervalSinceNow];
-	int otherTime = [[event objectForKey:@"DateTime"] timeIntervalSinceNow];
-	NSComparisonResult result = NSOrderedSame;
-	if (selfTime < otherTime) {
-		result = NSOrderedDescending;
-	} else if (selfTime > otherTime) {
-		result = NSOrderedAscending;
+	NSFetchRequest *request = [[NSFetchRequest alloc] init];
+	NSEntityDescription *entity = 
+	[NSEntityDescription entityForName:@"Show" 
+				inManagedObjectContext:managedObjectContext];
+	[request setEntity:entity];
+	
+	NSSortDescriptor *sortDescriptor = 
+	[[NSSortDescriptor alloc] initWithKey:@"Number" ascending:YES];
+	NSArray *sortDescriptors = 
+	[[NSArray alloc] initWithObjects:sortDescriptor, nil];
+	[request setSortDescriptors:sortDescriptors];
+	[sortDescriptors release];
+	[sortDescriptor release];
+	
+	NSError *error;
+	NSMutableArray *fetchResults = 
+	[[managedObjectContext executeFetchRequest:request 
+										 error:&error] mutableCopy];
+	if (fetchResults == nil)
+	{	// Handle Error
+		NSLog(@"%@", error);
 	}
-	return result;
+	
+	NSLog(@"%@", [fetchResults objectAtIndex:0]);
+	
+	[fetchResults release];
+	[request release];
 }
+
 @end

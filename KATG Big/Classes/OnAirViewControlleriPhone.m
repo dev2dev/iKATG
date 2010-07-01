@@ -21,7 +21,36 @@
 #import "OnAirViewControlleriPhone.h"
 
 @implementation OnAirViewControlleriPhone
+@synthesize resigned;
 
+- (void)viewDidLoad
+{
+	[super viewDidLoad];
+	[[NSNotificationCenter defaultCenter] 
+	 addObserver:self 
+	 selector:@selector(resign:) 
+	 name:UIApplicationWillResignActiveNotification 
+	 object:nil];
+	[[NSNotificationCenter defaultCenter] 
+	 addObserver:self 
+	 selector:@selector(unresign:) 
+	 name:UIApplicationWillEnterForegroundNotification
+	 object:nil];
+}
+- (void)resign:(NSNotification *)note
+{
+	self.resigned = YES;
+}
+- (void)unresign:(NSNotification *)note
+{
+	self.resigned = NO;
+}
+- (void)spinButton
+{
+	if (self.isResigned)
+		return;
+	[super spinButton];
+}
 - (BOOL)textView:(UITextView *)textView 
 shouldChangeTextInRange:(NSRange)range 
  replacementText:(NSString *)text
@@ -38,7 +67,6 @@ shouldChangeTextInRange:(NSRange)range
 	[textField resignFirstResponder];
 	return NO;
 }
-
 - (void)events:(NSArray *)events
 {
 	[super events:events];

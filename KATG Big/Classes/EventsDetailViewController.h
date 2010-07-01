@@ -19,16 +19,20 @@
 //  
 
 #import <UIKit/UIKit.h>
+//#import <iAd/iAd.h>
 
+@class Event;
 @interface EventsDetailViewController : UIViewController 
 {
 	UIWebView	 *webView;
-	NSDictionary *event;
+	Event        *event;
 	
 	UILabel		 *titleLabel;
 	UILabel		 *dayLabel;
 	UILabel		 *dateLabel;
 	UILabel		 *timeLabel;
+	
+//	ADBannerView *adBanner;
 }
 
 @property (nonatomic, retain) IBOutlet UIWebView *webView;
@@ -36,6 +40,10 @@
 @property (nonatomic, retain) IBOutlet UILabel	 *dayLabel;
 @property (nonatomic, retain) IBOutlet UILabel	 *dateLabel;
 @property (nonatomic, retain) IBOutlet UILabel	 *timeLabel;
-@property (nonatomic, retain) NSDictionary		 *event;
+@property (nonatomic, assign)          Event     *event;
+//@property (nonatomic, retain) IBOutlet ADBannerView *adBanner;
+
+- (void)makePage;
+- (void)modalWebViewController:(NSURLRequest *)request;
 
 @end

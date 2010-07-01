@@ -135,6 +135,15 @@
 			[aParser setInstanceNumber:code];
 			[aParser parse];
 			break;
+		case kShowArchivesCode:
+#if LogShowArchiveXML
+			NSLog(@"\nFeed Status XML for Instance %d: \n\n%@\n\n", instanceCode, [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease]);
+#endif
+			aParser = [[GrabXMLFeed alloc] initWithData:data xPath:@"//S"];
+			[aParser setDelegate:self];
+			[aParser setInstanceNumber:code];
+			[aParser parse];
+			break;
 		default:
 			break;
 	}
@@ -169,6 +178,12 @@
 			NSLog(@"\nParsed Feed Status XML with Instance %d \n\n%@\n\n", [parser instanceNumber], entries);
 #endif
 			[[self delegate] processLiveShowStatus:entries];
+			break;
+		case kShowArchivesCode:
+#if LogShowArchiveParsed
+			NSLog(@"\nParsed Feed Status XML with Instance %d \n\n%@\n\n", [parser instanceNumber], entries);
+#endif
+			[[self delegate] procesShowsList:entries];
 			break;
 		default:
 			break;

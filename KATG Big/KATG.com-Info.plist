@@ -19,7 +19,7 @@
 	<key>CFBundleIconFile</key>
 	<string>Icon-57.png</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.katg.big</string>
+	<string>com.katg</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>

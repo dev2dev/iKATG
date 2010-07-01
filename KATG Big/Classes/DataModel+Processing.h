@@ -19,7 +19,11 @@
 //  
 
 #import "DataModel.h"
+#import "EventOperation.h"
 
-@interface DataModel (Processing)
+@interface DataModel (Processing) <EventOperationDelegate>
+
+- (void)fetchEvents;
+- (NSArray *)removeDuplicates:(NSMutableArray *)array;
 
 @end

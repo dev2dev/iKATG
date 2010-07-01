@@ -20,11 +20,16 @@
 //  
 
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
 
 @class Reachability;
 @interface KATG_BigAppDelegate : NSObject 
 <UIApplicationDelegate, UITabBarControllerDelegate> 
 {
+	NSManagedObjectModel         *managedObjectModel;
+    NSManagedObjectContext       *managedObjectContext;	    
+    NSPersistentStoreCoordinator *persistentStoreCoordinator;
+	
     UIWindow *window;
     UITabBarController *tabBarController;
 	Reachability *hostReach;
@@ -34,6 +39,8 @@
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 @property (readwrite, getter=isConnected) BOOL connected;
+
+- (NSString *)applicationDocumentsDirectory;
 
 // Send in Token for Push Notifications
 //- (void)sendProviderDeviceToken:(id)deviceTokenBytes;

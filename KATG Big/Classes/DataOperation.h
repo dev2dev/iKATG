@@ -58,4 +58,6 @@
 @optional
 - (void)processEventsList:(NSArray *)entries;
 - (void)processLiveShowStatus:(NSArray *)entries;
+- (void)procesShowsList:(NSArray *)entries;
+
 @end

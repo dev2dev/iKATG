@@ -19,18 +19,25 @@
 //  
 
 #import "DataModel.h"
+#import "DataModel+Processing.h"
+#import "DataModel+Notification.h"
 #import "DataOperationCodes.h"
 #import "DataModelURIList.h"
+#import "EventOperation.h"
+#import "ModelLogging.h"
 
 static DataModel *sharedDataModel = nil;
 
 @implementation DataModel
 @synthesize delegates;
 @synthesize connected, notifier;
+@synthesize managedObjectContext;
 
+/******************************************************************************/
 #pragma mark -
 #pragma mark Singleton Methods
 #pragma mark -
+/******************************************************************************/
 + (DataModel *)sharedDataModel
 {
 	@synchronized(self)
@@ -54,38 +61,57 @@ static DataModel *sharedDataModel = nil;
 	}
 	return nil;
 }
+/******************************************************************************/
 #pragma mark -
 #pragma mark Delegates
 #pragma mark -
+/******************************************************************************/
 - (void)addDelegate:(id)delegate
 {
-	@synchronized(self)	
+	if ([NSThread isMainThread])
 	{
-		NSMutableArray *dlgts = [[NSMutableArray alloc] initWithArray:delegates];
-		if (dlgts)
+		if (![delegates containsObject:delegate])
 		{
-			[dlgts addObject:delegate];
-			[self setDelegates:[NSArray arrayWithArray:dlgts]];
+#if LogDelegateAdding
+			NSLog(@"Delegate Added: %@", delegate);
+#endif
+			[delegates addObject:delegate];
 		}
-		[dlgts release];
+#if LogDelegateAdding
+		else 
+		{
+			NSLog(@"Delegate Already Added: %@", delegate);
+		}
+#endif
+	}
+	else
+	{
+		[self performSelectorOnMainThread:@selector(addDelegate:) 
+							   withObject:delegate 
+							waitUntilDone:NO];
 	}
 }
 - (void)removeDelegate:(id)delegate
 {
-	@synchronized(self)	
+	if ([NSThread isMainThread])
 	{
-		NSMutableArray *dlgts = [[NSMutableArray alloc] initWithArray:delegates];
-		if (dlgts)
-		{
-			[dlgts removeObject:delegate];
-			[self setDelegates:[NSArray arrayWithArray:dlgts]];
-		}
-		[dlgts release];
+#if LogDelegateRemoval
+		NSLog(@"Delegate Removed %@", delegate);
+#endif
+		[delegates removeObject:delegate];
+	}
+	else
+	{
+		[self performSelectorOnMainThread:@selector(removeDelegate:) 
+							   withObject:delegate 
+							waitUntilDone:NO];
 	}
 }
+/******************************************************************************/
 #pragma mark -
 #pragma mark Notifications
 #pragma mark -
+/******************************************************************************/
 - (void)startNotifier
 {
 	[self setNotifier:YES];
@@ -94,11 +120,17 @@ static DataModel *sharedDataModel = nil;
 {
 	[self setNotifier:NO];
 }
+/******************************************************************************/
 #pragma mark -
 #pragma mark Data Methods
 #pragma mark -
+/******************************************************************************/
 - (void)events
 {
+	//
+	//  *UNREVISEDCOMMENTS*
+	//
+	[self fetchEvents];
 	//
 	//  *UNREVISEDCOMMENTS*
 	//
@@ -107,11 +139,10 @@ static DataModel *sharedDataModel = nil;
 	// Object setters are (nonatomic, copy)
 	[op setCode:kEventsListCode];
 	[op setURI:kEventsFeedAddress];
-	if (connected) {
+	if (connected)
 		[operationQueue addOperation:op];
-	} else {
+	else
 		[delayedOperations addObject:op];
-	}
 	[op release];
 }
 - (void)liveShowStatus
@@ -170,10 +201,27 @@ static DataModel *sharedDataModel = nil;
 {
 	
 }
-
+- (void)shows
+{
+	//
+	//  *UNREVISEDCOMMENTS*
+	//
+	DataOperation *op = [[DataOperation alloc] init];
+	[op setDelegate:self];
+	// Object setters are (nonatomic, copy)
+	[op setCode:kShowArchivesCode];
+	[op setURI:kShowListURIAddress];
+	if (connected)
+		[operationQueue addOperation:op];
+	else
+		[delayedOperations addObject:op];
+	[op release];
+}
+/******************************************************************************/
 #pragma mark -
-#pragma mark Data Delegates
+#pragma mark Data Operation Delegates
 #pragma mark -
+/******************************************************************************/
 - (void)dataOperationDidFinish:(DataOperation *)op
 {
 	

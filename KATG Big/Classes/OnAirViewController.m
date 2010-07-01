@@ -22,6 +22,7 @@
 #import "OnAirViewController+AudioStreamer.h"
 #import "OnAirViewController+Feedback.h"
 #import "NSString+Regex.h"
+#import "Event.h"
 
 @interface OnAirViewController (Private)
 
@@ -53,10 +54,11 @@
 									repeats:YES];
 	
 	[model events];
+	[model shows];
 }
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 {
-	return NO;
+	return (toInterfaceOrientation == UIInterfaceOrientationPortrait);
 }
 - (void)didReceiveMemoryWarning 
 {
@@ -110,39 +112,30 @@
 }
 - (void)events:(NSArray *)events
 {
-	if ([NSThread isMainThread])
+	if (events && events.count > 0)
 	{
-		if (events && events.count > 0)
+		for (Event *event in events)
 		{
-			for (NSDictionary *event in events)
+			NSDate *date = [event DateTime];
+			NSInteger since = [date timeIntervalSinceNow];
+			if (since > 0 && [[event ShowType] boolValue])
 			{
-				NSDate *date = [event objectForKey:@"DateTime"];
-				NSInteger since = [date timeIntervalSinceNow];
-				if (since > 0 && [[event objectForKey:@"ShowType"] boolValue])
-				{
-					timeSince = since;
-					NSInteger d = timeSince / 86400;
-					NSInteger h = timeSince / 3600 - d * 24;
-					NSInteger m = timeSince / 60 - d * 1440 - h * 60;
-					[[self nextLiveShowLabel] setText:[NSString stringWithFormat:@"%02d : %02d : %02d", d, h, m]];
-					[NSTimer scheduledTimerWithTimeInterval:60.0 
-													 target:self 
-												   selector:@selector(updateTimeSince:) 
-												   userInfo:date 
-													repeats:YES];
-					NSString *title = [event objectForKey:@"Title"];
-					if (title)
-						[self findGuest:title];
-					break;
-				}
+				timeSince = since;
+				NSInteger d = timeSince / 86400;
+				NSInteger h = timeSince / 3600 - d * 24;
+				NSInteger m = timeSince / 60 - d * 1440 - h * 60;
+				[[self nextLiveShowLabel] setText:[NSString stringWithFormat:@"%02d : %02d : %02d", d, h, m]];
+				[NSTimer scheduledTimerWithTimeInterval:60.0 
+												 target:self 
+											   selector:@selector(updateTimeSince:) 
+											   userInfo:date 
+												repeats:YES];
+				NSString *title = [event Title];
+				if (title)
+					[self findGuest:title];
+				break;
 			}
 		}
-	}
-	else
-	{
-		[self performSelectorOnMainThread:@selector(events:) 
-							   withObject:events 
-							waitUntilDone:NO];
 	}
 }
 - (void)updateTimeSince:(NSTimer *)timer
@@ -160,32 +153,23 @@
 }
 - (void)findGuest:(NSString *)eventTitle
 {
-	if ([NSThread isMainThread])
+	NSRange range = [eventTitle rangeOfString:@"Live Show with " 
+									  options:(NSAnchoredSearch | 
+											   NSCaseInsensitiveSearch)];
+	if (range.location != NSNotFound)
 	{
-		NSRange range = [eventTitle rangeOfString:@"Live Show with " 
-										  options:(NSAnchoredSearch | 
-												   NSCaseInsensitiveSearch)];
-		if (range.location != NSNotFound)
-		{
-			NSString *guest = 
-			[eventTitle stringByReplacingOccurrencesOfString:@"Live Show with " 
-												  withString:@"" 
-													 options:(NSAnchoredSearch | 
-															  NSCaseInsensitiveSearch)
-													   range:NSMakeRange(0, eventTitle.length)];
-			if (guest)
-				[guestLabel setText:guest];
-		}
-		else
-		{
-			[guestLabel setText:@"No Guest(s)"];
-		}
+		NSString *guest = 
+		[eventTitle stringByReplacingOccurrencesOfString:@"Live Show with " 
+											  withString:@"" 
+												 options:(NSAnchoredSearch | 
+														  NSCaseInsensitiveSearch)
+												   range:NSMakeRange(0, eventTitle.length)];
+		if (guest)
+			[guestLabel setText:guest];
 	}
 	else
 	{
-		[self performSelectorOnMainThread:@selector(findGuest:) 
-							   withObject:eventTitle 
-							waitUntilDone:NO];
+		[guestLabel setText:@"No Guest(s)"];
 	}
 }
 - (void)liveShowStatus:(BOOL)live

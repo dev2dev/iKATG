@@ -22,7 +22,9 @@
 
 @interface OnAirViewControlleriPhone : OnAirViewController 
 {
-
+	BOOL resigned;
 }
+
+@property (readwrite, getter=isResigned) BOOL resigned;
 
 @end

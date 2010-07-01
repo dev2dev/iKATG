@@ -19,6 +19,7 @@
 //  
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 #import "DataModelDelegate.h"
 #import "DataOperation.h"
 
@@ -27,7 +28,7 @@
 	//
 	//  Delegate array for returning data asynchronously
 	//
-	NSArray *delegates;
+	NSMutableArray *delegates;
 	////
 	//  BOOL to indicate internet connectivity
 	//
@@ -40,6 +41,10 @@
 	//  BOOL to determine use of NSNotifications for returned data
 	//
 	BOOL notifier;
+	//
+	//  *UNREVISEDCOMMENTS*
+	//
+	NSManagedObjectContext *managedObjectContext;
 	//
 	//  Default location for storing data
 	//
@@ -56,35 +61,41 @@
 	//
 	NSOperationQueue  *operationQueue;
 	//
+	//  *UNREVISEDCOMMENTS*
+	//
+	NSOperationQueue  *coreDataOperationQueue;
+	//
 	//  When connectivity is not available, operations are added to
 	//  delayedOperations and then when connectivity returns delayedOperations
 	//  contents is added to the operationQueue
 	//
 	NSMutableArray *delayedOperations;
 	//
-	//
+	//  *UNREVISEDCOMMENTS*
 	//
 	NSDateFormatter *formatter;
 	NSDateFormatter *dayFormatter;
 	NSDateFormatter *dateFormatter;
 	NSDateFormatter *timeFormatter;
 	//
+	//  *UNREVISEDCOMMENTS*
 	//
-	//
-	NSMutableArray *events;
 	NSInteger      eventCount;
 }
-
-/*****************************************/
-//  Accessors
-/*****************************************/
-@property (retain)                       NSArray *delegates;
+/******************************************************************************/
+#pragma mark -
+#pragma mark Accessors
+#pragma mark -
+/******************************************************************************/
+@property (nonatomic, retain) NSMutableArray *delegates;
 @property (readwrite, assign, getter=isConnected)  BOOL connected;
 @property (readwrite, assign, getter=isNotifiying) BOOL notifier;
-
-/*****************************************/
-//  Setup Methods
-/*****************************************/
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+/******************************************************************************/
+#pragma mark -
+#pragma mark Setup Methods
+#pragma mark -
+/******************************************************************************/
 //
 //  DataModel *modelSingleton = [DataModel sharedDataModel];
 //  Return party camera data model singleton
@@ -95,14 +106,14 @@
 //  Add a delegate to the delegate array 
 //  (register as a delegate to receive methods from the PartyCameraDataModelDelegate protocol)
 //
-- (void)addDelegate:(id)delegate;
+- (void)addDelegate:(id<DataModelDelegate>)delegate;
 //
 //  [modelSingleton removeDelegate:self];
 //  Remove a delegate from the delegate array
 //  (It is critical to that any add delegate call is matched with a 
 //  remove delegate call in order to ensure accurate retain counts)
 //
-- (void)removeDelegate:(id)delegate;
+- (void)removeDelegate:(id<DataModelDelegate>)delegate;
 //
 //  [modelSingleton startNotifier];
 //  [modelSingleton isNotifying];
@@ -117,14 +128,15 @@
 //  (this can be checked with @property (readwrite, assign, getter=isNotifiying) BOOL notifier;)
 //
 - (void)stopNotifier;
-
-/*****************************************/
-//  Data Methods
-/*****************************************/
+/******************************************************************************/
+#pragma mark -
+#pragma mark Data Methods
+#pragma mark -
+/******************************************************************************/
 //
 //  *UNREVISEDCOMMENTS*
 //	@"Title",
-//	@"EventId",
+//	@"EventID",
 //	@"Details",
 //	@"DateTime",
 //	@"Day",
@@ -146,5 +158,9 @@
 //  *UNREVISEDCOMMENTS*
 //
 - (void)chatLogin:(NSURLRequest *)request;
+//
+//  *UNREVISEDCOMMENTS*
+//
+- (void)shows;
 
 @end

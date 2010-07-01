@@ -21,6 +21,8 @@
 #import "EventsDetailViewController.h"
 #import "ModalWebViewController.h"
 #import "NSString+Regex.h"
+#import "Event.h"
+//#import <iAd/iAd.h>
 
 @implementation EventsDetailViewController
 @synthesize webView;
@@ -29,13 +31,18 @@
 @synthesize dateLabel;
 @synthesize timeLabel;
 @synthesize event;
+//@synthesize adBanner;
 
 - (void)viewDidLoad 
 {
     [super viewDidLoad];
+	[self makePage];
+}
+- (void)makePage
+{
 	NSString *htmlHeader = @"<html><head><style>\nbody \n{\npadding: 0px;\nfont-family: Helvetica; \nfont-size: 18px;\nmargin: 0;\n}\n</style></head><body>";
 	NSString *htmlFooter = @"</body></html>";
-	NSString *htmlBody = [event objectForKey:@"Details"];
+	NSString *htmlBody = [event Details];
 	NSString *regex = @"style=\"[^\"]*\"";
 	htmlBody = [htmlBody stringByReplacingOccurencesOfRegularExpressions:regex 
 															  withString:@""];
@@ -54,10 +61,10 @@
 	webView.backgroundColor = [UIColor clearColor];
 	[webView loadHTMLString:htmlString 
 					baseURL:[NSURL URLWithString:@"http://www.keithandthegirl.com/"]];
-	[titleLabel setText:[event objectForKey:@"Title"]];
-	[dayLabel setText:[event objectForKey:@"Day"]];
-	[dateLabel setText:[event objectForKey:@"Date"]];
-	[timeLabel setText:[event objectForKey:@"Time"]];
+	[titleLabel setText:[event Title]];
+	[dayLabel setText:[event Day]];
+	[dateLabel setText:[event Date]];
+	[timeLabel setText:[event Time]];
 }
 - (void)didReceiveMemoryWarning 
 {
@@ -70,11 +77,11 @@
 - (void)dealloc 
 {
 	[webView release];
-	[event release];
 	[titleLabel release];
 	[dayLabel release];
 	[dateLabel release];
 	[timeLabel release];
+//	[adBanner release];
 	[super dealloc];
 }
 - (BOOL)webView:(UIWebView *)webView 
@@ -87,18 +94,22 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
 	} 
 	else if (navigationType == UIWebViewNavigationTypeLinkClicked)
 	{
-		ModalWebViewController *modalWebViewController = 
-		[[ModalWebViewController alloc] initWithNibName:@"ModalWebViewiPad" 
-												 bundle:nil];
-		[modalWebViewController setRequest:request];
-		[modalWebViewController setModalPresentationStyle:UIModalPresentationFormSheet];
-		[modalWebViewController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
-		[self presentModalViewController:modalWebViewController 
-								animated:YES];
-		[modalWebViewController release];
+		[self modalWebViewController:request];
 		return NO;
 	}
 	return YES;
+}
+- (void)modalWebViewController:(NSURLRequest *)request
+{
+	ModalWebViewController *modalWebViewController = 
+	[[ModalWebViewController alloc] initWithNibName:@"ModalWebViewiPad" 
+											 bundle:nil];
+	[modalWebViewController setRequest:request];
+	[modalWebViewController setModalPresentationStyle:UIModalPresentationFormSheet];
+	[modalWebViewController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+	[self presentModalViewController:modalWebViewController 
+							animated:YES];
+	[modalWebViewController release];
 }
 
 @end

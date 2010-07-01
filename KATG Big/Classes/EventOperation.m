@@ -18,131 +18,147 @@
 //  
 
 #import "EventOperation.h"
+#import "Event.h"
+
+@interface EventOperation (Private)
+- (void)_processEvent;
+- (NSDictionary *)_dateFormatting;
+- (NSNumber *)_showType;
+@end
 
 @implementation EventOperation
 
 @synthesize delegate;
-@synthesize event;
-@synthesize formatter, dayFormatter, dateFormatter, timeFormatter;
+@synthesize event = _event;
+@synthesize formatter = _formatter;
+@synthesize dayFormatter = _dayFormatter;
+@synthesize dateFormatter = _dateFormatter;
+@synthesize timeFormatter = _timeFormatter;
 
 - (id)initWithEvent:(NSDictionary *)anEvent 
 {
 	if( self = [super init] )
 	{
-		event = [anEvent copy];
+		[self setEvent:anEvent];
 	}
 	return self;
 }
 - (void)dealloc 
 {
-	[event release];
-	[formatter release];
-	[dayFormatter release];
-	[dateFormatter release];
-	[timeFormatter release];
+	[_event release];
 	[super dealloc];
 }
 - (void)main 
 {
-	if( !self.isCancelled )
+	if(!self.isCancelled)
 	{
 		NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 		[self _processEvent];
+		if (self.delegate && !self.isCancelled) 
+		{
+			[self.delegate eventOperationDidFinishSuccesfully:self];
+		}
 		[pool drain];
 	}
 }
 - (void)_processEvent 
 {
-	if( !self.isCancelled )
+	if(!self.isCancelled)
 	{
-		NSDictionary *dateTimes;
-		NSNumber *showType;
-		if( !self.isCancelled )
+		if(!self.isCancelled)
 		{
-			dateTimes = [self _dateFormatting];
-		}
-		if( !self.isCancelled )
-		{
-			showType = [self _showType];
-		}
-		if( !self.isCancelled )
-		{
-			NSString *title = [[event objectForKey:@"Title"] retain];
+			Event *managedEvent = 
+			(Event *)[NSEntityDescription insertNewObjectForEntityForName:@"Event" 
+												   inManagedObjectContext:delegate.managedObjectContext];
+			
+			NSString *title = [self.event objectForKey:@"Title"];
 			if (!title) title = @"";
-			NSString *eventID = [[event objectForKey:@"EventId"] retain];
+			[managedEvent setTitle:title];
+			
+			NSString *eventID = [self.event objectForKey:@"EventId"];
 			if (!eventID) eventID = @"";
-			NSString *details = [[event objectForKey:@"Details"] retain];
-			if (!details) details = @"";
+			[managedEvent setEventID:eventID];
 			
-			[event release]; event = nil;
-			event =
-			[[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:
-												  title,
-												  eventID,
-												  details,
-												  [dateTimes objectForKey:@"DateTime"],
-												  [dateTimes objectForKey:@"Day"],
-												  [dateTimes objectForKey:@"Date"],
-												  [dateTimes objectForKey:@"Time"], 
-												  showType, nil]
-										 forKeys:[NSArray arrayWithObjects:
-												  @"Title",
-												  @"EventId",
-												  @"Details",
-												  @"DateTime",
-												  @"Day",
-												  @"Date",
-												  @"Time", 
-												  @"ShowType", nil]] retain];
+			NSString *details = [self.event objectForKey:@"Details"];
+			if (!details || [details isEqualToString:@"NULL"]) details = @"";
+			[managedEvent setDetails:details];
 			
-			if (event != nil && [self delegate] && !self.isCancelled) 
+			NSDictionary * dateTimes = [self _dateFormatting];
+			
+			NSDate *dateTime = [dateTimes objectForKey:@"DateTime"];
+			if (dateTime)
+				[managedEvent setDateTime:dateTime];
+			
+			NSString *day = [dateTimes objectForKey:@"Day"];
+			if (day)
+				[managedEvent setDay:day];
+			
+			NSString *date = [dateTimes objectForKey:@"Date"];
+			if (date)
+				[managedEvent setDate:date];
+			
+			NSString *time = [dateTimes objectForKey:@"Time"];
+			if (time)
+				[managedEvent setTime:time];
+			
+			NSNumber *showType = [self _showType];
+			if (showType)
+				[managedEvent setShowType:showType];
+			
+			//NSLog(@"\n\nEvent : \n\n%@\n\n%@", managedEvent, self.event);
+			
+			if (!self.isCancelled)
 			{
-				[[self delegate] eventOperationDidFinishSuccesfully:self];
+				NSError *error;
+				if (![delegate.managedObjectContext save:&error])
+				{	// Handle Error
+					
+				}
 			}
 		}
 	}
 }
 - (NSDictionary *)_dateFormatting 
-{	
-	NSString *eventTimeString = [event objectForKey:@"StartDate"];
-	NSTimeZone *EST = [NSTimeZone timeZoneWithName:@"America/New_York"];
-	if ([EST isDaylightSavingTime]) 
+{
+	NSDictionary * dateTimes = nil;
+	if (!self.isCancelled)
 	{
-		eventTimeString = [eventTimeString stringByAppendingString:@" EDT"];
-	} 
-	else 
-	{
-		eventTimeString = [eventTimeString stringByAppendingString:@" EST"];
+		NSString *eventTimeString = [self.event objectForKey:@"StartDate"];
+		NSDate *eventDateTime = [self.formatter dateFromString:eventTimeString];
+		NSString *eventDay = [self.dayFormatter stringFromDate:eventDateTime];
+		NSString *eventDate = [self.dateFormatter stringFromDate:eventDateTime];
+		NSString *eventTime = [self.timeFormatter stringFromDate:eventDateTime];
+		if (eventDateTime &&
+			eventDay &&
+			eventDate &&
+			eventTime &&
+			!self.isCancelled)
+		{
+			dateTimes =
+			[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:
+												 eventDateTime, 
+												 eventDay, 
+												 eventDate, 
+												 eventTime, nil] 
+										forKeys:[NSArray arrayWithObjects:
+												 @"DateTime",
+												 @"Day",
+												 @"Date",
+												 @"Time", nil]];
+		}
+		else
+		{
+			[[ESLogger sharedESLogger] log:@"Date Formatting Failed"];
+		}
 	}
-	
-	NSDate *eventDateTime = [formatter dateFromString:eventTimeString];
-	
-	NSString *eventDay = [dayFormatter stringFromDate:eventDateTime];
-	
-	NSString *eventDate = [dateFormatter stringFromDate:eventDateTime];
-	
-	NSString *eventTime = [timeFormatter stringFromDate:eventDateTime];
-	
-	NSDictionary *dateTimes =
-	[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:
-										 eventDateTime, 
-										 eventDay, 
-										 eventDate, 
-										 eventTime, nil] 
-								forKeys:[NSArray arrayWithObjects:
-										 @"DateTime",
-										 @"Day",
-										 @"Date",
-										 @"Time", nil]];
 	return dateTimes;
 }
 - (NSNumber *)_showType 
 {
-	if ([[event objectForKey:@"Title"] rangeOfString:@"Live Show"].location != NSNotFound) {
+	if ([[self.event objectForKey:@"Title"] rangeOfString:@"Live Show"].location != NSNotFound)
 		return [NSNumber numberWithBool:YES];
-	} else {
+	else
 		return [NSNumber numberWithBool:NO];
-	}
 }
 
 @end

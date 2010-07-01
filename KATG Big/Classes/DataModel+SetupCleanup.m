@@ -22,6 +22,7 @@
 #import "DataOperation.h"
 #import "OrderedDictionary.h"
 #import "Reachability.h"
+#import "NSMutableArray+MyAdditions.h"
 
 @implementation DataModel (SetupCleanup)
 
@@ -47,30 +48,35 @@
 {
 	return self;
 }
+/******************************************************************************/
 #pragma mark -
-#pragma mark SetupCleanup
+#pragma mark Setup
 #pragma mark -
+/******************************************************************************/
 - (id)init
 {
 	if (self = [super init])
 	{
-		delegates         = [[NSArray alloc] init];
+		delegates		= CreateNonRetainingArray();
 		
-		connected         = NO;
-		connectionType    = 0;
-		notifier          = NO;
+		connected		= NO;
+		connectionType	= 0;
+		notifier		= NO;
 		
-		dataPath          = [self newDataPath];
-		
-		events            = [[NSMutableArray alloc] init];
-		
+		dataPath		= [self initDataPath];
+				
 		[self dateFormatters];
 		
 		operationQueue    = [[NSOperationQueue alloc] init];
 		[operationQueue setMaxConcurrentOperationCount:[[NSProcessInfo processInfo] activeProcessorCount] + 1];
+		
 		delayedOperations = [[NSMutableArray alloc] init];
 		
+		coreDataOperationQueue = [[NSOperationQueue alloc] init];
+		[coreDataOperationQueue setMaxConcurrentOperationCount:1];
+		
 		[self registerNotifications];
+		
 		userDefaults = [NSUserDefaults standardUserDefaults];
 	}
 	return self;
@@ -80,10 +86,9 @@
 	formatter = [[NSDateFormatter alloc] init];
 	[formatter setDateStyle: NSDateFormatterLongStyle];
 	[formatter setFormatterBehavior:NSDateFormatterBehavior10_4];
-	[formatter setDateFormat: @"MM/dd/yyyy HH:mm zzz"];
-	NSLocale *us = [[NSLocale alloc] initWithLocaleIdentifier:@"US"];
-	[formatter setLocale:us];
-	[us release];
+	[formatter setDateFormat: @"MM/dd/yyyy HH:mm"];
+	NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"America/New_York"];
+	[formatter setTimeZone:timeZone];
 	
 	dayFormatter = [[NSDateFormatter alloc] init];
 	[dayFormatter setDateStyle: NSDateFormatterLongStyle];
@@ -105,17 +110,9 @@
 	
 	eventCount = 0;
 }
-- (NSString *)newDataPath
+- (NSString *)initDataPath
 {
-	NSFileManager *fileManager = [NSFileManager defaultManager];
-	NSString *path = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, 
-														  NSUserDomainMask, 
-														  YES) lastObject];
-	path = [[path stringByAppendingPathComponent:@"pictures"] retain];
-	NSError *error;
-	[fileManager removeItemAtPath:path error:&error];
-	[fileManager createDirectoryAtPath:path attributes:nil];
-	return path;
+	return [AppDirectoryCachePath() retain];
 }
 - (void)registerNotifications
 {
@@ -132,11 +129,15 @@
 	 name:UIApplicationWillTerminateNotification 
 	 object:nil];
 }
+/******************************************************************************/
+#pragma mark -
+#pragma mark Cleanup
+#pragma mark -
+/******************************************************************************/
 - (void)dealloc
 {
 	[self cleanup];
 	[self cleanupOperations];
-	[self cleanupImages];
 	[super dealloc];
 }
 - (void)cleanup
@@ -148,25 +149,25 @@
 	[dayFormatter release];
 	[dateFormatter release];
 	[timeFormatter release];
-	[events release];
+	[managedObjectContext release];
 }
 - (void)cleanupOperations
 {
 	[operationQueue cancelAllOperations];
 	[operationQueue release]; operationQueue = nil;
 	[delayedOperations release];
-}
-- (void)cleanupImages
-{
-	
+	[coreDataOperationQueue cancelAllOperations];
+	[coreDataOperationQueue release]; coreDataOperationQueue = nil;
 }
 - (void)releaseSingleton
 {
 	[super release];
 }
+/******************************************************************************/
 #pragma mark -
 #pragma mark Reachability
 #pragma mark -
+/******************************************************************************/
 - (void)reachabilityChanged:(NSNotification* )note
 {
 	Reachability *curReach = [note object];
@@ -209,16 +210,21 @@
 		[delayedOperations removeAllObjects];
 	}
 }
+/******************************************************************************/
+#pragma mark -
+#pragma mark Defaults
+#pragma mark -
+/******************************************************************************/
 - (void)setDefaultObject:(id)object forKey:(id)key
 {
-	@synchronized(self)
+	@synchronized(userDefaults)
 	{
 		[userDefaults setObject:object forKey:key];
 	}
 }
 - (void)syncDefaults
 {
-	@synchronized(self)
+	@synchronized(userDefaults)
 	{
 		[userDefaults synchronize];
 	}

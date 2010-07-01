@@ -1,1 +1,1 @@
-#define LogWebViewRequests 1
+#define LogWebViewRequests 0

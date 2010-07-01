@@ -28,7 +28,7 @@ static NSString *urlString = @"http://liveshow.keithandthegirl.com:8004";
 #import "AudioStreamer.h"
 #import <QuartzCore/CoreAnimation.h>
 #import <MediaPlayer/MediaPlayer.h>
-#import "ImageAdditions.h"
+#import "UIImage+MyAdditions.h"
 
 @implementation OnAirViewController (AudioStreamer)
 
@@ -212,11 +212,11 @@ static NSString *urlString = @"http://liveshow.keithandthegirl.com:8004";
 		}
 	}
 	[volumeViewSlider setMinimumTrackImage:
-	 [UIImageForNameExtension(@"leftslide", @"png") stretchableImageWithLeftCapWidth:10.0 
+	 [[UIImage imageForName:@"leftslide" extension:@"png"] stretchableImageWithLeftCapWidth:10.0 
 																		topCapHeight:0.0] 
 											  forState:UIControlStateNormal];
 	[volumeViewSlider setMaximumTrackImage:
-	 [UIImageForNameExtension(@"rightslide", @"png") stretchableImageWithLeftCapWidth:10.0 
+	 [[UIImage imageForName:@"rightslide" extension:@"png"] stretchableImageWithLeftCapWidth:10.0 
 																		 topCapHeight:0.0] 
 											  forState:UIControlStateNormal];
 }

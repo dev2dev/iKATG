@@ -9,7 +9,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
-	<string>Icon-75.png</string>
+	<string>Icon-72.png</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.katg.big</string>
 	<key>CFBundleInfoDictionaryVersion</key>

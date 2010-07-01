@@ -1,6 +1,6 @@
 //
 //  EventOperation.h
-//  KATG.com
+//  KATG
 //
 //  Copyright 2009 Doug Russell
 //  
@@ -19,29 +19,31 @@
 
 @protocol EventOperationDelegate;
 
-@interface EventOperation : NSOperation {
+@interface EventOperation : NSOperation 
+{
+@public
 	id<EventOperationDelegate> delegate;
-	NSDictionary *event;
-	NSDateFormatter *formatter;
-	NSDateFormatter *dayFormatter;
-	NSDateFormatter *dateFormatter;
-	NSDateFormatter *timeFormatter;
+@private
+	NSDictionary    * _event;
+	NSDateFormatter * _formatter;
+	NSDateFormatter * _dayFormatter;
+	NSDateFormatter * _dateFormatter;
+	NSDateFormatter * _timeFormatter;
 }
 
 @property (nonatomic, assign) id<EventOperationDelegate> delegate;
-@property (nonatomic, copy) NSDictionary *event;
-@property (nonatomic, copy) NSDateFormatter *formatter;
-@property (nonatomic, copy) NSDateFormatter *dayFormatter;
-@property (nonatomic, copy) NSDateFormatter *dateFormatter;
-@property (nonatomic, copy) NSDateFormatter *timeFormatter;
+@property (nonatomic, copy)   NSDictionary    * event;
+@property (nonatomic, assign) NSDateFormatter * formatter;
+@property (nonatomic, assign) NSDateFormatter * dayFormatter;
+@property (nonatomic, assign) NSDateFormatter * dateFormatter;
+@property (nonatomic, assign) NSDateFormatter * timeFormatter;
 
 - (id)initWithEvent:(NSDictionary *)anEvent;
-- (void)_processEvent;
-- (NSDictionary *)_dateFormatting;
-- (NSNumber *)_showType;
 
 @end
 
 @protocol EventOperationDelegate
+- (NSManagedObjectContext *)managedObjectContext;
 - (void)eventOperationDidFinishSuccesfully:(EventOperation *)op;
+- (void)eventOperationDidFail;
 @end

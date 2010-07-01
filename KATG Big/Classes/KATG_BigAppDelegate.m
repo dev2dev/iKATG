@@ -20,7 +20,14 @@
 //  
 
 #import "KATG_BigAppDelegate.h"
+#import "DataModel.h"
 #import "Reachability.h"
+
+@interface KATG_BigAppDelegate (PrivateCoreDataStack)
+@property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
+@property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+@end
 
 #define kReachabilityURL @"www.keithandthegirl.com"
 
@@ -33,6 +40,15 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
 {
 	NSLog(@"Application Launch With Options: %@", launchOptions);
+	
+	NSManagedObjectContext *context = [self managedObjectContext];
+	if (!context)
+	{	// error
+		
+	}
+	
+	DataModel *model = [DataModel sharedDataModel];
+	[model setManagedObjectContext:managedObjectContext];
 	
     [window addSubview:tabBarController.view];
     [window makeKeyAndVisible];
@@ -75,6 +91,21 @@
 		[NSKeyedArchiver archiveRootObject:cookies 
 									toFile:[dataPath stringByAppendingPathComponent:@"cookies"]];
 	}
+	
+	NSError *error = nil;
+    if (managedObjectContext != nil) 
+	{
+        if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) 
+		{
+			/*
+			 Replace this implementation with code to handle the error appropriately.
+			 
+			 abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
+			 */
+			NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+			abort();
+        } 
+    }
 }
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
@@ -91,6 +122,71 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
 	NSLog(@"Application Will Enter Foreground");
+}
+#pragma mark -
+#pragma mark Core Data stack
+#pragma mark -
+- (NSManagedObjectContext *) managedObjectContext 
+{
+    if (managedObjectContext != nil)
+        return managedObjectContext;
+    
+	NSPersistentStoreCoordinator *coordinator = 
+	[self persistentStoreCoordinator];
+    
+	if (coordinator != nil) 
+	{
+        managedObjectContext = [[NSManagedObjectContext alloc] init];
+        [managedObjectContext setPersistentStoreCoordinator: coordinator];
+    }
+	
+    return managedObjectContext;
+}
+- (NSManagedObjectModel *)managedObjectModel 
+{
+    if (managedObjectModel != nil)
+        return managedObjectModel;
+    
+	managedObjectModel = 
+	[[NSManagedObjectModel mergedModelFromBundles:nil] retain];    
+    
+	return managedObjectModel;
+}
+- (NSPersistentStoreCoordinator *)persistentStoreCoordinator 
+{
+	if (persistentStoreCoordinator != nil)
+        return persistentStoreCoordinator;
+    
+	NSURL *storeUrl = [NSURL fileURLWithPath: [[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"KATG.sqlite"]];
+	
+	NSError *error = nil;
+    persistentStoreCoordinator = 
+	[[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+    
+	if (![persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeUrl options:nil error:&error]) 
+	{
+		/*
+		 Replace this implementation with code to handle the error appropriately.
+		 
+		 abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
+		 
+		 Typical reasons for an error here include:
+		 * The persistent store is not accessible
+		 * The schema for the persistent store is incompatible with current managed object model
+		 Check the error message to determine what the actual problem was.
+		 */
+		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+		abort();
+    }    
+	
+    return persistentStoreCoordinator;
+}
+#pragma mark -
+#pragma mark Application's Documents directory
+#pragma mark -
+- (NSString *)applicationDocumentsDirectory 
+{
+	return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
 }
 #pragma mark -
 #pragma mark Custom URL
@@ -147,17 +243,22 @@
 #pragma mark -
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application
 {
-	[super applicationDidReceiveMemoryWarning:application];
+	
 }
 - (void)dealloc 
 {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	[hostReach release];
+	
+	[managedObjectContext release];
+    [managedObjectModel release];
+    [persistentStoreCoordinator release];
+	
     [tabBarController release];
     [window release];
-    [super dealloc];
+    
+	[super dealloc];
 }
-
 #pragma mark -
 #pragma mark Reachability
 #pragma mark -
