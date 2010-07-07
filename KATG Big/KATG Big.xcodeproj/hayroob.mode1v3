@@ -277,6 +277,7 @@
 								<string>5354980911926FED006A7859</string>
 								<string>5354980A11927003006A7859</string>
 								<string>530734C411E13DEA00B5F4AA</string>
+								<string>530735B011E13DEA00B5F4AA</string>
 								<string>530735EA11E13DEB00B5F4AA</string>
 								<string>19C28FACFE9D520D11CA2CBB</string>
 								<string>1C37FBAC04509CD000000102</string>
@@ -285,8 +286,8 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>52</integer>
-									<integer>42</integer>
+									<integer>65</integer>
+									<integer>55</integer>
 									<integer>38</integer>
 									<integer>37</integer>
 									<integer>3</integer>
@@ -343,7 +344,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>5307381C11E2322D00B5F4AA</string>
+										<string>5312A50411E5013500237043</string>
 										<key>history</key>
 										<array>
 											<string>5379627F1191BB76002992B9</string>
@@ -474,7 +475,7 @@
 											<string>5307381811E2322D00B5F4AA</string>
 											<string>5307381911E2322D00B5F4AA</string>
 											<string>5307381A11E2322D00B5F4AA</string>
-											<string>5307381B11E2322D00B5F4AA</string>
+											<string>5307381C11E2322D00B5F4AA</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -532,9 +533,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>530734B511E13C8B00B5F4AA</string>
+				<string>5312A50511E5013500237043</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>530734B611E13C8B00B5F4AA</string>
+				<string>5312A50611E5013500237043</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -672,12 +673,8 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>530737B011E14CEA00B5F4AA</string>
-		<string>530737B111E14CEA00B5F4AA</string>
-		<string>1C78EAAD065D492600B07095</string>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>5366EA071186390E001A99D8</string>
-		<string>/Users/hayroob/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/KATG Big.xcodeproj</string>
+		<string>/Users/hayroob/Desktop/iKATG/KATG Big/KATG Big.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>43 55 1237 723 0 0 1280 778 </string>
@@ -696,14 +693,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>EventsTableViewControlleriPhone.m</string>
+								<string></string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -759,7 +754,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>5366EA071186390E001A99D8</string>
-				<string>530734A511E13C3D00B5F4AA</string>
+				<string>5312A50711E5013500237043</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
