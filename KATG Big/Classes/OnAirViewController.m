@@ -45,15 +45,15 @@
 	model = [DataModel sharedDataModel];
 	[model addDelegate:self];
 	
-//	[model liveShowStatus];
+	[model liveShowStatus];
 //	// this timer should really be in the model
-//	[NSTimer scheduledTimerWithTimeInterval:180.0 
-//									 target:self 
-//								   selector:@selector(updateLiveShowStatusTimer:) 
-//								   userInfo:nil 
-//									repeats:YES];
-//	
-//	[model events];
+	[NSTimer scheduledTimerWithTimeInterval:180.0 
+									 target:self 
+								   selector:@selector(updateLiveShowStatusTimer:) 
+								   userInfo:nil 
+									repeats:YES];
+	
+	[model events];
 //	[model shows];
 }
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
