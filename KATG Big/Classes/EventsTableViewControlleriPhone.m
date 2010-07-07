@@ -25,7 +25,7 @@
 	model = [DataModel sharedDataModel];
 	[model addDelegate:self];
 	
-	[model fetchEvents];
+	//[model fetchEvents];
 }
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation 
 {
@@ -49,7 +49,7 @@
 	adView.requiredContentSizeIdentifiers = [NSSet setWithObject:ADBannerContentSizeIdentifier320x50];
 	adView.currentContentSizeIdentifier = ADBannerContentSizeIdentifier320x50;
 	adView.delegate = self;
-	return adView;
+	return [adView autorelease];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {

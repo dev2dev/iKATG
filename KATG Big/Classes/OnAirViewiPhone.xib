@@ -2,7 +2,7 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">1024</int>
-		<string key="IBDocument.SystemVersion">10D578</string>
+		<string key="IBDocument.SystemVersion">10D573</string>
 		<string key="IBDocument.InterfaceBuilderVersion">788</string>
 		<string key="IBDocument.AppKitVersion">1038.29</string>
 		<string key="IBDocument.HIToolboxVersion">460.00</string>
@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="27"/>
+			<integer value="6"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -42,24 +42,24 @@
 				<int key="NSvFlags">274</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<object class="IBUIImageView" id="770480041">
-						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrameSize">{320, 411}</string>
-						<reference key="NSSuperview" ref="191373211"/>
-						<int key="IBUIContentMode">4</int>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<object class="NSCustomResource" key="IBUIImage">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">BG.png</string>
-						</object>
-					</object>
 					<object class="IBUIView" id="397859970">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<object class="NSMutableArray" key="NSSubviews">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBUIImageView" id="770480041">
+								<reference key="NSNextResponder" ref="397859970"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{44, 43}, {221, 147}}</string>
+								<reference key="NSSuperview" ref="397859970"/>
+								<int key="IBUIContentMode">4</int>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">BG.png</string>
+								</object>
+							</object>
 							<object class="IBUITextField" id="32611208">
 								<reference key="NSNextResponder" ref="397859970"/>
 								<int key="NSvFlags">292</int>
@@ -183,7 +183,7 @@
 						<reference key="NSSuperview" ref="191373211"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC42Mjc0NTA5ODA0IDAuNzQ1MDk4MDM5MiAwLjY2NjY2NjY2NjcgMC45AA</bytes>
+							<bytes key="NSRGB">MC41NDkwMTk2MDc4IDAuNjY2NjY2NjY2NyAwLjU4ODIzNTI5NDEgMC45AA</bytes>
 						</object>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
@@ -524,7 +524,6 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="397859970"/>
-							<reference ref="770480041"/>
 							<reference ref="899714403"/>
 						</object>
 						<reference key="parent" ref="0"/>
@@ -549,6 +548,7 @@
 							<reference ref="32611208"/>
 							<reference ref="293505158"/>
 							<reference ref="868184608"/>
+							<reference ref="770480041"/>
 						</object>
 						<reference key="parent" ref="191373211"/>
 					</object>
@@ -566,11 +566,6 @@
 						<int key="objectID">22</int>
 						<reference key="object" ref="293505158"/>
 						<reference key="parent" ref="397859970"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">26</int>
-						<reference key="object" ref="770480041"/>
-						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">27</int>
@@ -633,6 +628,11 @@
 						<reference key="object" ref="708751009"/>
 						<reference key="parent" ref="899714403"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">26</int>
+						<reference key="object" ref="770480041"/>
+						<reference key="parent" ref="397859970"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -672,7 +672,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>OnAirViewControlleriPhone</string>
 					<string>UIResponder</string>
-					<string>{{222, 134}, {320, 480}}</string>
+					<string>{{268, 15}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSMutableArray">
 						<bool key="EncodedWithXMLCoder">YES</bool>
@@ -868,7 +868,7 @@
 					<string key="superclassName">UIButton</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">Classes/RoundedButton.h</string>
+						<string key="minorKey">UsefulBits/Subclasses/RoundedButton.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -876,7 +876,7 @@
 					<string key="superclassName">UITextField</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">Classes/RoundedTextField.h</string>
+						<string key="minorKey">UsefulBits/Subclasses/RoundedTextField.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -884,7 +884,7 @@
 					<string key="superclassName">UITextView</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">Classes/RoundedTextView.h</string>
+						<string key="minorKey">UsefulBits/Subclasses/RoundedTextView.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -892,8 +892,19 @@
 					<string key="superclassName">UIView</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">Classes/RoundedView.h</string>
+						<string key="minorKey">UsefulBits/Subclasses/RoundedView.h</string>
 					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">UIView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier" id="897570064">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">UsefulBits/Categories/UIViewController+Nib.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">UIViewController</string>
+					<reference key="sourceIdentifier" ref="897570064"/>
 				</object>
 			</object>
 			<object class="NSMutableArray" key="referencedPartialClassDescriptionsV3.2+">
@@ -1195,7 +1206,7 @@
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
-				<string>{442, 293}</string>
+				<string>{221, 147}</string>
 				<string>{70, 70}</string>
 			</object>
 		</object>
