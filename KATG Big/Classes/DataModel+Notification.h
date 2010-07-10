@@ -10,4 +10,7 @@
 
 @interface DataModel (Notification)
 
+- (void)notifyEvents:(NSArray *)events;
+- (void)notifyLiveShowStatus:(NSString *)status;
+
 @end

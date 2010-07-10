@@ -57,62 +57,70 @@
 {
 	if (self = [super init])
 	{
-		delegates		= CreateNonRetainingArray();
-		
-		connected		= NO;
-		connectionType	= 0;
-		notifier		= NO;
-		
-		dataPath		= [self initDataPath];
-				
+		// Non retaining array
+		// to prevent delegates
+		// from ending up in retain
+		// loops
+		delegates			= CreateNonRetainingArray();
+		// bool to indicate if
+		// data should be returned
+		// by NSNotifications 
+		// (currently not implemented)
+		notifier			= NO;
+		// Connection Status
+		// 0 - Not Connected
+		// 1 - 3G/Edge
+		// 2 - Wifi
+		connected			= NO;
+		connectionType		= 0;
+		// Applications Cache Directory
+		cacheDirectoryPath	= [AppDirectoryCachePath() retain];
+		// NSDateFormatters for events
 		[self dateFormatters];
-		
+		// Data Api Operations queue
 		operationQueue    = [[NSOperationQueue alloc] init];
 		[operationQueue setMaxConcurrentOperationCount:[[NSProcessInfo processInfo] activeProcessorCount] + 1];
-		
+		// Storage for operations waiting for connectivity
 		delayedOperations = [[NSMutableArray alloc] init];
-		
+		// Operations queue for CoreData operations
 		coreDataOperationQueue = [[NSOperationQueue alloc] init];
 		[coreDataOperationQueue setMaxConcurrentOperationCount:1];
-		
+		// NSNotifications for reachability and app termination
 		[self registerNotifications];
-		
+		// User Defaults
 		userDefaults = [NSUserDefaults standardUserDefaults];
 	}
 	return self;
 }
 - (void)dateFormatters
 {
+	// Initial formatter for creating data object for event
 	formatter = [[NSDateFormatter alloc] init];
 	[formatter setDateStyle: NSDateFormatterLongStyle];
 	[formatter setFormatterBehavior:NSDateFormatterBehavior10_4];
 	[formatter setDateFormat: @"MM/dd/yyyy HH:mm"];
 	NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"America/New_York"];
 	[formatter setTimeZone:timeZone];
-	
+	// Create localized data string for Day of the Week
 	dayFormatter = [[NSDateFormatter alloc] init];
 	[dayFormatter setDateStyle: NSDateFormatterLongStyle];
 	[dayFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
 	[dayFormatter setDateFormat: @"EEE"];
 	[dayFormatter setLocale:[NSLocale currentLocale]];
-	
+	// Create localized data string for Month and Day of the Month
 	dateFormatter = [[NSDateFormatter alloc] init];
 	[dateFormatter setDateStyle: NSDateFormatterLongStyle];
 	[dateFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
 	[dateFormatter setDateFormat: @"MM/dd"];
 	[dateFormatter setLocale:[NSLocale currentLocale]];
-	
+	// Create localized data string for Time of Day
 	timeFormatter = [[NSDateFormatter alloc] init];
 	[timeFormatter setDateStyle: NSDateFormatterLongStyle];
 	[timeFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
 	[timeFormatter setDateFormat: @"h:mm aa"];
 	[timeFormatter setLocale:[NSLocale currentLocale]];
-	
+	// Tracking active Event Operations
 	eventCount = 0;
-}
-- (NSString *)initDataPath
-{
-	return [AppDirectoryCachePath() retain];
 }
 - (void)registerNotifications
 {
@@ -137,6 +145,7 @@
 - (void)dealloc
 {
 	[self cleanup];
+	[self cleanupDateFormatters];
 	[self cleanupOperations];
 	[super dealloc];
 }
@@ -144,12 +153,15 @@
 {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	[delegates release];
-	[dataPath release];
+	[cacheDirectoryPath release];
+	[managedObjectContext release];
+}
+- (void)cleanupDateFormatters
+{
 	[formatter release];
 	[dayFormatter release];
 	[dateFormatter release];
 	[timeFormatter release];
-	[managedObjectContext release];
 }
 - (void)cleanupOperations
 {
@@ -203,30 +215,12 @@
 	
 	if (connected)
 	{
+		// add any delayed operations to data operations queue
 		for (DataOperation *op in delayedOperations)
 		{
 			[operationQueue addOperation:op];
 		}
 		[delayedOperations removeAllObjects];
-	}
-}
-/******************************************************************************/
-#pragma mark -
-#pragma mark Defaults
-#pragma mark -
-/******************************************************************************/
-- (void)setDefaultObject:(id)object forKey:(id)key
-{
-	@synchronized(userDefaults)
-	{
-		[userDefaults setObject:object forKey:key];
-	}
-}
-- (void)syncDefaults
-{
-	@synchronized(userDefaults)
-	{
-		[userDefaults synchronize];
 	}
 }
 

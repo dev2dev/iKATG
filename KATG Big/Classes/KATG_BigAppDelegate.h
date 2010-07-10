@@ -26,24 +26,24 @@
 @interface KATG_BigAppDelegate : NSObject 
 <UIApplicationDelegate, UITabBarControllerDelegate> 
 {
-	NSManagedObjectModel         *managedObjectModel;
-    NSManagedObjectContext       *managedObjectContext;	    
-    NSPersistentStoreCoordinator *persistentStoreCoordinator;
+	NSManagedObjectModel			*	managedObjectModel;
+    NSManagedObjectContext			*	managedObjectContext;	    
+    NSPersistentStoreCoordinator	*	persistentStoreCoordinator;
 	
-    UIWindow *window;
-    UITabBarController *tabBarController;
-	Reachability *hostReach;
-	BOOL connected;
+    UIWindow						*	window;
+    UITabBarController				*	tabBarController;
+	Reachability					*	hostReach;
+	BOOL								connected;
 }
 
-@property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
-@property (readwrite, getter=isConnected) BOOL connected;
+@property (nonatomic, retain) IBOutlet UIWindow				*	window;
+@property (nonatomic, retain) IBOutlet UITabBarController	*	tabBarController;
+@property (readwrite, getter=isConnected) BOOL					connected;
 
 - (NSString *)applicationDocumentsDirectory;
 
 // Send in Token for Push Notifications
-//- (void)sendProviderDeviceToken:(id)deviceTokenBytes;
+- (void)sendProviderDeviceToken:(id)deviceTokenBytes;
 // Set up reachability object
 - (void)checkReachability;
 // Respond to changes in reachability status

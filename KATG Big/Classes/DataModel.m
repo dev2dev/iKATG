@@ -29,8 +29,7 @@
 static DataModel *sharedDataModel = nil;
 
 @implementation DataModel
-@synthesize delegates;
-@synthesize connected, notifier;
+@synthesize delegates, connected, notifier;
 @synthesize managedObjectContext;
 
 /******************************************************************************/
@@ -66,7 +65,7 @@ static DataModel *sharedDataModel = nil;
 #pragma mark Delegates
 #pragma mark -
 /******************************************************************************/
-- (void)addDelegate:(id)delegate
+- (void)addDelegate:(id<DataModelDelegate>)delegate
 {
 	if ([NSThread isMainThread])
 	{
@@ -91,7 +90,7 @@ static DataModel *sharedDataModel = nil;
 							waitUntilDone:NO];
 	}
 }
-- (void)removeDelegate:(id)delegate
+- (void)removeDelegate:(id<DataModelDelegate>)delegate
 {
 	if ([NSThread isMainThread])
 	{
@@ -128,13 +127,13 @@ static DataModel *sharedDataModel = nil;
 - (void)events
 {
 	//
-	//  *UNREVISEDCOMMENTS*
+	//  Retrieve events already in Core Data Store
 	//
-	[self fetchEvents];
+	[self eventsNoPoll];
 	//
-	//  *UNREVISEDCOMMENTS*
+	//  Break off thread to get updated events
 	//
-	DataOperation *op = [[DataOperation alloc] init];
+	DataOperation	*	op	=	[[DataOperation alloc] init];
 	[op setDelegate:self];
 	// Object setters are (nonatomic, copy)
 	[op setCode:kEventsListCode];
@@ -145,21 +144,31 @@ static DataModel *sharedDataModel = nil;
 		[delayedOperations addObject:op];
 	[op release];
 }
+- (void)eventsNoPoll
+{
+	//
+	//  Retrieve events already in Core Data Store
+	//
+#ifdef __IPHONE_4_0
+	[coreDataOperationQueue addOperationWithBlock:^{[[DataModel sharedDataModel] fetchEvents];}];
+#else
+	// write some 3.0 code :(
+#endif
+}
 - (void)liveShowStatus
 {
 	//
 	//  *UNREVISEDCOMMENTS*
 	//
-	DataOperation *op = [[DataOperation alloc] init];
+	DataOperation	*	op	=	[[DataOperation alloc] init];
 	[op setDelegate:self];
 	// Object setters are (nonatomic, copy)
 	[op setCode:kLiveShowStatusCode];
 	[op setURI:kLiveShowStatusAddress];
-	if (connected) {
+	if (connected)
 		[operationQueue addOperation:op];
-	} else {
+	else
 		[delayedOperations addObject:op];
-	}
 	[op release];
 }
 - (void)feedback:(NSString *)name 
@@ -169,15 +178,16 @@ static DataModel *sharedDataModel = nil;
 	//
 	//  *UNREVISEDCOMMENTS*
 	//
-	DataOperation *op = [[DataOperation alloc] init];
+	DataOperation	*	op	=	[[DataOperation alloc] init];
 	[op setDelegate:self];
 	// Object setters are (nonatomic, copy)
 	[op setCode:kFeedbackCode];
 	[op setBaseURL:kFeedbackURLAddress];
 	[op setURI:kFeedbackURIAddress];
-	NSString *nameCopy = [name copy];
-	NSString *locationCopy = [location copy];
-	NSString *commentCopy = [comment copy];
+	// Pretty sure these copies are unnecessary
+	NSString	*	nameCopy		=	[name copy];
+	NSString	*	locationCopy	=	[location copy];
+	NSString	*	commentCopy		=	[comment copy];
 	NSDictionary *bufferDict = 
 	[NSDictionary dictionaryWithObjectsAndKeys:
 	 nameCopy, @"Name",
@@ -190,11 +200,10 @@ static DataModel *sharedDataModel = nil;
 	[locationCopy release];
 	[commentCopy release];
 	[op setBufferDict:bufferDict];
-	if (connected) {
+	if (connected)
 		[operationQueue addOperation:op];
-	} else {
+	else
 		[delayedOperations addObject:op];
-	}
 	[op release];
 }
 - (void)chatLogin:(NSURLRequest *)request
@@ -206,7 +215,11 @@ static DataModel *sharedDataModel = nil;
 	//
 	//  *UNREVISEDCOMMENTS*
 	//
-	DataOperation *op = [[DataOperation alloc] init];
+	[self showsNoPoll];
+	//
+	//  *UNREVISEDCOMMENTS*
+	//
+	DataOperation	*	op	=	[[DataOperation alloc] init];
 	[op setDelegate:self];
 	// Object setters are (nonatomic, copy)
 	[op setCode:kShowArchivesCode];
@@ -216,6 +229,17 @@ static DataModel *sharedDataModel = nil;
 	else
 		[delayedOperations addObject:op];
 	[op release];
+}
+- (void)showsNoPoll
+{
+	//
+	//  Retrieve events already in Core Data Store
+	//
+#ifdef __IPHONE_4_0
+	[coreDataOperationQueue addOperationWithBlock:^{[[DataModel sharedDataModel] fetchShows];}];
+#else
+	// write some 3.0 code :(
+#endif
 }
 /******************************************************************************/
 #pragma mark -

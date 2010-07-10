@@ -33,6 +33,7 @@
 @synthesize audioButton;
 @synthesize volumeView;
 @synthesize nextLiveShowLabel;
+@synthesize live = _live;
 @synthesize liveShowStatusLabel;
 @synthesize guestLabel;
 
@@ -46,7 +47,8 @@
 	[model addDelegate:self];
 	
 	[model liveShowStatus];
-//	// this timer should really be in the model
+	
+	//	this timer should really be in the model
 	[NSTimer scheduledTimerWithTimeInterval:180.0 
 									 target:self 
 								   selector:@selector(updateLiveShowStatusTimer:) 
@@ -54,7 +56,22 @@
 									repeats:YES];
 	
 	[model events];
-//	[model shows];
+	
+#ifdef __IPHONE_4_0
+	[[NSNotificationCenter defaultCenter] 
+	 addObserver:self
+	 selector:@selector(writeDefaults) 
+	 name:UIApplicationDidEnterBackgroundNotification 
+	 object:nil];
+#elif #ifdef __IPHONE_3_2
+	[[NSNotificationCenter defaultCenter] 
+	 addObserver:self
+	 selector:@selector(writeDefaults) 
+	 name:UIApplicationWillTerminateNotification 
+	 object:nil];
+#endif
+	
+	[self loadDefaults];
 }
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 {
@@ -67,13 +84,13 @@
 - (void)viewDidUnload 
 {
     [super viewDidUnload];
+	
+	[model removeDelegate:self];
 }
 - (void)dealloc 
 {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
-	
-	[model removeDelegate:self];
-	
+		
 	[feedbackView release];
 	[nameField release];
 	[locationField release];
@@ -98,6 +115,42 @@
 	[self sendFeedback];
 }
 #pragma mark -
+#pragma mark UserDefaultss
+#pragma mark -
+- (void)loadDefaults
+{
+	NSUserDefaults	*	userDefaults	=	[NSUserDefaults standardUserDefaults];
+	NSString		*	name			=	[userDefaults objectForKey:@"Name"];
+	[nameField setText:name];
+	NSString *location = [userDefaults objectForKey:@"Location"];
+	[locationField setText:location];
+	NSString *comment = [userDefaults objectForKey:@"Comment"];
+	if (comment && ![comment isEqualToString:@"Comment"])
+	{
+		[commentView setTextColor:[UIColor blackColor]];
+		[commentView setText:comment];
+	}
+	if ([userDefaults boolForKey:@"playing"] && [model isConnected]) 
+		[self audioButtonPressed:nil];
+	//else if ([userDefaults boolForKey:@"playing"] && ![model isConnected]) 
+	//	playOnConnection = YES;
+}
+- (void)writeDefaults  
+{
+	NSUserDefaults	*	userDefaults	=	[NSUserDefaults standardUserDefaults];
+	if ([[nameField text] length] > 0) 
+		[userDefaults setObject:[nameField text] forKey:@"Name"];
+	if ([[locationField text] length] > 0) 
+		[userDefaults setObject:[locationField text] forKey:@"Location"];
+	if ([[commentView text] length] > 0) 
+		[userDefaults setObject:[commentView text] forKey:@"Comment"];
+	if (streamer) 
+		[userDefaults setBool:YES forKey:@"Playing"];
+	else
+		[userDefaults setBool:NO forKey:@"Playing"];
+	[userDefaults synchronize];
+}
+#pragma mark -
 #pragma mark Data Delegates
 #pragma mark -
 //**********************//
@@ -116,15 +169,34 @@
 	{
 		for (Event *event in events)
 		{
-			NSDate *date = [event DateTime];
-			NSInteger since = [date timeIntervalSinceNow];
-			if (since > 0 && [[event ShowType] boolValue])
+			//
+			// Make sure event is a live show
+			// is scheduled within the
+			// last 12 hours or in the future,
+			// if in the past 
+			//
+			NSDate	*	date		=	[event DateTime];
+			NSInteger	since		=	[date timeIntervalSinceNow];
+			NSInteger	threshHold	=	-(60/*Seconds*/ * 60 /*Minutes*/ * 12 /*Hours*/);
+			if (since > threshHold && [[event ShowType] boolValue])
 			{
-				timeSince = since;
-				NSInteger d = timeSince / 86400;
-				NSInteger h = timeSince / 3600 - d * 24;
-				NSInteger m = timeSince / 60 - d * 1440 - h * 60;
-				[[self nextLiveShowLabel] setText:[NSString stringWithFormat:@"%02d : %02d : %02d", d, h, m]];
+				NSString *timeString = nil;
+				if (since < 0 && self.live)
+				{
+					timeString = @"NOW!";
+				}
+				else if (since >= 0)
+				{
+					NSInteger d	=	since / 86400;
+					NSInteger h	=	since / 3600 - d * 24;
+					NSInteger m	=	since / 60 - d * 1440 - h * 60;
+					timeString	=	[NSString stringWithFormat:@"%02d : %02d : %02d", d, h, m];
+				}
+				else
+				{
+					continue;
+				}
+				[[self nextLiveShowLabel] setText:timeString];
 				[NSTimer scheduledTimerWithTimeInterval:60.0 
 												 target:self 
 											   selector:@selector(updateTimeSince:) 
@@ -140,16 +212,21 @@
 }
 - (void)updateTimeSince:(NSTimer *)timer
 {
-	NSDate *date = [timer userInfo];
-	NSInteger since = [date timeIntervalSinceNow];
-	if (since > 0)
+	NSDate		*	date		=	[timer userInfo];
+	NSString	*	timeString	=	nil;
+	NSInteger		since		=	[date timeIntervalSinceNow];
+	if (since < 0 && self.live)
 	{
-		timeSince = since;
-		NSInteger d = timeSince / 86400;
-		NSInteger h = timeSince / 3600 - d * 24;
-		NSInteger m = timeSince / 60 - d * 1440 - h * 60;
-		[[self nextLiveShowLabel] setText:[NSString stringWithFormat:@"%02d : %02d : %02d", d, h, m]];
+		timeString = @"NOW!";
 	}
+	else
+	{
+		NSInteger d	=	since / 86400;
+		NSInteger h	=	since / 3600 - d * 24;
+		NSInteger m	=	since / 60 - d * 1440 - h * 60;
+		timeString	=	[NSString stringWithFormat:@"%02d : %02d : %02d", d, h, m];
+	}
+	[[self nextLiveShowLabel] setText:timeString];
 }
 - (void)findGuest:(NSString *)eventTitle
 {
@@ -174,20 +251,8 @@
 }
 - (void)liveShowStatus:(BOOL)live
 {
-	[self performSelectorOnMainThread:@selector(updateLiveShowStatus:) 
-						   withObject:[NSNumber numberWithBool:live] 
-						waitUntilDone:NO];
-}
-- (void)updateLiveShowStatus:(NSNumber *)live
-{
-	if ([live boolValue])
-	{
-		[liveShowStatusLabel setText:@"Live"];
-	}
-	else
-	{
-		[liveShowStatusLabel setText:@"Not Live"];
-	}
+	self.live = live;
+	liveShowStatusLabel.text = [NSString stringWithFormat:@"%@", self.live ? @"Live" : @"Not Live"];
 }
 
 @end

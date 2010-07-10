@@ -48,7 +48,7 @@
 	//
 	//  Default location for storing data
 	//
-	NSString *dataPath;
+	NSString *cacheDirectoryPath;
 	//
 	//  *UNREVISEDCOMMENTS*
 	//
@@ -146,6 +146,7 @@
 //  *UNREVISEDCOMMENTS*
 //
 - (void)events;
+- (void)eventsNoPoll;
 //
 //  *UNREVISEDCOMMENTS*
 //
@@ -162,5 +163,6 @@
 //  *UNREVISEDCOMMENTS*
 //
 - (void)shows;
+- (void)showsNoPoll;
 
 @end

@@ -19,7 +19,6 @@
 //  
 
 #import <UIKit/UIKit.h>
-//#import <iAd/iAd.h>
 
 @class Event;
 @interface EventsDetailViewController : UIViewController 
@@ -31,8 +30,6 @@
 	UILabel		 *dayLabel;
 	UILabel		 *dateLabel;
 	UILabel		 *timeLabel;
-	
-//	ADBannerView *adBanner;
 }
 
 @property (nonatomic, retain) IBOutlet UIWebView *webView;
@@ -41,7 +38,6 @@
 @property (nonatomic, retain) IBOutlet UILabel	 *dateLabel;
 @property (nonatomic, retain) IBOutlet UILabel	 *timeLabel;
 @property (nonatomic, assign)          Event     *event;
-//@property (nonatomic, retain) IBOutlet ADBannerView *adBanner;
 
 - (void)makePage;
 - (void)modalWebViewController:(NSURLRequest *)request;

@@ -53,12 +53,7 @@
     [window addSubview:tabBarController.view];
     [window makeKeyAndVisible];
 	
-	NSString *dataPath =
-	[[[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, 
-										  NSUserDomainMask, 
-										  YES) lastObject] retain] autorelease];
-	
-	NSArray *cookies = [NSKeyedUnarchiver unarchiveObjectWithFile:[dataPath stringByAppendingPathComponent:@"cookies"]];
+	NSArray *cookies = [NSKeyedUnarchiver unarchiveObjectWithFile:AppDirectoryCachePathAppended(@"cookies")];
 	//NSLog(@"Cookies Startup :%@", cookies);
 	if (cookies != nil)
 	{
@@ -66,6 +61,30 @@
 		for (NSHTTPCookie *cookie in cookies)
 		{
 			[[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
+		}
+	}
+	// APNS
+	// Register for push notifications
+	[application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | 
+													 UIRemoteNotificationTypeBadge | 
+													 UIRemoteNotificationTypeSound)];
+	// If app is launched from a notification, display that notification in an alertview
+	if ([launchOptions count] > 0) 
+	{
+		NSString *alertMessage = 
+		[[[launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey] 
+		  objectForKey:@"aps"] 
+		 objectForKey:@"alert"];
+		if (alertMessage)
+		{
+			UIAlertView *alert = [[UIAlertView alloc] 
+								  initWithTitle:@"Notification"
+								  message:alertMessage 
+								  delegate:nil
+								  cancelButtonTitle:@"Continue" 
+								  otherButtonTitles:nil];
+			[alert show];
+			[alert release];
 		}
 	}
 	
@@ -78,18 +97,13 @@
 {
 	NSLog(@"Application Termination");
 	
-	NSString *dataPath =
-	[[[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, 
-										   NSUserDomainMask, 
-										   YES) lastObject] retain] autorelease];
-	
 	NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies];
 	//NSLog(@"Cookies Shutdown :%@", cookies);
 	if (cookies != nil)
 	{
 		//BOOL success = 
 		[NSKeyedArchiver archiveRootObject:cookies 
-									toFile:[dataPath stringByAppendingPathComponent:@"cookies"]];
+									toFile:AppDirectoryCachePathAppended(@"cookies")];
 	}
 	
 	NSError *error = nil;
@@ -223,7 +237,24 @@
 #pragma mark -
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-	
+	// This should be in the model and use DataOperation
+	NSString *token = [NSString stringWithFormat: @"%@", deviceToken];
+	[NSThread detachNewThreadSelector:@selector(sendProviderDeviceToken:) 
+							 toTarget:self 
+						   withObject:token];
+}
+- (void)sendProviderDeviceToken:(NSString *)token 
+{ // This needs some attention, seems awkward
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	NSString *myRequestString = 
+	@"http://app.keithandthegirl.com/app/tokenserver/tokenserver.php?dev=";
+	token = (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)token, NULL, NULL, kCFStringEncodingUTF8);
+	myRequestString = [myRequestString stringByAppendingString:token];
+	NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:myRequestString]]; 
+	[NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+	[request autorelease];
+	[token release];
+	[pool release];
 }
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {

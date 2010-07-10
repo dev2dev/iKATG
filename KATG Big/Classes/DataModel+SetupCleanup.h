@@ -23,13 +23,13 @@
 @class Reachability;
 @interface DataModel (SetupCleanup)
 
+// Date formatters for events
 - (void)dateFormatters;
-//  Return path to applications documents directory
-- (NSString *)initDataPath;
 //  Register notifications for reachabilty and app termination
 - (void)registerNotifications;
 //  Cleanup Memory
 - (void)cleanup;
+- (void)cleanupDateFormatters;
 - (void)cleanupOperations;
 //  Handle app termination by calling
 //  super release
@@ -37,7 +37,5 @@
 //  Handle changes in reachability
 - (void)reachabilityChanged:(NSNotification* )note;
 - (void)updateReachability:(Reachability*)curReach;
-- (void)setDefaultObject:(id)object forKey:(id)key;
-- (void)syncDefaults;
 
 @end

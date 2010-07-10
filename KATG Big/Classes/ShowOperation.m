@@ -14,11 +14,11 @@
 @synthesize delegate;
 @synthesize shows = _shows;
 
-- (id)initWithShows:(NSArray *)shws
+- (id)initWithShows:(NSArray *)shows
 {
 	if ((self = [super init]))
 	{
-		[self setShows:shws];
+		[self setShows:shows];
 	}
 	return self;
 }
@@ -56,7 +56,7 @@
 					
 					[managedGuest setGuest:guest];
 					
-					NSLog(@"Guest: %@", managedGuest);
+					//NSLog(@"Guest: %@", managedGuest);
 					
 					[managedShow addGuestsObject:managedGuest];
 				}
@@ -92,13 +92,18 @@
 			[managedShow setTV:[NSNumber numberWithBool:isTV]];
 		}
 		
-		NSLog(@"Show: %@", managedShow);
+		//NSLog(@"Show: %@", managedShow);
 		
 		NSError *error;
 		if (![delegate.managedObjectContext save:&error])
 		{	// Handle Error
 			
 		}
+	}
+	
+	if (self.delegate && !self.isCancelled)
+	{
+		[self.delegate showOperationDidFinishSuccesfully:self];
 	}
 	
 	[pool drain];

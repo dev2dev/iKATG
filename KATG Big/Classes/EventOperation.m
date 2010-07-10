@@ -29,17 +29,17 @@
 @implementation EventOperation
 
 @synthesize delegate;
-@synthesize event = _event;
-@synthesize formatter = _formatter;
-@synthesize dayFormatter = _dayFormatter;
-@synthesize dateFormatter = _dateFormatter;
-@synthesize timeFormatter = _timeFormatter;
+@synthesize event			=	_event;
+@synthesize formatter		=	_formatter;
+@synthesize dayFormatter	=	_dayFormatter;
+@synthesize dateFormatter	=	_dateFormatter;
+@synthesize timeFormatter	=	_timeFormatter;
 
 - (id)initWithEvent:(NSDictionary *)anEvent 
 {
-	if( self = [super init] )
+	if((self = [super init]))
 	{
-		[self setEvent:anEvent];
+		self.event = anEvent;
 	}
 	return self;
 }
@@ -55,9 +55,7 @@
 		NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 		[self _processEvent];
 		if (self.delegate && !self.isCancelled) 
-		{
 			[self.delegate eventOperationDidFinishSuccesfully:self];
-		}
 		[pool drain];
 	}
 }
@@ -112,7 +110,7 @@
 				NSError *error;
 				if (![delegate.managedObjectContext save:&error])
 				{	// Handle Error
-					
+					NSLog(@"Core Data Error %@", error);
 				}
 			}
 		}
@@ -123,11 +121,11 @@
 	NSDictionary * dateTimes = nil;
 	if (!self.isCancelled)
 	{
-		NSString *eventTimeString = [self.event objectForKey:@"StartDate"];
-		NSDate *eventDateTime = [self.formatter dateFromString:eventTimeString];
-		NSString *eventDay = [self.dayFormatter stringFromDate:eventDateTime];
-		NSString *eventDate = [self.dateFormatter stringFromDate:eventDateTime];
-		NSString *eventTime = [self.timeFormatter stringFromDate:eventDateTime];
+		NSString	*	eventTimeString	=	[self.event objectForKey:@"StartDate"];
+		NSDate		*	eventDateTime	=	[self.formatter dateFromString:eventTimeString];
+		NSString	*	eventDay		=	[self.dayFormatter stringFromDate:eventDateTime];
+		NSString	*	eventDate		=	[self.dateFormatter stringFromDate:eventDateTime];
+		NSString	*	eventTime		=	[self.timeFormatter stringFromDate:eventDateTime];
 		if (eventDateTime &&
 			eventDay &&
 			eventDate &&
@@ -148,7 +146,7 @@
 		}
 		else
 		{
-			[[ESLogger sharedESLogger] log:@"Date Formatting Failed"];
+			ESLog(@"Date Formatting Failed");
 		}
 	}
 	return dateTimes;

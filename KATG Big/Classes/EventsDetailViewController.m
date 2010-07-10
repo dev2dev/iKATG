@@ -22,7 +22,6 @@
 #import "ModalWebViewController.h"
 #import "NSString+Regex.h"
 #import "Event.h"
-//#import <iAd/iAd.h>
 
 @implementation EventsDetailViewController
 @synthesize webView;
@@ -31,7 +30,6 @@
 @synthesize dateLabel;
 @synthesize timeLabel;
 @synthesize event;
-//@synthesize adBanner;
 
 - (void)viewDidLoad 
 {

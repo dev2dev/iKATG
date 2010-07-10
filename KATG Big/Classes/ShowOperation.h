@@ -21,10 +21,12 @@
 @property (nonatomic, assign) id<ShowOperationDelegate> delegate;
 @property (nonatomic, copy)   NSArray * shows;
 
-- (id)initWithShows:(NSArray *)shws;
+- (id)initWithShows:(NSArray *)shows;
 
 @end
 
 @protocol ShowOperationDelegate
 - (NSManagedObjectContext *)managedObjectContext;
+- (void)showOperationDidFinishSuccesfully:(ShowOperation *)op;
+- (void)showOperationDidFail;
 @end

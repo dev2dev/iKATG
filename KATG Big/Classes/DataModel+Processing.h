@@ -20,10 +20,13 @@
 
 #import "DataModel.h"
 #import "EventOperation.h"
+#import "ShowOperation.h"
 
-@interface DataModel (Processing) <EventOperationDelegate>
+@interface DataModel (Processing) 
+<EventOperationDelegate, ShowOperationDelegate>
 
 - (void)fetchEvents;
-- (NSArray *)removeDuplicates:(NSMutableArray *)array;
+- (NSArray *)removeEventDuplicates:(NSMutableArray *)array;
+- (void)fetchShows;
 
 @end

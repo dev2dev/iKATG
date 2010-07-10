@@ -30,66 +30,67 @@
 	//
 	//  Data Model
 	//
-	DataModel       *model;
+	DataModel			*	model;
 	//
 	//  Feedback
 	//
-	UIView          *feedbackView;
-	RoundedTextField *nameField;
-	RoundedTextField *locationField;
-	RoundedTextView *commentView;
-	RoundedButton   *submitButton;
+	UIView				*	feedbackView;
+	RoundedTextField	*	nameField;
+	RoundedTextField	*	locationField;
+	RoundedTextView		*	commentView;
+	RoundedButton		*	submitButton;
 	//
 	//  Audio Playback
 	//
-	UIButton		 *audioButton;
-	AudioStreamer    *streamer;
+	UIButton			*	audioButton;
+	AudioStreamer		*	streamer;
 	//
 	//  Volume Slider
 	//
-	MPVolumeView     *volumeView;
+	MPVolumeView		*	volumeView;
 	//
 	//  Countdown to next live show
 	//
-	UILabel          *nextLiveShowLabel;
-	NSInteger        timeSince;
+	UILabel				*	nextLiveShowLabel;
 	//
 	//  
 	//
-	UILabel          *liveShowStatusLabel;
+	BOOL					_live;
+	UILabel				*	liveShowStatusLabel;
 	//
 	//
 	//
-	UILabel          *guestLabel;
+	UILabel				*	guestLabel;
 }
 //
 //  Feedback
 //
-@property (nonatomic, retain) IBOutlet UIView          *feedbackView;
-@property (nonatomic, retain) IBOutlet RoundedTextField *nameField;
-@property (nonatomic, retain) IBOutlet RoundedTextField *locationField;
-@property (nonatomic, retain) IBOutlet RoundedTextView *commentView;
-@property (nonatomic, retain) IBOutlet RoundedButton   *submitButton;
+@property (nonatomic, retain) IBOutlet UIView			*	feedbackView;
+@property (nonatomic, retain) IBOutlet RoundedTextField	*	nameField;
+@property (nonatomic, retain) IBOutlet RoundedTextField	*	locationField;
+@property (nonatomic, retain) IBOutlet RoundedTextView	*	commentView;
+@property (nonatomic, retain) IBOutlet RoundedButton	*	submitButton;
 //
 //
 //
-@property (nonatomic, retain) IBOutlet UIButton        *audioButton;
+@property (nonatomic, retain) IBOutlet UIButton			*	audioButton;
 //
 //
 //
-@property (nonatomic, retain) IBOutlet MPVolumeView    *volumeView;
+@property (nonatomic, retain) IBOutlet MPVolumeView		*	volumeView;
 //
 //
 //
-@property (nonatomic, retain) IBOutlet UILabel         *nextLiveShowLabel;
+@property (nonatomic, retain) IBOutlet UILabel			*	nextLiveShowLabel;
 //
 //
 //
-@property (nonatomic, retain) IBOutlet UILabel         *liveShowStatusLabel;
+@property (nonatomic, assign, getter=isLive) BOOL			live;
+@property (nonatomic, retain) IBOutlet	UILabel			*	liveShowStatusLabel;
 //
 //
 //
-@property (nonatomic, retain) IBOutlet UILabel         *guestLabel;
+@property (nonatomic, retain) IBOutlet UILabel			*	guestLabel;
 
 
 - (IBAction)submitButtonPressed:(id)sender;

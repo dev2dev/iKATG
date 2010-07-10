@@ -25,7 +25,7 @@
 	model = [DataModel sharedDataModel];
 	[model addDelegate:self];
 	
-	//[model fetchEvents];
+	[model fetchEvents];
 }
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation 
 {
@@ -53,13 +53,14 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-    static NSString *CellIdentifier = @"EventTableCell";
-    static NSString *CellNib = @"EventTableCellView";
+    static NSString	*	CellIdentifier	=	@"EventTableCell";
+    static NSString	*	CellNibName		=	@"EventTableCellView";
 	
     EventTableCellView *cell = (EventTableCellView *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:CellNib owner:self options:nil];
-        cell = (EventTableCellView *)[nib objectAtIndex:0];
+		UINib	*	CellNib		=	[UINib nibWithNibName:CellNibName bundle:nil];
+        NSArray	*	contents	=	[CellNib instantiateWithOwner:self options:nil];
+		cell = (EventTableCellView *)[contents objectAtIndex:0];
 		cell.layer.cornerRadius = 15;
     }
 	
@@ -68,11 +69,10 @@
 	[[cell eventDateLabel] setText:[[eventsList objectAtIndex:indexPath.row] Date]];
 	[[cell eventTimeLabel] setText:[[eventsList objectAtIndex:indexPath.row] Time]];
 	
-	if ([[[eventsList objectAtIndex:indexPath.row] ShowType] boolValue]) {
+	if ([[[eventsList objectAtIndex:indexPath.row] ShowType] boolValue])
 		[[cell eventTypeImageView] setImage:[UIImage imageNamed:@"LiveShowIconTrans.png"]];
-	} else {
+	else
 		[[cell eventTypeImageView] setImage:[UIImage imageNamed:@"EventIconTrans.png"]];
-	}
 	
     return cell;
 }

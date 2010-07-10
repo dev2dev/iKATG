@@ -7,15 +7,15 @@
 //
 
 #import "EventsDetailViewControlleriPhone.h"
-#import "ModalWebViewController.h"
+#import "ModalWebViewControlleriPhone.h"
 
 @implementation EventsDetailViewControlleriPhone
 
 - (void)modalWebViewController:(NSURLRequest *)request
 {
-	ModalWebViewController *modalWebViewController = 
-	[[ModalWebViewController alloc] initWithNibName:@"ModalWebViewiPhone" 
-											 bundle:nil];
+	ModalWebViewControlleriPhone *modalWebViewController = 
+	[[ModalWebViewControlleriPhone alloc] initWithNibName:@"ModalWebViewiPhone" 
+												   bundle:nil];
 	[modalWebViewController setRequest:request];
 	[modalWebViewController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
 	[self presentModalViewController:modalWebViewController 
