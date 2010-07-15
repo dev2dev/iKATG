@@ -13,9 +13,10 @@
 @interface EventsTableViewControlleriPhone : UITableViewController 
 <DataModelDelegate, ADBannerViewDelegate>
 {
-	DataModel *model;
-	NSArray *eventsList;
+	DataModel		*	model;
+	NSArray			*	eventsList;
+	ADBannerView	*	adView;
 }
-@property (nonatomic, retain) NSArray *eventsList;
+@property (nonatomic, retain) NSArray			*	eventsList;
 
 @end

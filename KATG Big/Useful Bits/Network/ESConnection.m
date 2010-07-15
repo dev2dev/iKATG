@@ -39,14 +39,15 @@
 			[aData release];
 			while(![self finished]) 
 			{
+				// Delegate delegate is clumsy, needs work
 				NSOperation *op = [delegate delegate];
 				BOOL cancelled = [op isCancelled];
-				if (cancelled && [op isKindOfClass:NSClassFromString(@"ImageUploadOperation")])
+				if (cancelled)
 				{
 					[[self connection] cancel];
 					[self setFinished:YES];
 					[self setData:nil]; // replace this with error xml
-					NSLog(@"connection %@ canceled", [self connectionID]);
+					//NSLog(@"connection %@ canceled", [self connectionID]);
 				}
 				else {
 					//NSLog(@"connection %@", [self connectionID]);
@@ -77,43 +78,69 @@
 			[aData release];
 			while(![self finished]) 
 			{
+				// Delegate delegate is clumsy, needs work
+				NSOperation *op = [delegate delegate];
+				BOOL cancelled = [op isCancelled];
+				if (cancelled)
+				{
+					[[self connection] cancel];
+					[self setFinished:YES];
+					[self setData:nil]; // replace this with error xml
+					//NSLog(@"connection %@ canceled", [self connectionID]);
+				}
+				else {
+					//NSLog(@"connection %@", [self connectionID]);
+				}
 				[[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
 			}
 		}
 	}
 	return self;
 }
-- (NSData *)initWithRequest:(NSURLRequest *)aRequest 
-			   connectionID:(NSString *)aConnectionID 
-				   response:(NSURLResponse **)aResponse 
-					  error:(NSError **)anError
-{
-	if (self = [super init])
-	{
-		[self setConnectionID:aConnectionID];
-		NSURLConnection *aConnection = 
-		[[NSURLConnection alloc] 
-		 initWithRequest:aRequest 
-		 delegate:self];
-		if (aConnection)
-		{
-			[self setConnection:aConnection];
-			[aConnection release];
-			NSMutableData *aData = 
-			[[NSMutableData alloc] init];
-			[self setData:aData];
-			[aData release];
-			while(![self finished]) 
-			{
-				[[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
-			}
-		}
-		// Should add a null check for these pointers
-		*anError = [self error];
-		*aResponse = [self response];
-	}
-	return [[self data] retain];
-}
+//- (NSData *)initWithRequest:(NSURLRequest *)aRequest 
+//			   connectionID:(NSString *)aConnectionID 
+//				   response:(NSURLResponse **)aResponse 
+//					  error:(NSError **)anError
+//{
+//	if (self = [super init])
+//	{
+//		[self setConnectionID:aConnectionID];
+//		NSURLConnection *aConnection = 
+//		[[NSURLConnection alloc] 
+//		 initWithRequest:aRequest 
+//		 delegate:self];
+//		if (aConnection)
+//		{
+//			[self setConnection:aConnection];
+//			[aConnection release];
+//			NSMutableData *aData = 
+//			[[NSMutableData alloc] init];
+//			[self setData:aData];
+//			[aData release];
+//			while(![self finished]) 
+//			{
+//				// Delegate delegate is clumsy, needs work
+//				NSOperation *op = [delegate delegate];
+//				BOOL cancelled = [op isCancelled];
+//				if (cancelled)
+//				{
+//					[[self connection] cancel];
+//					[self setFinished:YES];
+//					[self setData:nil]; // replace this with error xml
+//					//NSLog(@"connection %@ canceled", [self connectionID]);
+//				}
+//				else {
+//					//NSLog(@"connection %@", [self connectionID]);
+//				}
+//				[[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+//			}
+//		}
+//		// Should add a null check for these pointers
+//		*anError = [self error];
+//		*aResponse = [self response];
+//	}
+//	return [[self data] retain];
+//}
 - (void)dealloc
 {
 	[_connection release];

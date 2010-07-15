@@ -37,11 +37,130 @@
 	// Use data formatters to create localized event
 	// strings and store them in core data store
 	//
-	//
-	// Since they're running serially then
-	// maybe jusr one event operation would be more
-	// efficient to loop through all events
-	//
+#ifdef __IPHONE_4_0
+	if (entries && entries.count > 0)
+	{
+		BOOL (^futureTest)(NSDate *date);
+		futureTest	=	^ (NSDate *date) {
+			NSInteger	timeSince	=	[date timeIntervalSinceNow];
+			NSInteger	threshHold	=	-(60/*Seconds*/ * 60 /*Minutes*/ * 12 /*Hours*/);
+			BOOL		inFuture	=	(timeSince > threshHold);
+			return inFuture;
+		};
+		NSDictionary * (^dateFormatters)(NSDictionary *event);
+		dateFormatters	=	^ (NSDictionary *event) {
+			NSDictionary	*	dateTimes = nil;
+			NSString		*	eventTimeString	=	[event objectForKey:@"StartDate"];
+			NSDate			*	eventDateTime	=	[formatter dateFromString:eventTimeString];
+			NSString		*	eventDay		=	[dayFormatter stringFromDate:eventDateTime];
+			NSString		*	eventDate		=	[dateFormatter stringFromDate:eventDateTime];
+			NSString		*	eventTime		=	[timeFormatter stringFromDate:eventDateTime];
+			if (eventDateTime &&
+				eventDay &&
+				eventDate &&
+				eventTime)
+			{
+				dateTimes =
+				[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:
+													 eventDateTime, 
+													 eventDay, 
+													 eventDate, 
+													 eventTime, nil] 
+											forKeys:[NSArray arrayWithObjects:
+													 @"DateTime",
+													 @"Day",
+													 @"Date",
+													 @"Time", nil]];
+			}
+			else
+			{
+				ESLog(@"Date Formatting Failed");
+			}
+			return dateTimes;
+		};
+		NSNumber * (^detectShowType)(NSDictionary *event);
+		detectShowType	=	^(NSDictionary *event) {
+			if ([[event objectForKey:@"Title"] rangeOfString:@"Live Show"].location != NSNotFound)
+				return [NSNumber numberWithBool:YES];
+			else
+				return [NSNumber numberWithBool:NO];
+		};
+		BOOL (^hasEvent)(NSFetchRequest *request, NSString *eventID);
+		hasEvent		=	^(NSFetchRequest *request, NSString *eventID) {
+			if (eventID == nil)
+				return NO;
+			NSPredicate	*	predicate		=
+			[NSPredicate predicateWithFormat:@"EventID like %@", eventID];
+			[request setPredicate:predicate];
+			NSError		*	error;
+			NSArray		*	fetchResults	=
+			[managedObjectContext executeFetchRequest:request 
+												error:&error];
+			if (fetchResults == nil)
+			{	// Handle Error
+				ESLog(@"Core Data Error %@", error);
+			}
+			if (fetchResults.count > 0)
+				return YES;
+			return NO;
+		};
+		
+		NSFetchRequest		*	request	=	[[NSFetchRequest alloc] init];
+		NSEntityDescription	*	entity	=
+		[NSEntityDescription entityForName:@"Event" 
+					inManagedObjectContext:managedObjectContext];
+		[request setEntity:entity];
+		[request setFetchLimit:1];
+		
+		[coreDataOperationQueue addOperationWithBlock:^(void) {
+			for (NSDictionary *event in entries)
+			{
+				NSDictionary*	dateTimes		=	dateFormatters(event);
+				NSDate		*	dateTime		=	[dateTimes objectForKey:@"DateTime"];
+				NSString	*	title			=	[event objectForKey:@"Title"];
+				NSString	*	eventID			=	[event objectForKey:@"EventId"];
+				
+				if (futureTest(dateTime) &&
+					title != nil &&
+					!hasEvent(request, eventID))
+				{
+					Event		*	managedEvent	=
+					(Event *)[NSEntityDescription insertNewObjectForEntityForName:@"Event" 
+														   inManagedObjectContext:managedObjectContext];
+					[managedEvent setTitle:title];
+					[managedEvent setEventID:eventID];
+					[managedEvent setDateTime:dateTime];
+					
+					NSString	*	details		=	[event objectForKey:@"Details"];
+					if (!details || [details isEqualToString:@"NULL"]) details	=	@"";
+					[managedEvent setDetails:details];
+					
+					NSString	*	day			=	[dateTimes objectForKey:@"Day"];
+					if (!day)		day			=	@"";
+					[managedEvent setDay:day];
+					
+					NSString	*	date		=	[dateTimes objectForKey:@"Date"];
+					if (!date)		date		=	@"";
+					[managedEvent setDate:date];
+					
+					NSString	*	time		=	[dateTimes objectForKey:@"Time"];
+					if (!time)		time		=	@"";
+					[managedEvent setTime:time];
+					
+					NSNumber	*	showType	=	detectShowType(event);
+					if (!showType)	showType	=	[NSNumber numberWithBool:YES];
+					[managedEvent setShowType:showType];
+					
+					NSError *error;
+					if (![managedObjectContext save:&error])
+					{	// Handle Error
+						NSLog(@"Core Data Error %@", error);
+					}
+				}
+			}
+		}];
+	}
+#elif __IPHONE_3_2
 	if (entries && entries.count > 0)
 	{
 		eventCount += entries.count;
@@ -65,6 +184,7 @@
 			[op release];
 		}
 	}
+#endif
 }
 - (void)eventOperationDidFinishSuccesfully:(EventOperation *)op;
 {
@@ -233,52 +353,144 @@
 }
 /******************************************************************************/
 #pragma mark -
-#pragma mark Shows
+#pragma mark Show Archives
 #pragma mark -
 /******************************************************************************/
 - (void)procesShowsList:(NSArray *)entries
 {
+	NSFetchRequest		*	request	=	[[NSFetchRequest alloc] init];
+	NSEntityDescription	*	entity	=
+	[NSEntityDescription entityForName:@"Show" 
+				inManagedObjectContext:managedObjectContext];
+	[request setEntity:entity];
+	[request setFetchLimit:1];
+	
 	if (entries && entries.count > 0)
 	{
-		ShowOperation	*	op	=
-		[[ShowOperation alloc] initWithShows:entries];
-		op.delegate = self;
-		[coreDataOperationQueue addOperation:op];
-		[op release];
+		[coreDataOperationQueue addOperationWithBlock: ^(void) {
+			for (NSDictionary *show in entries)
+			{
+				NSString	*	ID				=	[show objectForKey:@"I"];
+				
+				if ([self hasShow:request forID:[NSNumber numberWithInt:[ID intValue]]])
+					continue;
+				
+				Show	*	managedShow = 
+				(Show *)[NSEntityDescription insertNewObjectForEntityForName:@"Show" 
+													  inManagedObjectContext:self.managedObjectContext];
+				
+				NSString	*	guests			=	[show objectForKey:@"G"];
+				NSString	*	number			=	[show objectForKey:@"N"];
+				NSString	*	pictureCount	=	[show objectForKey:@"P"];
+				NSString	*	hasShowNotes	=	[show objectForKey:@"SN"];
+				NSString	*	title			=	[show objectForKey:@"T"];
+				NSString	*	isKATGTV		=	[show objectForKey:@"TV"];
+				
+				if (guests)
+				{
+					NSArray	*	guestArray	=	[guests componentsSeparatedByString:@","];
+					if (guestArray)
+					{
+						for (NSString *guest in guestArray)
+						{
+							Guest	*	managedGuest	=
+							(Guest *)[NSEntityDescription insertNewObjectForEntityForName:@"Guest" 
+																   inManagedObjectContext:self.managedObjectContext];
+							
+							[managedGuest addShowObject:managedShow];
+							
+							[managedGuest setGuest:guest];
+							
+							[managedShow addGuestsObject:managedGuest];
+						}
+					}
+				}
+				if (ID)
+				{
+					NSInteger	idInt	=	[ID intValue];
+					[managedShow setID:[NSNumber numberWithInt:idInt]];
+				}
+				if (number)
+				{
+					NSInteger	numInt	=	[number intValue];
+					[managedShow setNumber:[NSNumber numberWithInt:numInt]];
+				}
+				if (pictureCount)
+				{
+					NSInteger	picCnt	=	[pictureCount intValue];
+					[managedShow setPictureCount:[NSNumber numberWithInt:picCnt]];
+				}
+				if (hasShowNotes)
+				{
+					BOOL	hasShwNts	=	[hasShowNotes boolValue];
+					[managedShow setHasNotes:[NSNumber numberWithBool:hasShwNts]];
+				}
+				if (title)
+				{
+					[managedShow setTitle:title];
+				}
+				if (isKATGTV)
+				{
+					BOOL	isTV	=	[isKATGTV boolValue];
+					[managedShow setTV:[NSNumber numberWithBool:isTV]];
+				}
+				
+				NSError	*	error;
+				if (![self.managedObjectContext save:&error])
+				{	// Handle Error
+					ESLog(@"Core Data Error %@", error);
+				}
+			}
+			[self fetchShows];
+		}];
 	}
+	[request release];
 }
-- (void)showOperationDidFinishSuccesfully:(ShowOperation *)op
+- (BOOL)hasShow:(NSFetchRequest *)request forID:(NSNumber *)ID
 {
-	[self fetchShows];
-}
-- (void)showOperationDidFail
-{
-	
+	NSPredicate	*	predicate	=
+	[NSPredicate predicateWithFormat:@"ID == %@", ID];
+	[request setPredicate:predicate];
+	NSError		*	error;
+	NSArray		*	fetchResults	=
+	[managedObjectContext executeFetchRequest:request 
+										 error:&error];
+	if (fetchResults == nil)
+	{	// Handle Error
+		NSLog(@"%@", error);
+	}
+	if (fetchResults.count > 0)
+		return YES;
+	return NO;
 }
 - (void)fetchShows
 {
-	NSFetchRequest *request = [[NSFetchRequest alloc] init];
-	NSEntityDescription *entity = 
+	NSFetchRequest		*	request	=	[[NSFetchRequest alloc] init];
+	NSEntityDescription	*	entity	=
 	[NSEntityDescription entityForName:@"Show" 
 				inManagedObjectContext:managedObjectContext];
 	[request setEntity:entity];
 	
-	NSSortDescriptor *sortDescriptor = 
-	[[NSSortDescriptor alloc] initWithKey:@"Number" ascending:YES];
-	NSArray *sortDescriptors = 
+	NSSortDescriptor	*	sortDescriptor	=
+	[[NSSortDescriptor alloc] initWithKey:@"ID" ascending:NO];
+	NSArray				*	sortDescriptors	=
 	[[NSArray alloc] initWithObjects:sortDescriptor, nil];
 	[request setSortDescriptors:sortDescriptors];
 	[sortDescriptors release];
 	[sortDescriptor release];
 	
-	NSError *error;
-	NSMutableArray *fetchResults = 
+	NSError				*	error;
+	NSMutableArray		*	fetchResults	=
 	[[managedObjectContext executeFetchRequest:request 
 										 error:&error] mutableCopy];
 	if (fetchResults == nil)
 	{	// Handle Error
 		NSLog(@"%@", error);
 	}
+	
+	[self performSelectorOnMainThread:@selector(notifyShows:) 
+						   withObject:(NSArray *)fetchResults
+						waitUntilDone:NO];
 	
 	[fetchResults release];
 	[request release];

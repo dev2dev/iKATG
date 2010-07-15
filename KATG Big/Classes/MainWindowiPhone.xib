@@ -13,7 +13,6 @@
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<integer value="7"/>
-			<integer value="2"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -42,11 +41,10 @@
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 			<object class="IBUIWindow" id="380026005">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">1316</int>
 				<object class="NSPSMatrix" key="NSFrameMatrix"/>
 				<string key="NSFrameSize">{320, 480}</string>
-				<reference key="NSSuperview"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
 					<bytes key="NSRGB">MC42Mjc0NTA5ODA0IDAuNzQ1MDk4MDM5MiAwLjY2NjY2NjY2NjcAA</bytes>
@@ -118,7 +116,7 @@
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							<object class="NSColor" key="IBUITintColor">
 								<int key="NSColorSpace">1</int>
-								<bytes key="NSRGB">MC42Mjc0NTA5ODA0IDAuNzQ1MDk4MDM5MiAwLjYyNzQ1MDk4MDQAA</bytes>
+								<bytes key="NSRGB">MC4yMzUyOTQxMTc2IDAuNTQ5MDE5NjA3OCAwLjE5NjA3ODQzMTQAA</bytes>
 							</object>
 						</object>
 						<object class="NSMutableArray" key="IBUIViewControllers">
@@ -166,7 +164,7 @@
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							<object class="NSColor" key="IBUITintColor">
 								<int key="NSColorSpace">1</int>
-								<bytes key="NSRGB">MC42Mjc0NTA5ODA0IDAuNzQ1MDk4MDM5MiAwLjY2NjY2NjY2NjcAA</bytes>
+								<bytes key="NSRGB">MC4yMzUyOTQxMTc2IDAuNTQ5MDE5NjA3OCAwLjE5NjA3ODQzMTQAA</bytes>
 							</object>
 						</object>
 						<object class="NSMutableArray" key="IBUIViewControllers">
@@ -436,7 +434,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 						</object>
 					</object>
-					<string>{{43, 40}, {320, 480}}</string>
+					<string>{{52, 11}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<integer value="1"/>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -445,7 +443,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>ArchiveViewController</string>
+					<string>ArchiveViewControlleriPhone</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -480,11 +478,27 @@
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<object class="IBPartialClassDescription">
-					<string key="className">ArchiveViewController</string>
+					<string key="className">ArchiveTableViewController</string>
 					<string key="superclassName">UITableViewController</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">Classes/ArchiveViewController.h</string>
+						<string key="minorKey">Classes/ArchiveTableViewController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">ArchiveTableViewController</string>
+					<string key="superclassName">UITableViewController</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBUserSource</string>
+						<string key="minorKey"/>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">ArchiveViewControlleriPhone</string>
+					<string key="superclassName">ArchiveTableViewController</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">Classes/ArchiveViewControlleriPhone.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -680,7 +694,7 @@
 					<string key="superclassName">UIButton</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">UsefulBits/Subclasses/RoundedButton.h</string>
+						<string key="minorKey">Useful Bits/Subclasses/RoundedButton.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -688,7 +702,7 @@
 					<string key="superclassName">UITextField</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">UsefulBits/Subclasses/RoundedTextField.h</string>
+						<string key="minorKey">Useful Bits/Subclasses/RoundedTextField.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -696,19 +710,19 @@
 					<string key="superclassName">UITextView</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">UsefulBits/Subclasses/RoundedTextView.h</string>
+						<string key="minorKey">Useful Bits/Subclasses/RoundedTextView.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">UIView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier" id="344339961">
+					<object class="IBClassDescriptionSource" key="sourceIdentifier" id="775442582">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">UsefulBits/Categories/UIViewController+Nib.h</string>
+						<string key="minorKey">Useful Bits/Categories/UIViewController+Nib.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">UIViewController</string>
-					<reference key="sourceIdentifier" ref="344339961"/>
+					<reference key="sourceIdentifier" ref="775442582"/>
 				</object>
 			</object>
 			<object class="NSMutableArray" key="referencedPartialClassDescriptionsV3.2+">

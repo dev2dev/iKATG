@@ -22,7 +22,10 @@
 
 @interface OnAirViewControlleriPhone : OnAirViewController 
 {
-	BOOL resigned;
+	BOOL	resigned;
+	CGRect	initialFeedbackViewFrame;
+	CGRect	initialCommentViewFrame;
+	CGRect	initialSubmitButtonFrame;
 }
 
 @property (readwrite, getter=isResigned) BOOL resigned;

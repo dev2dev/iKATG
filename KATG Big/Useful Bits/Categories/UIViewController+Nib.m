@@ -9,25 +9,47 @@
 #import "UIViewController+Nib.h"
 
 @implementation UIViewController (Nib)
-+ (id)loadFromNibName:(NSString *)nibNameOrNil owner:(id)owner
++ (id)loadFromNibName:(NSString *)nibNameOrNil 
+				owner:(id)ownerOrNil
 {
-	NSArray *nib = 
-	[[NSBundle mainBundle] 
-	 loadNibNamed:nibNameOrNil 
-	 owner:owner 
-	 options:nil];
+	return [self loadFromNibName:nibNameOrNil owner:ownerOrNil bundle:nil options:nil];
+}
++ (id)loadFromNibName:(NSString *)nibNameOrNil 
+				owner:(id)ownerOrNil 
+			   bundle:(NSBundle *)bundleOrNil 
+			  options:(NSDictionary *)optionsOrNil
+{
+#ifdef __IPHONE_4_0
+	UINib	*	NIB		=	[UINib nibWithNibName:nibNameOrNil bundle:bundleOrNil];
+	NSArray	*	nib		=	[NIB instantiateWithOwner:ownerOrNil options:optionsOrNil];
+#elif __IPHONE_3_2
+	NSArray	*	nib		=	[[NSBundle mainBundle] loadNibNamed:nibNameOrNil 
+												   owner:ownerOrNil 
+												 options:nil];
+#endif
 	return [nib objectAtIndex:0];
 }
 @end
 
 @implementation UIView (Nib)
-+ (id)loadFromNibName:(NSString *)nibNameOrNil owner:(id)owner
++ (id)loadFromNibName:(NSString *)nibNameOrNil 
+				owner:(id)ownerOrNil
 {
-	NSArray *nib = 
-	[[NSBundle mainBundle] 
-	 loadNibNamed:nibNameOrNil 
-	 owner:owner 
-	 options:nil];
+	return [self loadFromNibName:nibNameOrNil owner:ownerOrNil bundle:nil options:nil];
+}
++ (id)loadFromNibName:(NSString *)nibNameOrNil 
+				owner:(id)ownerOrNil 
+			   bundle:(NSBundle *)bundleOrNil 
+			  options:(NSDictionary *)optionsOrNil
+{
+#ifdef __IPHONE_4_0
+	UINib	*	NIB		=	[UINib nibWithNibName:nibNameOrNil bundle:bundleOrNil];
+	NSArray	*	nib		=	[NIB instantiateWithOwner:ownerOrNil options:optionsOrNil];
+#elif __IPHONE_3_2
+	NSArray	*	nib		=	[[NSBundle mainBundle] loadNibNamed:nibNameOrNil 
+												   owner:ownerOrNil 
+												 options:nil];
+#endif
 	return [nib objectAtIndex:0];
 }
 @end

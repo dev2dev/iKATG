@@ -9,9 +9,19 @@
 #import <UIKit/UIKit.h>
 
 @interface UIViewController (Nib)
-+ (id)loadFromNibName:(NSString *)nibNameOrNil owner:(id)owner;
++ (id)loadFromNibName:(NSString *)nibNameOrNil 
+				owner:(id)ownerOrNil;
++ (id)loadFromNibName:(NSString *)nibNameOrNil 
+				owner:(id)ownerOrNil 
+			   bundle:(NSBundle *)bundleOrNil 
+			  options:(NSDictionary *)optionsOrNil;
 @end
 
 @interface UIView (Nib)
-+ (id)loadFromNibName:(NSString *)nibNameOrNil owner:(id)owner;
++ (id)loadFromNibName:(NSString *)nibNameOrNil 
+				owner:(id)ownerOrNil;
++ (id)loadFromNibName:(NSString *)nibNameOrNil 
+				owner:(id)ownerOrNil 
+			   bundle:(NSBundle *)bundleOrNil 
+			  options:(NSDictionary *)optionsOrNil;
 @end

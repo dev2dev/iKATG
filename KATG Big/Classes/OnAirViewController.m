@@ -63,7 +63,7 @@
 	 selector:@selector(writeDefaults) 
 	 name:UIApplicationDidEnterBackgroundNotification 
 	 object:nil];
-#elif #ifdef __IPHONE_3_2
+#elif __IPHONE_3_2
 	[[NSNotificationCenter defaultCenter] 
 	 addObserver:self
 	 selector:@selector(writeDefaults) 

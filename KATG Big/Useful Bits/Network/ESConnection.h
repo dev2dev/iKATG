@@ -64,9 +64,9 @@ static NSString *const ESConnectionProgressNotification = @"ESConnectionProgress
 - (id)initWithRequest:(NSURLRequest *)aRequest 
 		 connectionID:(NSString *)aConnectionID;
 
-- (NSData *)initWithRequest:(NSURLRequest *)aRequest 
-			   connectionID:(NSString *)aConnectionID 
-				   response:(NSURLResponse **)aResponse 
-					  error:(NSError **)anError;
+//- (NSData *)initWithRequest:(NSURLRequest *)aRequest 
+//			   connectionID:(NSString *)aConnectionID 
+//				   response:(NSURLResponse **)aResponse 
+//					  error:(NSError **)anError;
 
 @end

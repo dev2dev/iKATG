@@ -24,4 +24,5 @@
 @optional
 - (void)events:(NSArray *)events;
 - (void)liveShowStatus:(BOOL)live;
+- (void)shows:(NSArray *)shows;
 @end

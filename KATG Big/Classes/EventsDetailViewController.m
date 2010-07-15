@@ -38,7 +38,7 @@
 }
 - (void)makePage
 {
-	NSString *htmlHeader = @"<html><head><style>\nbody \n{\npadding: 0px;\nfont-family: Helvetica; \nfont-size: 18px;\nmargin: 0;\n}\n</style></head><body>";
+	NSString *htmlHeader = @"<html>\n<head>\n<style>\nbody {\npadding: 0px;\nfont-family: Helvetica; \nfont-size: 17px;\ncolor: #fff;\nmargin: 0;\n}\na:link {\ncolor: #ccc;\ntext-decoration: underline;\n}\na:visited {\ncolor: #ccc;\ntext-decoration: underline;\n}\n</style>\n</head>\n<body>\n";
 	NSString *htmlFooter = @"</body></html>";
 	NSString *htmlBody = [event Details];
 	NSString *regex = @"style=\"[^\"]*\"";

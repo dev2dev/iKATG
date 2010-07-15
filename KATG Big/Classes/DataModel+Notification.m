@@ -94,5 +94,41 @@
 							waitUntilDone:NO];
 	}
 }
+/******************************************************************************/
+#pragma mark -
+#pragma mark Show Archives
+#pragma mark -
+/******************************************************************************/
+- (void)notifyShows:(NSArray *)shows
+{
+	if ([NSThread isMainThread])
+	{
+		if (notifier)
+		{
+			//[[NSNotificationCenter defaultCenter] 
+			// postNotificationName: 
+			// object:];
+		}
+		NSMutableArray *dlgts = [[NSMutableArray alloc] init];
+		for (id delegate in delegates)
+		{
+			if ([(NSObject *)delegate respondsToSelector:@selector(shows:)])
+			{
+				[dlgts addObject:delegate];
+			}
+		}
+		for (id delegate in dlgts)
+		{
+			[delegate shows:shows];
+		}
+		[dlgts release];
+	}
+	else
+	{
+		[self performSelectorOnMainThread:@selector(notifyShows:) 
+							   withObject:shows 
+							waitUntilDone:NO];
+	}
+}
 
 @end

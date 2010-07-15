@@ -20,12 +20,34 @@
 
 #import "OnAirViewControlleriPhone.h"
 
+@interface OnAirViewControlleriPhone ()
+- (void)registerNotifications;
+- (void)registerKeyboardNotifications;
+@end
+
 @implementation OnAirViewControlleriPhone
 @synthesize resigned;
 
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
+	[self registerNotifications];	
+	
+	initialFeedbackViewFrame	=	CGRectNull;
+	initialCommentViewFrame		=	CGRectNull;
+	initialSubmitButtonFrame	=	CGRectNull;
+}
+- (void)viewDidAppear:(BOOL)animated
+{
+	[super viewDidDisappear:animated];
+	[self registerKeyboardNotifications];
+}
+- (void)viewWillDisappear:(BOOL)animated
+{
+	
+}
+- (void)registerNotifications
+{
 	[[NSNotificationCenter defaultCenter] 
 	 addObserver:self 
 	 selector:@selector(resign:) 
@@ -45,11 +67,80 @@
 {
 	self.resigned = NO;
 }
+- (void)registerKeyboardNotifications
+{
+	[[NSNotificationCenter defaultCenter] 
+	 addObserver:self 
+	 selector:@selector(keyboardWillShow:) 
+	 name:UIKeyboardWillShowNotification 
+	 object:nil];
+	[[NSNotificationCenter defaultCenter] 
+	 addObserver:self 
+	 selector:@selector(keyboardWillHide:) 
+	 name:UIKeyboardWillHideNotification 
+	 object:nil];
+	[[NSNotificationCenter defaultCenter] 
+	 addObserver:self 
+	 selector:@selector(keyboardDidHide:) 
+	 name:UIKeyboardDidHideNotification 
+	 object:nil];
+}
+- (void)keyboardWillShow:(NSNotification *)note
+{
+	
+}
+- (void)keyboardWillHide:(NSNotification *)note
+{
+	
+}
+- (void)keyboardDidHide:(NSNotification *)note
+{
+	
+}
 - (void)spinButton
 {
 	if (self.isResigned)
 		return;
 	[super spinButton];
+}
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+	[super textViewDidBeginEditing:textView];
+	if (CGRectIsNull(initialFeedbackViewFrame))
+	{
+		initialFeedbackViewFrame	=	[self.feedbackView frame];
+		initialCommentViewFrame		=	[self.commentView frame];
+		initialSubmitButtonFrame	=	[self.submitButton frame];
+	}
+	[UIView beginAnimations:NULL context:NULL];
+	[UIView setAnimationDuration:0.3];
+	if (CGRectEqualToRect(initialFeedbackViewFrame, [self.feedbackView frame]))
+	{
+		CGRect frame			=	[self.feedbackView frame];
+		frame.size.height		=	frame.size.height + 130.0;
+		[self.feedbackView setFrame:frame];
+		
+		frame					=	[self.commentView frame];
+		frame.origin.y			=	frame.origin.y + 40.0;
+		frame.size.height		=	frame.size.height +	90.0;
+		[self.commentView setFrame:frame];
+		
+		frame					=	[self.submitButton frame];
+		frame.origin.y			=	frame.origin.y + 180.0;
+		frame.size.height		=	frame.size.height + 10.0;
+		[self.submitButton setFrame:frame];
+	}
+	[UIView commitAnimations];
+}
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+	[super textViewDidEndEditing:textView];
+	[UIView beginAnimations:NULL context:NULL];
+	[UIView setAnimationDuration:0.3];
+	[self.feedbackView setFrame:initialFeedbackViewFrame];
+	[self.commentView setFrame:initialCommentViewFrame];
+	[self.submitButton setFrame:initialSubmitButtonFrame];
+	[UIView commitAnimations];
 }
 - (BOOL)textView:(UITextView *)textView 
 shouldChangeTextInRange:(NSRange)range 

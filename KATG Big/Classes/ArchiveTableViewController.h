@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DataModel.h"
 
-@interface ArchiveViewController : UITableViewController 
+@interface ArchiveTableViewController : UITableViewController 
 <DataModelDelegate>
 {
 	DataModel	*	model;

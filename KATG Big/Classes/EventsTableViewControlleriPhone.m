@@ -45,11 +45,14 @@
 // Customize the appearance of table view cells.
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-	ADBannerView *adView = [[ADBannerView alloc] initWithFrame:CGRectZero];
-	adView.requiredContentSizeIdentifiers = [NSSet setWithObject:ADBannerContentSizeIdentifier320x50];
-	adView.currentContentSizeIdentifier = ADBannerContentSizeIdentifier320x50;
-	adView.delegate = self;
-	return [adView autorelease];
+	if (adView == nil)
+	{
+		adView = [[ADBannerView alloc] initWithFrame:CGRectZero];
+		adView.requiredContentSizeIdentifiers = [NSSet setWithObject:ADBannerContentSizeIdentifier320x50];
+		adView.currentContentSizeIdentifier = ADBannerContentSizeIdentifier320x50;
+		adView.delegate = self;
+	}
+	return adView;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
@@ -120,12 +123,12 @@
 - (void)viewDidUnload 
 {
     [model removeDelegate:self];
-	model = nil;
-	[eventsList release];
-	eventsList = nil;
+	self.eventsList = nil;
 }
 - (void)dealloc 
 {
+	[eventsList release];
+	[adView release];
     [super dealloc];
 }
 

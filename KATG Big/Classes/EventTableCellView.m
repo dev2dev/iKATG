@@ -36,14 +36,22 @@
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated 
 {
-    [super setSelected:selected animated:animated];
-	if (selected) 
+	[super setSelected:selected animated:animated];
+	if (selected)
 	{
-		[eventTitleLabel setTextColor:[UIColor whiteColor]];
-	} 
+		[self.eventTitleLabel setTextColor:[UIColor blackColor]];
+		[self.eventTitleLabel setShadowColor:[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:0.5]];\
+		[self.eventDayLabel setTextColor:[UIColor blackColor]];
+		[self.eventDateLabel setTextColor:[UIColor blackColor]];
+		[self.eventTimeLabel setTextColor:[UIColor blackColor]];
+	}
 	else 
 	{
-		[eventTitleLabel setTextColor:[UIColor blackColor]];
+		[self.eventTitleLabel setTextColor:[UIColor whiteColor]];
+		[self.eventTitleLabel setShadowColor:[UIColor colorWithRed:0.25 green:0.25 blue:0.25 alpha:0.5]];
+		[self.eventDayLabel setTextColor:[UIColor whiteColor]];
+		[self.eventDateLabel setTextColor:[UIColor whiteColor]];
+		[self.eventTimeLabel setTextColor:[UIColor whiteColor]];
 	}
 }
 - (void)dealloc 
