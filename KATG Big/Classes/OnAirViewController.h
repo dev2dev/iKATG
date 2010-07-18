@@ -23,7 +23,7 @@
 
 @class MPVolumeView;
 @class AudioStreamer;
-@class RoundedView, RoundedTextView, RoundedButton, RoundedTextField;
+@class RoundedView, RoundedTextView, GradButton, RoundedTextField;
 @interface OnAirViewController : UIViewController
 <UITextViewDelegate, DataModelDelegate>
 {
@@ -38,7 +38,7 @@
 	RoundedTextField	*	nameField;
 	RoundedTextField	*	locationField;
 	RoundedTextView		*	commentView;
-	RoundedButton		*	submitButton;
+	GradButton			*	submitButton;
 	//
 	//  Audio Playback
 	//
@@ -69,7 +69,7 @@
 @property (nonatomic, retain) IBOutlet RoundedTextField	*	nameField;
 @property (nonatomic, retain) IBOutlet RoundedTextField	*	locationField;
 @property (nonatomic, retain) IBOutlet RoundedTextView	*	commentView;
-@property (nonatomic, retain) IBOutlet RoundedButton	*	submitButton;
+@property (nonatomic, retain) IBOutlet GradButton		*	submitButton;
 //
 //
 //

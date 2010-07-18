@@ -51,7 +51,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ESLogger);
 {
 	if ((self = [super init]))
 	{
-		NSString *path = AppDirectoryDocumentsPathAppended(@"LogFile.log");
+		NSString *path = AppDirectoryDocumentsPathAppended(@"Debug.log");
 		if (path)
 			self.logPath = path;
 	}
@@ -69,7 +69,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ESLogger);
 	
 	NSFileHandle *output = [NSFileHandle fileHandleForWritingAtPath:self.logPath];
 	NSInteger size = [output seekToEndOfFile];
-	if (size > 5000000)
+	if (size > 400000)
 	{
 		[output truncateFileAtOffset:0];
 		[output seekToFileOffset:0];

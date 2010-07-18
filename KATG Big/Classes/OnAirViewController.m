@@ -23,9 +23,9 @@
 #import "OnAirViewController+Feedback.h"
 #import "NSString+Regex.h"
 #import "Event.h"
+#import "GradButton.h"
 
 @interface OnAirViewController (Private)
-
 @end
 
 @implementation OnAirViewController

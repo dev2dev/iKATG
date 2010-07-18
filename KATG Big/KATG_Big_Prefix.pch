@@ -7,5 +7,6 @@
 	#import <UIKit/UIKit.h>
 	#import <CoreData/CoreData.h>
 	#import "UtilityFunctions.h"
+	#import "GUIFunctions.h"
 	#import "ESLogger.h"
 #endif

@@ -19,7 +19,7 @@
 //  
 
 #import "RoundedButton.h"
-#import "UIColor+Additions.h"
+//#import "UIColor+Additions.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface RoundedButton (Private)
@@ -58,15 +58,15 @@
 }
 - (void)setup
 {
-	highlightColor = nil;
-	initialBackgroundColor = nil;
-	self.layer.cornerRadius = 10.0;
-	self.layer.borderWidth = 2.0;
-	self.layer.borderColor = 
-	[[UIColor colorWithRed:0.4 
-					green:0.4 
-					 blue:0.4 
-					alpha:0.8] CGColor];
+	highlightColor				=	nil;
+	initialBackgroundColor		=	nil;
+	self.layer.cornerRadius		=	10.0;
+	self.layer.borderWidth		=	2.0;
+	self.layer.masksToBounds	=	YES;
+	self.layer.borderColor		=	[[UIColor colorWithRed:0.2 
+											   green:0.4
+												blue:0.2 
+											   alpha:0.8] CGColor];
 }
 #pragma mark -
 #pragma mark Touch Events

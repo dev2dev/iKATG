@@ -37,7 +37,7 @@ static NSString *urlString = @"http://liveshow.keithandthegirl.com:8004";
 #pragma mark -
 - (void)setupAudioAssets 
 {
-	[self setAudioButtonImage:[UIImage imageNamed:@"playButton.png"]];
+	[self setAudioButtonImage:[UIImage imageNamed:@"Play"]];
 	[self drawVolumeSlider];
 }
 #pragma mark -
@@ -45,68 +45,43 @@ static NSString *urlString = @"http://liveshow.keithandthegirl.com:8004";
 #pragma mark -
 - (void)setAudioButtonImage:(UIImage *)image 
 {
-	[audioButton.layer removeAllAnimations];
+	[self.audioButton.imageView stopAnimating];
 	if (!image)
 	{
-		[audioButton setImage:[UIImage imageNamed:@"playButton.png"] forState:0];
+		[audioButton setImage:[UIImage imageNamed:@"Play"] forState:0];
 	}
 	else
 	{
 		[audioButton setImage:image forState:0];
 		
-		if ([audioButton.currentImage isEqual:[UIImage imageNamed:@"loadButton.png"]])
+		if ([audioButton.currentImage isEqual:[UIImage imageNamed:@"LoadStage0"]])
 		{
-			[self spinButton];
+			[self pulseButton];
 		}
-	}}
-//
-// spinButton
-//
-// Shows the spin button when the audio is loading. This is largely irrelevant
-// now that the audio is loaded from a local file.
-//
-- (void)spinButton
-{
-	[CATransaction begin];
-	[CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
-	CGRect frame = [audioButton frame];
-	audioButton.layer.anchorPoint = CGPointMake(0.5, 0.5);
-	audioButton.layer.position = CGPointMake(frame.origin.x + 0.5 * frame.size.width, frame.origin.y + 0.5 * frame.size.height);
-	[CATransaction commit];
-	
-	[CATransaction begin];
-	[CATransaction setValue:(id)kCFBooleanFalse forKey:kCATransactionDisableActions];
-	[CATransaction setValue:[NSNumber numberWithFloat:2.0] forKey:kCATransactionAnimationDuration];
-	
-	CABasicAnimation *animation;
-	animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
-	animation.fromValue = [NSNumber numberWithFloat:0.0];
-	animation.toValue = [NSNumber numberWithFloat:2 * M_PI];
-	animation.timingFunction = [CAMediaTimingFunction functionWithName: kCAMediaTimingFunctionLinear];
-	animation.delegate = self;
-	[audioButton.layer addAnimation:animation forKey:@"rotationAnimation"];
-	
-	[CATransaction commit];
-}
-
-//
-// animationDidStop:finished:
-//
-// Restarts the spin animation on the button when it ends. Again, this is
-// largely irrelevant now that the audio is loaded from a local file.
-//
-// Parameters:
-//    theAnimation - the animation that rotated the button.
-//    finished - is the animation finised?
-//
-- (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)finished
-{
-	if (finished)
-	{
-		[self spinButton];
 	}
 }
-
+//
+//
+//
+- (void)pulseButton
+{
+	if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive)
+	{
+		if (self.audioButton.imageView.animationImages == nil)
+		{
+			NSArray	*	imageArray	=
+			[[NSArray alloc] initWithObjects:
+			 [UIImage imageNamed:@"LoadStage0"],
+			 [UIImage imageNamed:@"LoadStage1"],
+			 [UIImage imageNamed:@"LoadStage2"],
+			 [UIImage imageNamed:@"LoadStage3"], nil];
+			self.audioButton.imageView.animationImages = imageArray;
+			self.audioButton.imageView.animationDuration = 0.8;
+			[imageArray release];		
+		}
+		[self.audioButton.imageView startAnimating];
+	}
+}
 //
 // buttonPressed:
 //
@@ -119,9 +94,9 @@ static NSString *urlString = @"http://liveshow.keithandthegirl.com:8004";
 //
 - (IBAction)audioButtonPressed:(id)sender
 {
-	if ([audioButton.currentImage isEqual:[UIImage imageNamed:@"playButton.png"]])
+	if ([audioButton.currentImage isEqual:[UIImage imageNamed:@"Play"]])
 	{
-		[self setAudioButtonImage:[UIImage imageNamed:@"loadButton.png"]];
+		[self setAudioButtonImage:[UIImage imageNamed:@"LoadStage0"]];
 		[self createStreamer];
 		[streamer start];
 	}
@@ -140,16 +115,16 @@ static NSString *urlString = @"http://liveshow.keithandthegirl.com:8004";
 {
 	if ([streamer isWaiting])
 	{
-		[self setAudioButtonImage:[UIImage imageNamed:@"loadButton.png"]];
+		[self setAudioButtonImage:[UIImage imageNamed:@"LoadStage0"]];
 	}
 	else if ([streamer isPlaying])
 	{
-		[self setAudioButtonImage:[UIImage imageNamed:@"stopButton.png"]];
+		[self setAudioButtonImage:[UIImage imageNamed:@"Stop"]];
 	}
 	else if ([streamer isIdle])
 	{
 		[self destroyStreamer];
-		[self setAudioButtonImage:[UIImage imageNamed:@"playButton.png"]];
+		[self setAudioButtonImage:[UIImage imageNamed:@"Play"]];
 	}
 }
 //
@@ -211,14 +186,16 @@ static NSString *urlString = @"http://liveshow.keithandthegirl.com:8004";
 			volumeViewSlider = (UISlider *)view;
 		}
 	}
+	UIImage	*	left	=	[UIImage imageNamed:@"LeftSlide"];
+	UIImage	*	right	=	[UIImage imageNamed:@"RightSlide"];
 	[volumeViewSlider setMinimumTrackImage:
-	 [[UIImage imageForName:@"leftslide" extension:@"png"] stretchableImageWithLeftCapWidth:10.0 
-																		topCapHeight:0.0] 
-											  forState:UIControlStateNormal];
+	 [left stretchableImageWithLeftCapWidth:10.0 
+							   topCapHeight:0.0] 
+								  forState:UIControlStateNormal];
 	[volumeViewSlider setMaximumTrackImage:
-	 [[UIImage imageForName:@"rightslide" extension:@"png"] stretchableImageWithLeftCapWidth:10.0 
-																		 topCapHeight:0.0] 
-											  forState:UIControlStateNormal];
+	 [right stretchableImageWithLeftCapWidth:10.0 
+								topCapHeight:0.0] 
+								  forState:UIControlStateNormal];
 }
 
 @end

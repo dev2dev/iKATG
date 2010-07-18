@@ -6,9 +6,9 @@
 //  Copyright 2010 Doug Russell. All rights reserved.
 //
 
-#import "ArchiveViewControlleriPhone.h"
+#import "ArchiveTableViewControlleriPhone.h"
 
-@implementation ArchiveViewControlleriPhone
+@implementation ArchiveTableViewControlleriPhone
 
 - (void)viewDidLoad
 {

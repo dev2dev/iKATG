@@ -25,6 +25,7 @@
 <EventOperationDelegate>
 
 - (void)fetchEvents;
+- (NSArray *)removePastEvents:(NSMutableArray *)array;
 
 - (BOOL)hasShow:(NSFetchRequest *)request forID:(NSNumber *)ID;
 - (void)fetchShows;

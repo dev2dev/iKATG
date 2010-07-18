@@ -20,17 +20,20 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ModalWebViewController : UIViewController 
+@interface ModalWebViewController : UIViewController <UIActionSheetDelegate>
 {
-	NSURLRequest *request;
-	UIWebView *webView;
-	UIActivityIndicatorView *activityIndicator;
+	NSURLRequest			*	request;
+	UIWebView				*	webView;
+	UIActivityIndicatorView	*	activityIndicator;
+	UIToolbar				*	navToolbar;
 }
 
-@property (nonatomic, retain)          NSURLRequest *request;
-@property (nonatomic, retain) IBOutlet UIWebView *webView;
-@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, retain)				NSURLRequest			*	request;
+@property (nonatomic, retain)	IBOutlet	UIWebView				*	webView;
+@property (nonatomic, retain)	IBOutlet	UIActivityIndicatorView	*	activityIndicator;
+@property (nonatomic, retain)	IBOutlet	UIToolbar				*	navToolbar;
 
 - (IBAction)doneButtonPressed:(id)sender;
+- (IBAction)openButtonPressed:(id)sender;
 
 @end

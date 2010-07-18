@@ -22,12 +22,17 @@
 
 @interface OnAirViewControlleriPhone : OnAirViewController 
 {
-	BOOL	resigned;
-	CGRect	initialFeedbackViewFrame;
-	CGRect	initialCommentViewFrame;
-	CGRect	initialSubmitButtonFrame;
+	UIButton	*	callButton;
+	UIButton	*	infoButton;
+	CGRect			initialFeedbackViewFrame;
+	CGRect			initialCommentViewFrame;
+	CGRect			initialSubmitButtonFrame;
 }
 
-@property (readwrite, getter=isResigned) BOOL resigned;
+@property (nonatomic, retain)	IBOutlet	UIButton	*	callButton;
+@property (nonatomic, retain)	IBOutlet	UIButton	*	infoButton;
+
+- (IBAction)callButtonPressed:(id)sender;
+- (IBAction)infoButtonPressed:(id)sender;
 
 @end

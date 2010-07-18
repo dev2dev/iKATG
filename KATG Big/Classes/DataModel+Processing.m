@@ -24,6 +24,23 @@
 #import "Show.h"
 #import "Guest.h"
 
+#ifdef __IPHONE_4_0
+BOOL (^FutureTest)(NSDate *date) = ^(NSDate *date) {
+	NSInteger	timeSince	=	[date timeIntervalSinceNow];
+	NSInteger	threshHold	=	-(60/*Seconds*/ * 60 /*Minutes*/ * 12 /*Hours*/);
+	BOOL		inFuture	=	(timeSince > threshHold);
+	return inFuture;
+};
+#elif __IPHONE_3_2
+BOOL FutureTest(NSDate *date);
+BOOL FutureTest(NSDate *date) {
+	NSInteger	timeSince	=	[date timeIntervalSinceNow];
+	NSInteger	threshHold	=	-(60/*Seconds*/ * 60 /*Minutes*/ * 12 /*Hours*/);
+	BOOL		inFuture	=	(timeSince > threshHold);
+	return inFuture;
+}
+#endif
+
 @implementation DataModel (Processing)
 
 /******************************************************************************/
@@ -40,15 +57,8 @@
 #ifdef __IPHONE_4_0
 	if (entries && entries.count > 0)
 	{
-		BOOL (^futureTest)(NSDate *date);
-		futureTest	=	^ (NSDate *date) {
-			NSInteger	timeSince	=	[date timeIntervalSinceNow];
-			NSInteger	threshHold	=	-(60/*Seconds*/ * 60 /*Minutes*/ * 12 /*Hours*/);
-			BOOL		inFuture	=	(timeSince > threshHold);
-			return inFuture;
-		};
-		NSDictionary * (^dateFormatters)(NSDictionary *event);
-		dateFormatters	=	^ (NSDictionary *event) {
+		NSDictionary * (^DateFormatters)(NSDictionary *event);
+		DateFormatters	=	^ (NSDictionary *event) {
 			NSDictionary	*	dateTimes = nil;
 			NSString		*	eventTimeString	=	[event objectForKey:@"StartDate"];
 			NSDate			*	eventDateTime	=	[formatter dateFromString:eventTimeString];
@@ -78,15 +88,15 @@
 			}
 			return dateTimes;
 		};
-		NSNumber * (^detectShowType)(NSDictionary *event);
-		detectShowType	=	^(NSDictionary *event) {
+		NSNumber * (^DetectShowType)(NSDictionary *event);
+		DetectShowType	=	^(NSDictionary *event) {
 			if ([[event objectForKey:@"Title"] rangeOfString:@"Live Show"].location != NSNotFound)
 				return [NSNumber numberWithBool:YES];
 			else
 				return [NSNumber numberWithBool:NO];
 		};
-		BOOL (^hasEvent)(NSFetchRequest *request, NSString *eventID);
-		hasEvent		=	^(NSFetchRequest *request, NSString *eventID) {
+		BOOL (^HasEvent)(NSFetchRequest *request, NSString *eventID);
+		HasEvent		=	^(NSFetchRequest *request, NSString *eventID) {
 			if (eventID == nil)
 				return NO;
 			NSPredicate	*	predicate		=
@@ -115,14 +125,14 @@
 		[coreDataOperationQueue addOperationWithBlock:^(void) {
 			for (NSDictionary *event in entries)
 			{
-				NSDictionary*	dateTimes		=	dateFormatters(event);
+				NSDictionary*	dateTimes		=	DateFormatters(event);
 				NSDate		*	dateTime		=	[dateTimes objectForKey:@"DateTime"];
 				NSString	*	title			=	[event objectForKey:@"Title"];
 				NSString	*	eventID			=	[event objectForKey:@"EventId"];
 				
-				if (futureTest(dateTime) &&
+				if (FutureTest(dateTime) &&
 					title != nil &&
-					!hasEvent(request, eventID))
+					!HasEvent(request, eventID))
 				{
 					Event		*	managedEvent	=
 					(Event *)[NSEntityDescription insertNewObjectForEntityForName:@"Event" 
@@ -147,7 +157,7 @@
 					if (!time)		time		=	@"";
 					[managedEvent setTime:time];
 					
-					NSNumber	*	showType	=	detectShowType(event);
+					NSNumber	*	showType	=	DetectShowType(event);
 					if (!showType)	showType	=	[NSNumber numberWithBool:YES];
 					[managedEvent setShowType:showType];
 					
@@ -235,7 +245,7 @@
 	// Remove any duplicate events
 	//
 	NSArray *uniquedResults = 
-	[self removeEventDuplicates:fetchResults];
+	[self removePastEvents:fetchResults];
 	//
 	// Notify delegates that event data
 	// is available
@@ -247,76 +257,16 @@
 	[fetchResults release];
 	[request release];
 }
-- (NSArray *)removeEventDuplicates:(NSMutableArray *)array
+- (NSArray *)removePastEvents:(NSMutableArray *)array
 {
 	//
-	// Remove any duplicate events
-	// and any events in the past
-	// more than 12 hours
+	//  *UNREVISED COMMENTS*
 	//
-	//
-	// Might be worth testing
-	// using just a set and
-	// using sortwithdescriptors
-	// and DateTime to put things
-	// back in order
-	//
-	NSMutableArray	*	eventArray = 
-	[[NSMutableArray alloc] initWithCapacity:array.count];
-	NSMutableSet	*	eventSet =
-	[[NSMutableSet alloc] initWithCapacity:array.count];
-#ifdef __IPHONE_4_0
-	//
-	// Need to test that performing future test is
-	// actually faster than just doing it in the loop
-	// checking for inSet
-	//
-	BOOL (^futureTest)(id obj, NSUInteger idx, BOOL *stop);
-	futureTest	=	^ (id obj, NSUInteger idx, BOOL *stop) 
-	{
-		NSInteger timeSince		=	[[(Event *)obj DateTime] timeIntervalSinceNow];
-		NSInteger threshHold	=	-(60/*Seconds*/ * 60 /*Minutes*/ * 12 /*Hours*/);
-		BOOL inFuture			=	timeSince > threshHold;
-		return inFuture;
-	};
-	NSIndexSet	*	futureIndexes	=	[array indexesOfObjectsWithOptions:NSEnumerationConcurrent 
-														passingTest:futureTest];
-	for (Event *event in [array objectsAtIndexes:futureIndexes])
-	{
-		BOOL inSet = [eventSet containsObject:event.EventID];
-		if (!inSet)
-		{
-			[eventSet addObject:event.EventID];
-			[eventArray addObject:event];
-		}
-		else
-		{
-			//NSLog(@"Delete: %@", [event EventID]);
-			[managedObjectContext deleteObject:event];
-			NSError *error;
-			if (![managedObjectContext save:&error])
-			{	// Handle Error
-				NSLog(@"Core Data Error %@", error);
-			}
-		}
-	}
-#else
-	//
-	// Loop for the sad sad life before
-	// blocks
-	//
+	NSMutableArray	*	futureEvents	=	[NSMutableArray array];
 	for (Event *event in array)
 	{
-		BOOL inSet		=	[eventSet containsObject:event.EventID];
-		BOOL inFuture	=	[[event DateTime] timeIntervalSinceNow] < -(60/*Seconds*/ * 60 /*Minutes*/ * 12 /*Hours*/);
-		if (!inSet && !inFuture)
+		if (!FutureTest([event DateTime]))
 		{
-			[eventSet addObject:event.EventID];
-			[eventArray addObject:event];
-		}
-		else
-		{
-			//NSLog(@"Delete: %@", [event EventID]);
 			[managedObjectContext deleteObject:event];
 			NSError *error;
 			if (![managedObjectContext save:&error])
@@ -324,10 +274,12 @@
 				NSLog(@"Core Data Error %@", error);
 			}
 		}
+		else
+		{
+			[futureEvents addObject:event];
+		}
 	}
-#endif
-	[eventSet release];
-	return [(NSArray *)eventArray autorelease];
+	return (NSArray *)futureEvents;
 }
 /******************************************************************************/
 #pragma mark -

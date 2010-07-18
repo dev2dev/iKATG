@@ -34,6 +34,11 @@
 @implementation KATG_BigAppDelegate
 @synthesize window, tabBarController, connected;
 
+void uncaughtExceptionHandler(NSException *exception) 
+{
+	ESLog(@"Uncaught Exception: %@", exception);
+}
+
 #pragma mark -
 #pragma mark Application Lifecycle
 #pragma mark -
@@ -77,14 +82,7 @@
 		 objectForKey:@"alert"];
 		if (alertMessage)
 		{
-			UIAlertView *alert = [[UIAlertView alloc] 
-								  initWithTitle:@"Notification"
-								  message:alertMessage 
-								  delegate:nil
-								  cancelButtonTitle:@"Continue" 
-								  otherButtonTitles:nil];
-			[alert show];
-			[alert release];
+			BasicAlert(@"Notification", alertMessage, nil, @"Continue", nil);
 		}
 	}
 	
@@ -342,15 +340,11 @@
 {
 	if (connected == NO)
 	{
-		UIAlertView *alert = 
-		[[UIAlertView alloc]
-		 initWithTitle:@"NO INTERNET CONNECTION"
-		 message:@"This Application requires an active internet connection. Please connect to wifi or cellular data network for full application functionality." 
-		 delegate:nil
-		 cancelButtonTitle:@"Continue" 
-		 otherButtonTitles:nil];
-		[alert show];
-		[alert release];
+		BasicAlert(@"NO INTERNET CONNECTION", 
+				   @"This Application requires an active internet connection. Please connect to wifi or cellular data network for full application functionality.", 
+				   nil, 
+				   @"OK", 
+				   nil);
 	}
 }
 

@@ -22,23 +22,22 @@
 #import "ModalWebViewController.h"
 #import "NSString+Regex.h"
 #import "Event.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation EventsDetailViewController
-@synthesize webView;
-@synthesize titleLabel;
-@synthesize dayLabel;
-@synthesize dateLabel;
-@synthesize timeLabel;
+@synthesize webContainerView, webView;
+@synthesize titleLabel, dateTimeLabel;
 @synthesize event;
 
 - (void)viewDidLoad 
 {
     [super viewDidLoad];
+	self.webContainerView.layer.cornerRadius	=	10;
 	[self makePage];
 }
 - (void)makePage
 {
-	NSString *htmlHeader = @"<html>\n<head>\n<style>\nbody {\npadding: 0px;\nfont-family: Helvetica; \nfont-size: 17px;\ncolor: #fff;\nmargin: 0;\n}\na:link {\ncolor: #ccc;\ntext-decoration: underline;\n}\na:visited {\ncolor: #ccc;\ntext-decoration: underline;\n}\n</style>\n</head>\n<body>\n";
+	NSString *htmlHeader = @"<html>\n<head>\n<style>\nbody {\nbackground-color: White;\npadding: 0px;\nfont-family: Helvetica; \nfont-size: 15pt;\ncolor: #707070;\nmargin: 0;\n}\na:link {\nword-wrap: break-word;\ncolor: #438a23;\ntext-decoration: underline;\n}\na:visited {\nword-wrap: break-word;\ncolor: #438a23;\ntext-decoration: underline;\n}\n</style>\n<meta name = \"viewport\" content = \"width = 280, initial-scale = 1.0, user-scalable = no\">\n</head>\n<body>\n";
 	NSString *htmlFooter = @"</body></html>";
 	NSString *htmlBody = [event Details];
 	NSString *regex = @"style=\"[^\"]*\"";
@@ -59,10 +58,21 @@
 	webView.backgroundColor = [UIColor clearColor];
 	[webView loadHTMLString:htmlString 
 					baseURL:[NSURL URLWithString:@"http://www.keithandthegirl.com/"]];
-	[titleLabel setText:[event Title]];
-	[dayLabel setText:[event Day]];
-	[dateLabel setText:[event Date]];
-	[timeLabel setText:[event Time]];
+	NSString	*	title		=	[event Title];
+	CGSize			titleSize	=	[title sizeWithFont:titleLabel.font 
+						   constrainedToSize:titleLabel.bounds.size 
+							   lineBreakMode:UILineBreakModeWordWrap];
+	if (titleSize.height > titleLabel.frame.size.height)
+	{
+		titleLabel.font	=	[UIFont fontWithName:[titleLabel.font fontName] size:14];
+	}
+	[titleLabel setText:title];
+	NSString	*	dateTime	=
+	[NSString stringWithFormat:@"%@ %@ %@", 
+	 [event Day], 
+	 [event Date], 
+	 [event Time]];
+	[dateTimeLabel setText:dateTime];
 }
 - (void)didReceiveMemoryWarning 
 {
@@ -71,15 +81,16 @@
 - (void)viewDidUnload 
 {
 	[super viewDidUnload];
+	self.webContainerView	=	nil;
+	self.webView			=	nil;
+	self.titleLabel			=	nil;
+	self.dateTimeLabel		=	nil;
 }
 - (void)dealloc 
 {
 	[webView release];
 	[titleLabel release];
-	[dayLabel release];
-	[dateLabel release];
-	[timeLabel release];
-//	[adBanner release];
+	[dateTimeLabel release];
 	[super dealloc];
 }
 - (BOOL)webView:(UIWebView *)webView 

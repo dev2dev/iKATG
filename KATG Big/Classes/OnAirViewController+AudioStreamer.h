@@ -25,7 +25,7 @@
 // Shoutcast
 - (IBAction)audioButtonPressed:(id)sender;
 - (void)setAudioButtonImage:(UIImage *)image;
-- (void)spinButton;
+- (void)pulseButton;
 - (void)destroyStreamer;
 - (void)createStreamer;
 // Volume Slider

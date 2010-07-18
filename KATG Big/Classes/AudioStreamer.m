@@ -417,20 +417,12 @@ void ASReadStreamCallBack
 			AudioQueueStop(audioQueue, true);
 		}
 		
-#ifdef TARGET_OS_IPHONE			
-		UIAlertView *alert =
-		[[[UIAlertView alloc]
-		  initWithTitle:NSLocalizedStringFromTable(@"Audio Error", @"Errors", nil)
-		  message:NSLocalizedStringFromTable([AudioStreamer stringForErrorCode:self.errorCode], @"Errors", nil)
-		  delegate:self
-		  cancelButtonTitle:@"OK"
-		  otherButtonTitles: nil]
-		 autorelease];
-		[alert 
-		 performSelector:@selector(show)
-		 onThread:[NSThread mainThread]
-		 withObject:nil
-		 waitUntilDone:NO];
+#ifdef TARGET_OS_IPHONE
+		BasicAlert(NSLocalizedStringFromTable(@"Audio Error", @"Errors", nil), 
+				   NSLocalizedStringFromTable([AudioStreamer stringForErrorCode:self.errorCode], @"Errors", nil), 
+				   nil, 
+				   @"OK", 
+				   nil);
 #else
 		NSAlert *alert =
 		[NSAlert
@@ -628,19 +620,11 @@ void ASReadStreamCallBack
 									kCFBooleanTrue) == false)
 		{
 #ifdef TARGET_OS_IPHONE
-			UIAlertView *alert =
-			[[UIAlertView alloc]
-			 initWithTitle:NSLocalizedStringFromTable(@"File Error", @"Errors", nil)
-			 message:NSLocalizedStringFromTable(@"Unable to configure network read stream.", @"Errors", nil)
-			 delegate:self
-			 cancelButtonTitle:@"OK"
-			 otherButtonTitles: nil];
-			[alert
-			 performSelector:@selector(show)
-			 onThread:[NSThread mainThread]
-			 withObject:nil
-			 waitUntilDone:YES];
-			[alert release];
+			BasicAlert(NSLocalizedStringFromTable(@"File Error", @"Errors", nil), 
+					   NSLocalizedStringFromTable(@"Unable to configure network read stream.", @"Errors", nil), 
+					   nil, 
+					   @"OK", 
+					   nil);
 #else
 			NSAlert *alert =
 			[NSAlert
@@ -683,19 +667,11 @@ void ASReadStreamCallBack
 		{
 			CFRelease(stream);
 #ifdef TARGET_OS_IPHONE
-			UIAlertView *alert =
-			[[UIAlertView alloc]
-			 initWithTitle:NSLocalizedStringFromTable(@"File Error", @"Errors", nil)
-			 message:NSLocalizedStringFromTable(@"Unable to configure network read stream.", @"Errors", nil)
-			 delegate:self
-			 cancelButtonTitle:@"OK"
-			 otherButtonTitles: nil];
-			[alert
-			 performSelector:@selector(show)
-			 onThread:[NSThread mainThread]
-			 withObject:nil
-			 waitUntilDone:YES];
-			[alert release];
+			BasicAlert(NSLocalizedStringFromTable(@"File Error", @"Errors", nil), 
+					   NSLocalizedStringFromTable(@"Unable to configure network read stream.", @"Errors", nil), 
+					   nil, 
+					   @"OK", 
+					   nil);
 #else
 			NSAlert *alert =
 			[NSAlert

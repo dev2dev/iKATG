@@ -27,7 +27,7 @@
 	NSString *comment = [commentView text];
 	if (comment == nil ||
 		[comment isEqualToString:@""] ||
-		[comment isEqualToString:@"Comment"])
+		[comment isEqualToString:@"Feedback"])
 		return;
 	NSString *name = [nameField text];
 	if (name == nil)
@@ -43,7 +43,7 @@
 }
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
-	if ([[textView text] isEqualToString:@"Comment"])
+	if ([[textView text] isEqualToString:@"Feedback"])
 	{
 		[textView setTextColor:[UIColor blackColor]];
 		[textView setText:@""];
@@ -54,7 +54,7 @@
 	if ([[textView text] isEqualToString:@""])
 	{
 		[textView setTextColor:[UIColor colorWithRed:0.71 green:0.71 blue:0.71 alpha:1.0]];
-		[textView setText:@"Comment"];
+		[textView setText:@"Feedback"];
 	}
 }
 

@@ -22,7 +22,7 @@
 #import "ModalWebViewLogging.h"
 
 @implementation ModalWebViewController
-@synthesize request, webView, activityIndicator;
+@synthesize request, webView, activityIndicator, navToolbar;
 
 - (void)viewDidLoad 
 {
@@ -40,12 +40,16 @@
 - (void)viewDidUnload 
 {
     [super viewDidUnload];
+	self.webView			=	nil;
+	self.activityIndicator	=	nil;
+	self.navToolbar			=	nil;
 }
 - (void)dealloc 
 {
 	[request release];
 	[webView release];
 	[activityIndicator release];
+	[navToolbar release];
     [super dealloc];
 }
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
@@ -73,6 +77,41 @@
 - (IBAction)doneButtonPressed:(id)sender
 {
 	[self dismissModalViewControllerAnimated:YES];
+}
+- (IBAction)openButtonPressed:(id)sender
+{
+	UIActionSheet	*	actionSheet	=
+	[[UIActionSheet alloc] initWithTitle:@"Current Webpage :" 
+								delegate:self 
+					   cancelButtonTitle:@"Cancel" 
+				  destructiveButtonTitle:@"In Safari" 
+					   otherButtonTitles:@"Copy To Pasteboard", nil];
+	[actionSheet showFromToolbar:self.navToolbar];
+	[actionSheet release];
+}
+- (void)actionSheet:(UIActionSheet *)actionSheet willDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+	if (buttonIndex == 0)
+	{
+		NSURL			*	URL			=	[[self.webView request] URL];
+		if ([[UIApplication sharedApplication] canOpenURL:URL])
+			[[UIApplication sharedApplication] openURL:URL];
+		else {
+			BasicAlert(@"URL Open Failed", 
+					   @"System can not open URL", 
+					   nil, 
+					   @"Continue", 
+					   nil);
+		}
+
+	}
+	else if (buttonIndex == 1)
+	{
+		UIPasteboard	*	pasteboard	=	[UIPasteboard generalPasteboard];
+		NSString		*	copyText	=	[[[self.webView request] URL] description];
+		if (pasteboard && copyText)
+			pasteboard.string = copyText;
+	}
 }
 
 @end

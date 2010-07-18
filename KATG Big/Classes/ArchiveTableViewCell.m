@@ -7,6 +7,7 @@
 //
 
 #import "ArchiveTableViewCell.h"
+#import <Quartzcore/QuartzCore.h>
 
 @implementation ArchiveTableViewCell
 @synthesize showTypeImageView;
@@ -19,9 +20,35 @@
 {
 	if ((self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])) 
 	{
-		
+		[self setup];
 	}
 	return self;
+}
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+	if (self = [super initWithCoder:(NSCoder *)aDecoder]) 
+	{
+		[self setup];
+    }
+    return self;
+}
+- (void)setup
+{
+	UIView			*	view		=	[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 80)];
+	CAGradientLayer	*	gradient	=	[CAGradientLayer layer];
+	gradient.frame					=	view.bounds;
+	gradient.colors					=	[NSArray arrayWithObjects:
+										 (id)[[UIColor colorWithRed:(CGFloat)(112.0/255.0) 
+															  green:(CGFloat)(174.0/255.0) 
+															   blue:(CGFloat)(36.0/255.0) 
+															  alpha:1.0] CGColor], 
+										 (id)[[UIColor colorWithRed:(CGFloat)(57.0/255.0) 
+															  green:(CGFloat)(143.0/255.0) 
+															   blue:(CGFloat)(47.0/255.0) 
+															  alpha:1.0] CGColor], nil];
+	[view.layer insertSublayer:gradient atIndex:0];
+	self.backgroundView				=	view;
+	[view release];
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated 
 {

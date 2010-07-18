@@ -8,7 +8,7 @@
 
 #import "ArchiveTableViewController.h"
 
-@interface ArchiveViewControlleriPhone : ArchiveTableViewController 
+@interface ArchiveTableViewControlleriPhone : ArchiveTableViewController 
 {
 	UIActivityIndicatorView *activityIndicator;
 }

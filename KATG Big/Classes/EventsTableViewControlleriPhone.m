@@ -32,6 +32,24 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 #pragma mark -
+#pragma mark Memory management
+#pragma mark -
+- (void)didReceiveMemoryWarning 
+{
+    [super didReceiveMemoryWarning];
+}
+- (void)viewDidUnload 
+{
+    [model removeDelegate:self];
+	self.eventsList = nil;
+}
+- (void)dealloc 
+{
+	[eventsList release];
+	[adView release];
+    [super dealloc];
+}
+#pragma mark -
 #pragma mark Table View
 #pragma mark -
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView 
@@ -113,24 +131,7 @@
 		[self reloadTableView];
 	}
 }
-#pragma mark -
-#pragma mark Memory management
-#pragma mark -
-- (void)didReceiveMemoryWarning 
-{
-    [super didReceiveMemoryWarning];
-}
-- (void)viewDidUnload 
-{
-    [model removeDelegate:self];
-	self.eventsList = nil;
-}
-- (void)dealloc 
-{
-	[eventsList release];
-	[adView release];
-    [super dealloc];
-}
+
 
 
 @end

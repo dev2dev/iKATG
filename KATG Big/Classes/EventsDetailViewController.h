@@ -23,21 +23,19 @@
 @class Event;
 @interface EventsDetailViewController : UIViewController 
 {
-	UIWebView	 *webView;
-	Event        *event;
+	UIView		*	webContainerView;
+	UIWebView	*	webView;
+	Event		*	event;
 	
-	UILabel		 *titleLabel;
-	UILabel		 *dayLabel;
-	UILabel		 *dateLabel;
-	UILabel		 *timeLabel;
+	UILabel		*	titleLabel;
+	UILabel		*	dateTimeLabel;
 }
 
-@property (nonatomic, retain) IBOutlet UIWebView *webView;
-@property (nonatomic, retain) IBOutlet UILabel	 *titleLabel;
-@property (nonatomic, retain) IBOutlet UILabel	 *dayLabel;
-@property (nonatomic, retain) IBOutlet UILabel	 *dateLabel;
-@property (nonatomic, retain) IBOutlet UILabel	 *timeLabel;
-@property (nonatomic, assign)          Event     *event;
+@property (nonatomic, retain) IBOutlet UIView		*	webContainerView;
+@property (nonatomic, retain) IBOutlet UIWebView	*	webView;
+@property (nonatomic, retain) IBOutlet UILabel		*	titleLabel;
+@property (nonatomic, retain) IBOutlet UILabel		*	dateTimeLabel;
+@property (nonatomic, assign)          Event		*	event;
 
 - (void)makePage;
 - (void)modalWebViewController:(NSURLRequest *)request;
