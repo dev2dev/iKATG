@@ -44,6 +44,7 @@
 	//
 	UIButton			*	audioButton;
 	AudioStreamer		*	streamer;
+	BOOL					playOnConnection;
 	//
 	//  Volume Slider
 	//
@@ -61,6 +62,10 @@
 	//
 	//
 	UILabel				*	guestLabel;
+	//
+	//
+	//
+	NSTimer				*	liveShowTimer;
 }
 //
 //  Feedback
@@ -92,8 +97,6 @@
 //
 @property (nonatomic, retain) IBOutlet UILabel			*	guestLabel;
 
-
 - (IBAction)submitButtonPressed:(id)sender;
-- (void)findGuest:(NSString *)eventTitle;
 
 @end

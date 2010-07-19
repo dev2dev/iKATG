@@ -53,15 +53,37 @@
 		playButtonRect.origin.x	=	(ScreenDimensionsInPoints().size.width / 2) - (playButtonRect.size.width / 2);
 		audioButton.frame		=	playButtonRect;
 	}
+//	UILongPressGestureRecognizer	*	longPress	=	
+//	[[UILongPressGestureRecognizer alloc] initWithTarget:self 
+//												  action:@selector(handleLongPress:)];
+//	longPress.minimumPressDuration					=	5.0;
+//	[self.feedbackView addGestureRecognizer:longPress];
+//	[longPress release];
 }
+//- (void)handleLongPress:(UILongPressGestureRecognizer *)sender
+//{
+//	BasicAlert(@"We Know Poison Sucks", 
+//			   @"However we do not take requests for preshow music", 
+//			   nil, 
+//			   @"OK", 
+//			   nil);
+//}
 - (void)viewDidAppear:(BOOL)animated
 {
 	[super viewDidDisappear:animated];
 	[self registerKeyboardNotifications];
 }
-- (void)viewWillDisappear:(BOOL)animated
+- (void)viewDidUnload
 {
-	
+	[super viewDidUnload];
+	self.callButton	=	nil;
+	self.infoButton	=	nil;
+}
+- (void)dealloc
+{
+	[callButton release];
+	[infoButton release];
+	[super dealloc];
 }
 /******************************************************************************/
 #pragma mark -
@@ -116,7 +138,7 @@ shouldChangeTextInRange:(NSRange)range
 - (void)sendFeedback
 {
 	[super sendFeedback];
-	[self foldupFeedbackView];
+	[self foldupFeedbackView]; 
 }
 - (void)unfoldFeedbackView
 {
@@ -171,23 +193,17 @@ shouldChangeTextInRange:(NSRange)range
 /******************************************************************************/
 - (IBAction)callButtonPressed:(id)sender 
 {
-	NSURL	*	url	=	[NSURL URLWithString:kPhoneNumber];
-//	NSString	*	osVersion	=	[[UIDevice currentDevice] systemVersion];
-//	if ([osVersion doubleValue] >= 3.1) 
-//	{
-//		// On 3.1 and up use webview to dial
-//		UIWebView *webview = [[UIWebView alloc] initWithFrame:[callButton frame]];
-//		webview.alpha = 0.0;
-//		[webview loadRequest:[NSURLRequest requestWithURL:url]];
-//		[self.view insertSubview:webview belowSubview:callButton];
-//		[webview release];
-//	}
-//	else 
-//	{
-//		// On 3.0 dial as usual
-//		[[UIApplication sharedApplication] openURL: url];          
-//	}
-	[[UIApplication sharedApplication] openURL:url]; 
+	//
+	// Using a webview so that OS returns to 
+	// app immediately instead of phone app
+	//
+	/////////THIS IS ABANDONING A WEBVIEW EVERYTIME THE BUTTON IS PRESSED///////////
+	NSURL		*	url		=	[NSURL URLWithString:kPhoneNumber];
+	UIWebView	*	webview =	[[UIWebView alloc] initWithFrame:[callButton frame]];
+	webview.alpha			=	0.0;
+	[webview loadRequest:[NSURLRequest requestWithURL:url]];
+	[self.view insertSubview:webview belowSubview:callButton];
+	[webview release];
 }
 - (IBAction)infoButtonPressed:(id)sender 
 {

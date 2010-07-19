@@ -88,7 +88,8 @@
 					[self setData:nil]; // replace this with error xml
 					//NSLog(@"connection %@ canceled", [self connectionID]);
 				}
-				else {
+				else
+				{
 					//NSLog(@"connection %@", [self connectionID]);
 				}
 				[[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];

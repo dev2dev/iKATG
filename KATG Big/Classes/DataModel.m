@@ -23,10 +23,9 @@
 #import "DataModel+Notification.h"
 #import "DataOperationCodes.h"
 #import "DataModelURIList.h"
-#import "EventOperation.h"
 #import "ModelLogging.h"
 
-static DataModel *sharedDataModel = nil;
+static DataModel	*	sharedDataModel	=	nil;
 
 @implementation DataModel
 @synthesize delegates, connected, notifier;
@@ -205,10 +204,6 @@ static DataModel *sharedDataModel = nil;
 	else
 		[delayedOperations addObject:op];
 	[op release];
-}
-- (void)chatLogin:(NSURLRequest *)request
-{
-	
 }
 - (void)shows
 {

@@ -13,7 +13,7 @@
 
 - (void)modalWebViewController:(NSURLRequest *)request
 {
-	ModalWebViewControlleriPhone *modalWebViewController = 
+	ModalWebViewControlleriPhone	*	modalWebViewController	=
 	[[ModalWebViewControlleriPhone alloc] initWithNibName:@"ModalWebViewiPhone" 
 												   bundle:nil];
 	[modalWebViewController setRequest:request];

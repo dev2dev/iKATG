@@ -11,9 +11,10 @@
 #import "EventsDetailViewControlleriPhone.h"
 #import <QuartzCore/QuartzCore.h>
 #import "Event.h"
+#import "UIViewController+Nib.h"
 
 @implementation EventsTableViewControlleriPhone
-@synthesize eventsList;
+@synthesize eventsList, adView;
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -22,10 +23,10 @@
 {
     [super viewDidLoad];
 	
-	model = [DataModel sharedDataModel];
+	model	=	[DataModel sharedDataModel];
 	[model addDelegate:self];
 	
-	[model fetchEvents];
+	[model eventsNoPoll];
 }
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation 
 {
@@ -41,7 +42,8 @@
 - (void)viewDidUnload 
 {
     [model removeDelegate:self];
-	self.eventsList = nil;
+	self.eventsList	=	nil;
+	self.adView		=	nil;
 }
 - (void)dealloc 
 {
@@ -63,14 +65,15 @@
 // Customize the appearance of table view cells.
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-	if (adView == nil)
+	if (self.adView == nil)
 	{
-		adView = [[ADBannerView alloc] initWithFrame:CGRectZero];
-		adView.requiredContentSizeIdentifiers = [NSSet setWithObject:ADBannerContentSizeIdentifier320x50];
-		adView.currentContentSizeIdentifier = ADBannerContentSizeIdentifier320x50;
-		adView.delegate = self;
+		self.adView									=	[[[ADBannerView alloc] 
+														  initWithFrame:CGRectZero] autorelease];
+		self.adView.requiredContentSizeIdentifiers	=	[NSSet setWithObject:ADBannerContentSizeIdentifier320x50];
+		self.adView.currentContentSizeIdentifier	=	ADBannerContentSizeIdentifier320x50;
+		self.adView.delegate						=	self;
 	}
-	return adView;
+	return self.adView;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
@@ -79,10 +82,8 @@
 	
     EventTableCellView *cell = (EventTableCellView *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-		UINib	*	CellNib		=	[UINib nibWithNibName:CellNibName bundle:nil];
-        NSArray	*	contents	=	[CellNib instantiateWithOwner:self options:nil];
-		cell = (EventTableCellView *)[contents objectAtIndex:0];
-		cell.layer.cornerRadius = 15;
+		cell	=	(EventTableCellView *)[EventTableCellView loadFromNibName:CellNibName 
+																   owner:self];
     }
 	
     [[cell eventTitleLabel] setText:[[eventsList objectAtIndex:indexPath.row] Title]];
@@ -91,9 +92,9 @@
 	[[cell eventTimeLabel] setText:[[eventsList objectAtIndex:indexPath.row] Time]];
 	
 	if ([[[eventsList objectAtIndex:indexPath.row] ShowType] boolValue])
-		[[cell eventTypeImageView] setImage:[UIImage imageNamed:@"LiveShowIconTrans.png"]];
+		[[cell eventTypeImageView] setImage:[UIImage imageNamed:@"LiveShowIconTrans"]];
 	else
-		[[cell eventTypeImageView] setImage:[UIImage imageNamed:@"EventIconTrans.png"]];
+		[[cell eventTypeImageView] setImage:[UIImage imageNamed:@"EventIconTrans"]];
 	
     return cell;
 }

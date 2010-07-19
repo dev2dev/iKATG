@@ -42,7 +42,7 @@
 	//
 	BOOL notifier;
 	//
-	//  *UNREVISEDCOMMENTS*
+	//  Core Data Context
 	//
 	NSManagedObjectContext *managedObjectContext;
 	//
@@ -50,7 +50,7 @@
 	//
 	NSString *cacheDirectoryPath;
 	//
-	//  *UNREVISEDCOMMENTS*
+	//  Application Defaults
 	//
 	NSUserDefaults *userDefaults;
 	//
@@ -61,7 +61,8 @@
 	//
 	NSOperationQueue  *operationQueue;
 	//
-	//  *UNREVISEDCOMMENTS*
+	//  Operation Queue with max operations set to
+	//  to allow core data to operate off main thread
 	//
 	NSOperationQueue  *coreDataOperationQueue;
 	//
@@ -71,16 +72,13 @@
 	//
 	NSMutableArray *delayedOperations;
 	//
-	//  *UNREVISEDCOMMENTS*
+	//  Date Formatters to make datetime
+	//  human readable and localized
 	//
 	NSDateFormatter *formatter;
 	NSDateFormatter *dayFormatter;
 	NSDateFormatter *dateFormatter;
 	NSDateFormatter *timeFormatter;
-	//
-	//  *UNREVISEDCOMMENTS*
-	//
-	NSInteger      eventCount;
 }
 /******************************************************************************/
 #pragma mark -
@@ -134,33 +132,47 @@
 #pragma mark -
 /******************************************************************************/
 //
-//  *UNREVISEDCOMMENTS*
-//	@"Title",
-//	@"EventID",
-//	@"Details",
-//	@"DateTime",
-//	@"Day",
-//	@"Date",
-//	@"Time", 
-//	@"ShowType"
-//  *UNREVISEDCOMMENTS*
+//	Retrieve list of events
+//  Returns on - (void)events:(NSArray *)events;
+//  NSArray of 
+//  NSManagedObject subclass Event:
+//  @property (nonatomic, retain) NSString * Title;
+//  @property (nonatomic, retain) NSString * EventID;
+//  @property (nonatomic, retain) NSDate   * DateTime;
+//  @property (nonatomic, retain) NSString * Day;
+//  @property (nonatomic, retain) NSString * Date;
+//  @property (nonatomic, retain) NSString * Time;
+//  @property (nonatomic, retain) NSNumber * ShowType; (BOOL: YES for Show, No for Event)
+//  @property (nonatomic, retain) NSString * Details;
 //
-- (void)events;
-- (void)eventsNoPoll;
+- (void)events;			// Events from coredata store initially, then updated from web
+- (void)eventsNoPoll;	// Events only from coredata store
 //
-//  *UNREVISEDCOMMENTS*
+//  Check live show status 
+//  (this is set by the hosts, not an actual check of the shoutcast feeds status)
+//  Returns on - (void)liveShowStatus:(BOOL)live;
 //
 - (void)liveShowStatus;
 //
-//  *UNREVISEDCOMMENTS*
+//  Submit feedback to hosts
+//  Doesn't return any confirmation of success
 //
 - (void)feedback:(NSString *)name location:(NSString *)location comment:(NSString *)comment;
 //
-//  *UNREVISEDCOMMENTS*
-//
-- (void)chatLogin:(NSURLRequest *)request;
-//
-//  *UNREVISEDCOMMENTS*
+//  Retrieve list of shows in archive
+//  Returns on - (void)shows:(NSArray *)shows;
+//  NSArray of
+//  NSManagedObject subclass Show
+//  @property (nonatomic, retain) NSNumber * ID;
+//  @property (nonatomic, retain) NSNumber * Number;
+//  @property (nonatomic, retain) NSNumber * TV;
+//  @property (nonatomic, retain) NSString * URL;
+//  @property (nonatomic, retain) NSString * Title;
+//  @property (nonatomic, retain) NSNumber * HasNotes;
+//  @property (nonatomic, retain) NSString * Notes;
+//  @property (nonatomic, retain) NSSet* Guests;
+//  @property (nonatomic, retain) NSNumber * PictureCount;
+//  @property (nonatomic, retain) NSSet* Pictures;
 //
 - (void)shows;
 - (void)showsNoPoll;

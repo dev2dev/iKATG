@@ -119,8 +119,6 @@
 	[timeFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
 	[timeFormatter setDateFormat: @"h:mm aa"];
 	[timeFormatter setLocale:[NSLocale currentLocale]];
-	// Tracking active Event Operations
-	eventCount = 0;
 }
 - (void)registerNotifications
 {

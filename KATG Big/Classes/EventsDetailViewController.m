@@ -110,7 +110,7 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
 }
 - (void)modalWebViewController:(NSURLRequest *)request
 {
-	ModalWebViewController *modalWebViewController = 
+	ModalWebViewController	*	modalWebViewController	=
 	[[ModalWebViewController alloc] initWithNibName:@"ModalWebViewiPad" 
 											 bundle:nil];
 	[modalWebViewController setRequest:request];

@@ -8,6 +8,7 @@
 
 #import "DataModel+Notification.h"
 #import "DataModel+Processing.h"
+#import "ModelLogging.h"
 
 @implementation DataModel (Notification)
 
@@ -30,6 +31,9 @@
 {
 	if ([NSThread isMainThread])
 	{
+#if LogEvents
+		NSLog(@"Events: \n%@", events);
+#endif
 		if (notifier)
 		{
 			//[[NSNotificationCenter defaultCenter] 
@@ -67,6 +71,9 @@
 	if ([NSThread isMainThread])
 	{
 		BOOL onAir	=	[status boolValue];
+#if LogLiveShowStatus
+		NSLog(@"Live Show Status: %@", onAir ? @"YES": @"NO");
+#endif
 		if (notifier)
 		{
 			//[[NSNotificationCenter defaultCenter] 

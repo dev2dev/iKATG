@@ -17,8 +17,8 @@
 //  limitations under the License.
 //  
 
-#define audioTesting 0
-#if audioTesting
+#define testFeed 1
+#if testFeed
 static NSString *urlString = @"http://scfire-mtc-aa05.stream.aol.com:80/stream/1010";
 #else
 static NSString *urlString = @"http://liveshow.keithandthegirl.com:8004";
@@ -75,8 +75,8 @@ static NSString *urlString = @"http://liveshow.keithandthegirl.com:8004";
 			 [UIImage imageNamed:@"LoadStage1"],
 			 [UIImage imageNamed:@"LoadStage2"],
 			 [UIImage imageNamed:@"LoadStage3"], nil];
-			self.audioButton.imageView.animationImages = imageArray;
-			self.audioButton.imageView.animationDuration = 0.8;
+			self.audioButton.imageView.animationImages		=	imageArray;
+			self.audioButton.imageView.animationDuration	=	0.8;
 			[imageArray release];		
 		}
 		[self.audioButton.imageView startAnimating];
@@ -140,9 +140,6 @@ static NSString *urlString = @"http://liveshow.keithandthegirl.com:8004";
 		 removeObserver:self
 		 name:ASStatusChangedNotification
 		 object:streamer];
-		//[progressUpdateTimer invalidate];
-		//progressUpdateTimer = nil;
-		
 		[streamer stop];
 		[streamer release];
 		streamer = nil;
@@ -178,16 +175,15 @@ static NSString *urlString = @"http://liveshow.keithandthegirl.com:8004";
 #pragma mark -
 - (void)drawVolumeSlider 
 {
-	UISlider *volumeViewSlider = nil;
+	UISlider	*	volumeViewSlider	=	nil;
 	for (UIView *view in [volumeView subviews]) 
 	{
-		if ([[[view class] description] isEqualToString:@"MPVolumeSlider"]) 
-		{
-			volumeViewSlider = (UISlider *)view;
-		}
+		if ([view isKindOfClass:NSClassFromString(@"MPVolumeSlider")])
+		//if ([[[view class] description] isEqualToString:@"MPVolumeSlider"]) 
+			volumeViewSlider			=	(UISlider *)view;
 	}
-	UIImage	*	left	=	[UIImage imageNamed:@"LeftSlide"];
-	UIImage	*	right	=	[UIImage imageNamed:@"RightSlide"];
+	UIImage		*	left				=	[UIImage imageNamed:@"LeftSlide"];
+	UIImage		*	right				=	[UIImage imageNamed:@"RightSlide"];
 	[volumeViewSlider setMinimumTrackImage:
 	 [left stretchableImageWithLeftCapWidth:10.0 
 							   topCapHeight:0.0] 

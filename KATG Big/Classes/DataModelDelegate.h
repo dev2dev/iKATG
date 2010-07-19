@@ -24,5 +24,19 @@
 @optional
 - (void)events:(NSArray *)events;
 - (void)liveShowStatus:(BOOL)live;
+//
+//  NSArray of
+//  NSManagedObject subclass Show
+//  @property (nonatomic, retain) NSNumber * ID;
+//  @property (nonatomic, retain) NSNumber * Number;
+//  @property (nonatomic, retain) NSNumber * TV;
+//  @property (nonatomic, retain) NSString * URL;
+//  @property (nonatomic, retain) NSString * Title;
+//  @property (nonatomic, retain) NSNumber * HasNotes;
+//  @property (nonatomic, retain) NSString * Notes;
+//  @property (nonatomic, retain) NSSet* Guests;
+//  @property (nonatomic, retain) NSNumber * PictureCount;
+//  @property (nonatomic, retain) NSSet* Pictures;
+//
 - (void)shows:(NSArray *)shows;
 @end

@@ -21,7 +21,5 @@
 #import "OnAirViewController.h"
 
 @interface OnAirViewController (Feedback)
-
 - (void)sendFeedback;
-
 @end

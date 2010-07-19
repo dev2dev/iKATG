@@ -9,29 +9,44 @@
 #import "ArchiveTableViewControlleriPhone.h"
 
 @implementation ArchiveTableViewControlleriPhone
+@synthesize activityIndicator;
 
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
 	
-	activityIndicator = 
-	[[UIActivityIndicatorView alloc] 
-	 initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-	[activityIndicator setHidesWhenStopped:YES];
-	UIBarButtonItem *button = 
-	[[UIBarButtonItem alloc] initWithCustomView:activityIndicator];
-	[activityIndicator release];
-	[self.navigationItem setRightBarButtonItem:button];
-	[button release];
-	
-	[activityIndicator startAnimating];
+	UIActivityIndicatorView	*	anActivityIndicator	=	[[UIActivityIndicatorView alloc] 
+														 initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+	if (anActivityIndicator)
+	{
+		self.activityIndicator						=	anActivityIndicator;
+		[anActivityIndicator release];
+		[self.activityIndicator setHidesWhenStopped:YES];
+		UIBarButtonItem		*	button				=	[[UIBarButtonItem alloc] 
+														 initWithCustomView:activityIndicator];
+		[self.navigationItem setRightBarButtonItem:button];
+		[button release];
+		
+		[self.activityIndicator startAnimating];
+	}
 }
 
 - (void)shows:(NSArray *)shows
 {
 	[super shows:shows];
 	if (shows.count > 0)
-		[activityIndicator stopAnimating];
+		[self.activityIndicator stopAnimating];
+}
+
+- (void)viewDidUnload
+{
+	[super viewDidUnload];
+	self.activityIndicator	=	nil;
+}
+- (void)dealloc
+{
+	[activityIndicator release];
+	[super dealloc];
 }
 
 @end

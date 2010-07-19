@@ -24,17 +24,17 @@
 
 - (void)sendFeedback
 {
-	NSString *comment = [commentView text];
+	NSString	*	comment		=	[commentView text];
 	if (comment == nil ||
 		[comment isEqualToString:@""] ||
 		[comment isEqualToString:@"Feedback"])
 		return;
-	NSString *name = [nameField text];
+	NSString	*	name		=	[nameField text];
 	if (name == nil)
 		name = @"";
-	NSString *location = [locationField text];
+	NSString	*	location	=	[locationField text];
 	if (location == nil)
-		location = @"";
+		location				=	@"";
 	[model feedback:name 
 		   location:location 
 			comment:comment];

@@ -171,47 +171,8 @@ BOOL FutureTest(NSDate *date) {
 		}];
 	}
 #elif __IPHONE_3_2
-	if (entries && entries.count > 0)
-	{
-		eventCount += entries.count;
-		for (NSDictionary *event in entries)
-		{
-			EventOperation *op = [[EventOperation alloc] initWithEvent:event];
-			[op setDelegate:self];
-			//
-			// Setters are (nonatomic, assign)
-			// NSDateFormatters are not thread safe
-			// but coreDataOperationQueue has
-			// a max concurrent operations count
-			// of 1 because core data is not thread
-			// safe
-			//
-			[op setFormatter:formatter];
-			[op setDayFormatter:dayFormatter];
-			[op setDateFormatter:dateFormatter];
-			[op setTimeFormatter:timeFormatter];
-			[coreDataOperationQueue addOperation:op];
-			[op release];
-		}
-	}
+	// Write some 3.0 code :(
 #endif
-}
-- (void)eventOperationDidFinishSuccesfully:(EventOperation *)op;
-{
-	//
-	// Monitor active eventOperations
-	// and trigger fetch when count drops
-	// to zero
-	//
-	eventCount -= 1;
-	if (eventCount == 0)
-	{
-		[self fetchEvents];
-	}
-}
-- (void)eventOperationDidFail
-{
-	
 }
 - (void)fetchEvents
 {
@@ -242,7 +203,7 @@ BOOL FutureTest(NSDate *date) {
 		NSLog(@"Core Data Error %@", error);
 	}
 	//
-	// Remove any duplicate events
+	// Remove any past events
 	//
 	NSArray *uniquedResults = 
 	[self removePastEvents:fetchResults];

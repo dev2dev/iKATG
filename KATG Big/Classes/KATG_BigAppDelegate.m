@@ -119,22 +119,6 @@ void uncaughtExceptionHandler(NSException *exception)
         } 
     }
 }
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-	NSLog(@"Application Did Become Active");
-}
-- (void)applicationWillResignActive:(UIApplication *)application
-{
-	NSLog(@"Application Will Resign Active");
-}
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
-	NSLog(@"Application Did Enter Background");
-}
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
-	NSLog(@"Application Will Enter Foreground");
-}
 #pragma mark -
 #pragma mark Core Data stack
 #pragma mark -
@@ -207,29 +191,6 @@ void uncaughtExceptionHandler(NSException *exception)
 //{
 //	return NO;
 //}
-- (void)applicationSignificantTimeChange:(UIApplication *)application
-{
-	
-}
-#pragma mark -
-#pragma mark Status Bar
-#pragma mark -
-- (void)application:(UIApplication *)application willChangeStatusBarOrientation:(UIInterfaceOrientation)newStatusBarOrientation duration:(NSTimeInterval)duration
-{
-	
-}
-- (void)application:(UIApplication *)application didChangeStatusBarOrientation:(UIInterfaceOrientation)oldStatusBarOrientation
-{
-	
-}
-- (void)application:(UIApplication *)application willChangeStatusBarFrame:(CGRect)newStatusBarFrame
-{
-	
-}
-- (void)application:(UIApplication *)application didChangeStatusBarFrame:(CGRect)oldStatusBarFrame
-{
-	
-}
 #pragma mark -
 #pragma mark Notifications
 #pragma mark -
@@ -262,11 +223,6 @@ void uncaughtExceptionHandler(NSException *exception)
 {
 	
 }
-@class UILocalNotification;
-- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
-{
-	
-}
 #pragma mark -
 #pragma mark Memory Management
 #pragma mark -
@@ -277,6 +233,7 @@ void uncaughtExceptionHandler(NSException *exception)
 - (void)dealloc 
 {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
+	
 	[hostReach release];
 	
 	[managedObjectContext release];

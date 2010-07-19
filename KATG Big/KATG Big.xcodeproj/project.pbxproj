@@ -134,7 +134,6 @@
 		533CFA3611A8C3ED003C7A0B /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 533CFA3411A8C3ED003C7A0B /* Event.m */; };
 		533CFC5211A90937003C7A0B /* iPadEntitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 533CFC5111A90937003C7A0B /* iPadEntitlements.plist */; };
 		534A6CED11D1D78000C17A83 /* ModalWebViewControlleriPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 534A6CEC11D1D78000C17A83 /* ModalWebViewControlleriPhone.m */; };
-		535495E4119238CE006A7859 /* EventOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 535495E3119238CE006A7859 /* EventOperation.m */; };
 		5354967511924268006A7859 /* EventTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5354967411924268006A7859 /* EventTableCellView.xib */; };
 		5354967F11924398006A7859 /* EventTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5354967E11924398006A7859 /* EventTableCellView.m */; };
 		5354969A11924496006A7859 /* EventIconTrans.png in Resources */ = {isa = PBXBuildFile; fileRef = 5354969811924496006A7859 /* EventIconTrans.png */; };
@@ -187,7 +186,6 @@
 		538DD96C119890E800E40CBB /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 5366EA2011863B8D001A99D8 /* Icon-72.png */; };
 		538DD96D119890E800E40CBB /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 5366EA2111863B8D001A99D8 /* iTunesArtwork */; };
 		538DD9781198913800E40CBB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
-		538DD97F1198915400E40CBB /* EventOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 535495E3119238CE006A7859 /* EventOperation.m */; };
 		538DD9831198915400E40CBB /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 535496AE11924816006A7859 /* AudioStreamer.m */; };
 		538DD99D1198925000E40CBB /* OnAirViewiPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 538DD99C1198925000E40CBB /* OnAirViewiPhone.xib */; };
 		538DD9A31198929C00E40CBB /* OnAirViewControlleriPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 538DD9A21198929C00E40CBB /* OnAirViewControlleriPhone.m */; };
@@ -404,8 +402,6 @@
 		533CFC5111A90937003C7A0B /* iPadEntitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = iPadEntitlements.plist; sourceTree = "<group>"; };
 		534A6CEB11D1D78000C17A83 /* ModalWebViewControlleriPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalWebViewControlleriPhone.h; sourceTree = "<group>"; };
 		534A6CEC11D1D78000C17A83 /* ModalWebViewControlleriPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalWebViewControlleriPhone.m; sourceTree = "<group>"; };
-		535495E2119238CE006A7859 /* EventOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventOperation.h; sourceTree = "<group>"; };
-		535495E3119238CE006A7859 /* EventOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventOperation.m; sourceTree = "<group>"; };
 		5354967411924268006A7859 /* EventTableCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventTableCellView.xib; sourceTree = "<group>"; };
 		5354967D11924398006A7859 /* EventTableCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventTableCellView.h; sourceTree = "<group>"; };
 		5354967E11924398006A7859 /* EventTableCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventTableCellView.m; sourceTree = "<group>"; };
@@ -889,8 +885,6 @@
 		5354980811926FE2006A7859 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				535497EB11926D9D006A7859 /* UIWebViewOpaque.h */,
-				535497EC11926D9D006A7859 /* UIWebViewOpaque.m */,
 				5354967D11924398006A7859 /* EventTableCellView.h */,
 				5354967E11924398006A7859 /* EventTableCellView.m */,
 				5354967411924268006A7859 /* EventTableCellView.xib */,
@@ -961,8 +955,6 @@
 				53CBFEE611921C0900D08D09 /* DataModel+SetupCleanup.m */,
 				53CBFD80119218F600D08D09 /* DataOperation.h */,
 				53CBFD81119218F600D08D09 /* DataOperation.m */,
-				535495E2119238CE006A7859 /* EventOperation.h */,
-				535495E3119238CE006A7859 /* EventOperation.m */,
 				533CFA2811A8C2D9003C7A0B /* KATG.xcdatamodeld */,
 			);
 			name = Model;
@@ -971,6 +963,8 @@
 		5366EA0E118639A9001A99D8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				535497EB11926D9D006A7859 /* UIWebViewOpaque.h */,
+				535497EC11926D9D006A7859 /* UIWebViewOpaque.m */,
 				28AD73870D9D96C1002E5188 /* MainWindowiPad.xib */,
 				5366EA1711863AE0001A99D8 /* OnAirViewiPad.xib */,
 				532DA47611929AEC00293EBA /* ModalWebViewiPad.xib */,
@@ -1322,7 +1316,6 @@
 				53CBFD7D119218D900D08D09 /* DataModel+Processing.m in Sources */,
 				53CBFDA8119218F600D08D09 /* DataOperation.m in Sources */,
 				53CBFEE711921C0900D08D09 /* DataModel+SetupCleanup.m in Sources */,
-				535495E4119238CE006A7859 /* EventOperation.m in Sources */,
 				5354967F11924398006A7859 /* EventTableCellView.m in Sources */,
 				535496AF11924816006A7859 /* AudioStreamer.m in Sources */,
 				535496B511924876006A7859 /* OnAirViewController+AudioStreamer.m in Sources */,
@@ -1390,7 +1383,6 @@
 				538DD9F81198955B00E40CBB /* DataModel+Processing.m in Sources */,
 				538DD9FA1198955B00E40CBB /* DataModel+SetupCleanup.m in Sources */,
 				538DD9FC1198955B00E40CBB /* DataOperation.m in Sources */,
-				538DD97F1198915400E40CBB /* EventOperation.m in Sources */,
 				538DD9831198915400E40CBB /* AudioStreamer.m in Sources */,
 				538DD9781198913800E40CBB /* main.m in Sources */,
 				538DD95A11988FF600E40CBB /* KATG_BigAppDelegate.m in Sources */,
@@ -1528,7 +1520,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = KATG_Big_Prefix.pch;
-				GCC_VERSION = 4.2;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "KATG.com-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = "-lxml2";
@@ -1554,7 +1546,7 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = KATG_Big_Prefix.pch;
-				GCC_VERSION = 4.2;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "KATG.com-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = "-lxml2";
@@ -1574,18 +1566,16 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_ENTITLEMENTS = "~/Dropbox/DEV/Active/Objective-C/iKATG/KATG Big/iPhoneEntitlements.plist";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Doug Russell (U77D7975SM)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Doug Russell (U77D7975SM)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Doug Russell";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = KATG_Big_Prefix.pch;
-				GCC_VERSION = 4.2;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "KATG.com-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = "-lxml2";
 				PREBINDING = NO;
 				PRODUCT_NAME = KATG.com;
-				PROVISIONING_PROFILE = "0C4F5177-F740-4215-AD77-1449DB424645";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0C4F5177-F740-4215-AD77-1449DB424645";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ABF969A4-2FE0-44D4-A10E-937721906B70";
 				SDKROOT = iphoneos4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

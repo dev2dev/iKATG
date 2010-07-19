@@ -10,7 +10,9 @@
 
 @interface ArchiveTableViewControlleriPhone : ArchiveTableViewController 
 {
-	UIActivityIndicatorView *activityIndicator;
+	UIActivityIndicatorView	*	activityIndicator;
 }
+
+@property (nonatomic, retain)	UIActivityIndicatorView	*	activityIndicator;
 
 @end

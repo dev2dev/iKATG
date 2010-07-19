@@ -24,8 +24,13 @@
 #import "NSString+Regex.h"
 #import "Event.h"
 #import "GradButton.h"
+#import "Reachability.h"
 
 @interface OnAirViewController (Private)
+- (void)registerNotifications;
+- (void)findGuest:(NSString *)eventTitle;
+- (void)loadDefaults;
+- (void)writeDefaults;
 @end
 
 @implementation OnAirViewController
@@ -43,25 +48,42 @@
 	
 	[self setupAudioAssets];
 	
-	model = [DataModel sharedDataModel];
+	model			=	[DataModel sharedDataModel];
 	[model addDelegate:self];
 	
 	[model liveShowStatus];
 	
 	//	this timer should really be in the model
-	[NSTimer scheduledTimerWithTimeInterval:180.0 
-									 target:self 
-								   selector:@selector(updateLiveShowStatusTimer:) 
-								   userInfo:nil 
-									repeats:YES];
+	liveShowTimer	=	
+	[[NSTimer scheduledTimerWithTimeInterval:180.0 
+									  target:self 
+									selector:@selector(updateLiveShowStatusTimer:) 
+									userInfo:nil 
+									 repeats:YES] retain];
 	
 	[model events];
 	
+	[self registerNotifications];
+	
+	[self loadDefaults];
+}
+- (void)registerNotifications
+{
+	[[NSNotificationCenter defaultCenter] 
+	 addObserver:self 
+	 selector:@selector(reachabilityChanged:) 
+	 name:kReachabilityChangedNotification 
+	 object:nil];
 #ifdef __IPHONE_4_0
 	[[NSNotificationCenter defaultCenter] 
 	 addObserver:self
-	 selector:@selector(writeDefaults) 
+	 selector:@selector(handleBackgroundNotification) 
 	 name:UIApplicationDidEnterBackgroundNotification 
+	 object:nil];
+	[[NSNotificationCenter defaultCenter]
+	 addObserver:self 
+	 selector:@selector(handleForegroundNotification) 
+	 name:UIApplicationWillEnterForegroundNotification 
 	 object:nil];
 #elif __IPHONE_3_2
 	[[NSNotificationCenter defaultCenter] 
@@ -70,8 +92,6 @@
 	 name:UIApplicationWillTerminateNotification 
 	 object:nil];
 #endif
-	
-	[self loadDefaults];
 }
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 {
@@ -86,11 +106,26 @@
     [super viewDidUnload];
 	
 	[model removeDelegate:self];
+	
+	self.feedbackView			=	nil;
+	self.nameField				=	nil;
+	self.locationField			=	nil;
+	self.commentView			=	nil;
+	self.submitButton			=	nil;
+	self.audioButton			=	nil;
+	self.volumeView				=	nil;
+	self.nextLiveShowLabel		=	nil;
+	self.liveShowStatusLabel	=	nil;
+	self.guestLabel				=	nil;
 }
 - (void)dealloc 
 {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
-		
+	
+	[liveShowTimer invalidate]; 
+	[liveShowTimer release];
+	liveShowTimer	=	nil;
+	
 	[feedbackView release];
 	[nameField release];
 	[locationField release];
@@ -117,23 +152,48 @@
 #pragma mark -
 #pragma mark UserDefaultss
 #pragma mark -
+- (void)handleForegroundNotification
+{
+	[model liveShowStatus];
+	
+	liveShowTimer	=	
+	[[NSTimer scheduledTimerWithTimeInterval:180.0 
+									  target:self 
+									selector:@selector(updateLiveShowStatusTimer:) 
+									userInfo:nil 
+									 repeats:YES] retain];
+	
+	[model events];
+	
+	[self loadDefaults];
+}
 - (void)loadDefaults
 {
 	NSUserDefaults	*	userDefaults	=	[NSUserDefaults standardUserDefaults];
 	NSString		*	name			=	[userDefaults objectForKey:@"Name"];
 	[nameField setText:name];
-	NSString *location = [userDefaults objectForKey:@"Location"];
+	NSString		*	location		=	[userDefaults objectForKey:@"Location"];
 	[locationField setText:location];
-	NSString *comment = [userDefaults objectForKey:@"Comment"];
-	if (comment && ![comment isEqualToString:@"Comment"])
+	NSString		*	comment			=	[userDefaults objectForKey:@"Feedback"];
+	if (comment && ![comment isEqualToString:@"Feedback"])
 	{
 		[commentView setTextColor:[UIColor blackColor]];
 		[commentView setText:comment];
 	}
-	if ([userDefaults boolForKey:@"playing"] && [model isConnected]) 
-		[self audioButtonPressed:nil];
-	//else if ([userDefaults boolForKey:@"playing"] && ![model isConnected]) 
-	//	playOnConnection = YES;
+	if (!streamer)
+	{
+		if ([userDefaults boolForKey:@"Playing"] && [model isConnected]) 
+			[self audioButtonPressed:nil];
+		else if ([userDefaults boolForKey:@"Playing"] && ![model isConnected]) 
+			playOnConnection			=	YES;
+	}
+}
+- (void)handleBackgroundNotification
+{
+	[liveShowTimer invalidate]; 
+	[liveShowTimer release];
+	liveShowTimer	=	nil;
+	[self writeDefaults];
 }
 - (void)writeDefaults  
 {
@@ -149,6 +209,43 @@
 	else
 		[userDefaults setBool:NO forKey:@"Playing"];
 	[userDefaults synchronize];
+}
+#pragma mark -
+#pragma mark Reachability
+#pragma mark -
+// Respond to changes in reachability
+- (void)reachabilityChanged:(NSNotification* )notification
+{
+	Reachability *curReach = [notification object];
+	//NSParameterAssert([curReach isKindOfClaGss:[Reachability class]]);
+	[self updateReachability:curReach];
+}
+- (void)updateReachability:(Reachability*)curReach
+{
+	BOOL	connected	=	NO;
+	NetworkStatus netStatus = [curReach currentReachabilityStatus];
+	switch (netStatus) {
+		case NotReachable:
+		{
+			break;
+		}
+		case ReachableViaWWAN:
+		{
+			connected = YES;
+			break;
+		}
+		case ReachableViaWiFi:
+		{
+			connected = YES;
+			break;
+		}
+	}
+	if (connected && playOnConnection)
+	{
+		playOnConnection	=	NO;
+		[self audioButtonPressed:nil];
+	}
+		
 }
 #pragma mark -
 #pragma mark Data Delegates
@@ -175,22 +272,22 @@
 			// last 12 hours or in the future,
 			// if in the past 
 			//
-			NSDate	*	date		=	[event DateTime];
-			NSInteger	since		=	[date timeIntervalSinceNow];
-			NSInteger	threshHold	=	-(60/*Seconds*/ * 60 /*Minutes*/ * 12 /*Hours*/);
+			NSDate			*	date		=	[event DateTime];
+			NSInteger			since		=	[date timeIntervalSinceNow];
+			NSInteger			threshHold	=	-(60/*Seconds*/ * 60 /*Minutes*/ * 12 /*Hours*/);
 			if (since > threshHold && [[event ShowType] boolValue])
 			{
-				NSString *timeString = nil;
+				NSString	*	timeString	=	nil;
 				if (since < 0 && self.live)
 				{
-					timeString = @"NOW!";
+					timeString				=	@"NOW!";
 				}
 				else if (since >= 0)
 				{
-					NSInteger d	=	since / 86400;
-					NSInteger h	=	since / 3600 - d * 24;
-					NSInteger m	=	since / 60 - d * 1440 - h * 60;
-					timeString	=	[NSString stringWithFormat:@"%02d : %02d : %02d", d, h, m];
+					NSInteger	d			=	since / 86400;
+					NSInteger	h			=	since / 3600 - d * 24;
+					NSInteger	m			=	since / 60 - d * 1440 - h * 60;
+					timeString				=	[NSString stringWithFormat:@"%02d : %02d : %02d", d, h, m];
 				}
 				else
 				{
@@ -202,7 +299,7 @@
 											   selector:@selector(updateTimeSince:) 
 											   userInfo:date 
 												repeats:YES];
-				NSString *title = [event Title];
+				NSString	*	title		=	[event Title];
 				if (title)
 					[self findGuest:title];
 				break;
@@ -221,21 +318,21 @@
 	}
 	else
 	{
-		NSInteger d	=	since / 86400;
-		NSInteger h	=	since / 3600 - d * 24;
-		NSInteger m	=	since / 60 - d * 1440 - h * 60;
-		timeString	=	[NSString stringWithFormat:@"%02d : %02d : %02d", d, h, m];
+		NSInteger	d			=	since / 86400;
+		NSInteger	h			=	since / 3600 - d * 24;
+		NSInteger	m			=	since / 60 - d * 1440 - h * 60;
+		timeString				=	[NSString stringWithFormat:@"%02d : %02d : %02d", d, h, m];
 	}
 	[[self nextLiveShowLabel] setText:timeString];
 }
 - (void)findGuest:(NSString *)eventTitle
 {
-	NSRange range = [eventTitle rangeOfString:@"Live Show with " 
-									  options:(NSAnchoredSearch | 
-											   NSCaseInsensitiveSearch)];
+	NSRange				range	=	[eventTitle rangeOfString:@"Live Show with " 
+										 options:(NSAnchoredSearch | 
+												  NSCaseInsensitiveSearch)];
 	if (range.location != NSNotFound)
 	{
-		NSString *guest = 
+		NSString	*	guest	=
 		[eventTitle stringByReplacingOccurrencesOfString:@"Live Show with " 
 											  withString:@"" 
 												 options:(NSAnchoredSearch | 
@@ -251,8 +348,8 @@
 }
 - (void)liveShowStatus:(BOOL)live
 {
-	self.live = live;
-	liveShowStatusLabel.text = [NSString stringWithFormat:@"%@", self.live ? @"Live" : @"Not Live"];
+	self.live					=	live;
+	liveShowStatusLabel.text	=	[NSString stringWithFormat:@"%@", self.live ? @"Live" : @"Not Live"];
 }
 
 @end

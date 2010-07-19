@@ -19,10 +19,8 @@
 //  
 
 #import "DataModel.h"
-#import "EventOperation.h"
 
-@interface DataModel (Processing) 
-<EventOperationDelegate>
+@interface DataModel (Processing)
 
 - (void)fetchEvents;
 - (NSArray *)removePastEvents:(NSMutableArray *)array;

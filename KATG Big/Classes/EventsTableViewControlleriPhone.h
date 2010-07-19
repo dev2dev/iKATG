@@ -17,6 +17,8 @@
 	NSArray			*	eventsList;
 	ADBannerView	*	adView;
 }
-@property (nonatomic, retain) NSArray			*	eventsList;
+
+@property (nonatomic, retain)	NSArray			*	eventsList;
+@property (nonatomic, retain)	ADBannerView	*	adView;
 
 @end

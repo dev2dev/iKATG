@@ -103,7 +103,9 @@
 #pragma mark -
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-	
+	UIViewController	*	viewController	=	[[UIViewController alloc] init];
+	[self.navigationController pushViewController:viewController animated:YES];
+	[viewController release];
 }
 #pragma mark -
 #pragma mark Data Model Delgates
